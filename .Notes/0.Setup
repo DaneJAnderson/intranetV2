@@ -1,0 +1,63 @@
+1. install composer using admin
+2. composer global require laravel/installer (using admin)
+	a. laravel new app-name
+npm cache clear --force
+3. npm install --global cross-env
+4. npm install --no-bin-links
+5. install => composer require laravel/ui
+6. install => php artisan ui vue
+7. install => npm i bootstrap-vue
+8. App.js =>   require('./bootstrap');  
+		window.Vue = require('vue');  
+		import BootstrapVue from 'bootstrap-vue'   
+		Vue.use(BootstrapVue) 
+
+9. app.scss => @import 'node_modules/bootstrap/scss/bootstrap';
+	       @import 'node_modules/bootstrap-vue/src/index.scss';
+
+10. App.Blade.php =>  <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+	<script defer src="{{ asset('js/manifest.js') }}"></script>  
+	<script defer src="{{ asset('js/vendor.js') }}"></script>
+	<script defer src="{{ asset('js/app.js') }}"></script>
+
+11. Webpack =>    mix.js('resources/js/app.js', 'public/js')  
+    		  .extract(['vue'])  
+    		  .sass('resources/sass/app.scss', 'public/css')
+
+12. install vuetify:
+	npm i vuetify
+	npm i vuetifyjs-mix-extension -D
+	npm i vuetify-loader
+	npm i sass-loader(mix requested version)
+    webpack => 
+	 const mix = require('laravel-mix')
+	 require('vuetifyjs-mix-extension')
+	 mix.js('resources/js/app.js', 'public/js').vuetify('vuetify-loader', {
+    	 extract: 'css/vuetify-components.css'})
+
+13. Create Resources/plugins/vuetify.js:
+	
+	import Vue from 'vue'
+	import Vuetify from 'vuetify/lib'
+
+	Vue.use(Vuetify)
+
+	const opts = {}
+
+	export default new Vuetify(opts)
+
+14. Add to App.js:
+
+	import Vue from 'vue'
+	import vuetify from '@/plugins/vuetify' // path to vuetify export
+
+	new Vue({
+        vuetify }).$mount('#app')
+
+15. php artisan make:controller SpaController
+    Routes => Web.php => Route::get('/{any}', 'SpaController@index')->where('any', '.*');
+
+
+16. npm install vuex --save
+
+

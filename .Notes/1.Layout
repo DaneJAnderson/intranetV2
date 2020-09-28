@@ -1,0 +1,33 @@
+Single Page App Layout
+
+Blade Pages:
+1. App Page *
+2. HomePage *
+3. Footer *
+4. Header *
+5. Sidebar *
+
+VueJS File Structure:
+
+1. AppComponent *
+        a. HeaderComponent *
+        b. FooterComponent *
+		c. SidebarComponent *
+
+2. HomeComponent *
+        a. NoticeComponent *
+        b. BirthdayComponent *
+        c. GalleryComponent *
+
+3. ToolsComponent *
+        a. SuggestionBoxComponent *
+        b. GroupHealthComponent *
+        c. DocumentsComponet  *
+        d. documentComponent  *
+
+4. AboutComponent *
+
+
+5. FormsComponent *
+
+6. InventoryComponent *

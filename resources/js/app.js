@@ -1,25 +1,44 @@
-
 require('./bootstrap');
 
 window.Vue = require('vue');
+import VueRouter from 'vue-router'
+import Vuex from 'vuex'
+import { routes }  from './routes' // importing an exported const
 import BootstrapVue from 'bootstrap-vue'; //Importing 
 import vuetify from '../plugins/vuetify';
+import HeaderComponent from './components/AppHeader'
+import FooterComponent from './components/AppFooter'
+import SidebarComponent from './components/AppSidebar'
+import homeStore from "./store/homeStore"
 
+Vue.use(BootstrapVue)
+Vue.use(VueRouter)
+Vue.use(Vuex)
 
-Vue.use(BootstrapVue) 
+const store = new Vuex.Store(
+   homeStore
+)
 
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('test-component', require('./components/TestComponent.vue').default);
-
+const router = new VueRouter({
+routes,
+mode: 'history',
+base: window.location.pathName,
+})
+router.beforeEach((to, from, next) => {
+    document.title = to.meta.title
+    next()
+  })
 
 const app = new Vue({
-    vuetify,
+    vuetify,    
     components: {
-        // TestComponent
-    }
-    // el: '#app',
-}).$mount('#app');
+        HeaderComponent, 
+        FooterComponent,          
+        SidebarComponent
+    },
+    router,
+    store
+ }).$mount('#app');
 
 
 
@@ -43,5 +62,7 @@ const app = new Vue({
 
 
 
+
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 // import 'bootstrap/dist/css/bootstrap.css'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'

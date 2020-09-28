@@ -32,6 +32,8 @@
     "dependencies": {
         "bootstrap-vue": "^2.17.3",
         "sass-loader": "^9.0.2",
-        "vuetify": "^2.3.10"
+        "vue-router": "^3.4.4",
+        "vuetify": "^2.3.10",
+        "vuex": "^3.5.1"
     }
 }
