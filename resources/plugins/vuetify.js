@@ -1,11 +1,14 @@
 
 import Vue from 'vue'
-import Vuetify, {  VToolbar,} from 'vuetify/lib'
+import Vuetify, {  VToolbar,VCard,
+   VApp,VSheet,VContainer, VAppBar,
+  } from 'vuetify/lib'
 import { Ripple } from 'vuetify/lib/directives'
 
 Vue.use(Vuetify, {
   components: { 
-    VToolbar,
+    VApp,VCard,VContainer,
+    VToolbar,VSheet,VAppBar
   },
   directives: {
     Ripple,

@@ -3,7 +3,8 @@
     <head>  
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{-- <meta name="viewport" content="width=device-width, initial-scale=1"> --}}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <script>window.Laravel = { csrfToken: '{{ csrf_token() }}' }</script>       
 
@@ -13,9 +14,10 @@
         {{-- <title>{{ config('app.name', @yield('title')) }}</title>     --}}
         <title>COKCU  @yield('title')</title>    
     </head>
-       <body>
-            <div id='app' data-app>
-              
+       <body >
+            <div id="app"> 
+                <v-app>
+                   
                 {{-- --------------- Header --------------- --}}
                 <div class="header">
                         @include('include.header')
@@ -23,7 +25,9 @@
 
                 {{-- --------------- Content ------------- --}}
                 <div class="content">
+
                     @yield('Home')
+                   
                 </div>
 
                 {{-- -------------- SideBar -------------  --}}
@@ -39,8 +43,7 @@
     </div>
 
 
-
-
+                </v-app>
      </div>   
        </body>
        <script defer src="{{ asset('js/manifest.js') }}"></script>  

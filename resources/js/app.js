@@ -11,6 +11,8 @@ import FooterComponent from './components/AppFooter'
 import SidebarComponent from './components/AppSidebar'
 import homeStore from "./store/homeStore"
 
+// import '../sass/app.scss'
+
 Vue.use(BootstrapVue)
 Vue.use(VueRouter)
 Vue.use(Vuex)
