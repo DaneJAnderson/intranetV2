@@ -5,6 +5,7 @@ import Vuetify, {  VToolbar,VCard,
   } from 'vuetify/lib'
 import { Ripple } from 'vuetify/lib/directives'
 
+
 Vue.use(Vuetify, {
   components: { 
     VApp,VCard,VContainer,
@@ -15,7 +16,11 @@ Vue.use(Vuetify, {
   },
 })
 
-const opts = {}
+const opts = {
+  icons: {
+  iconfont: 'mdiSvg',
+},
+}
 
 export default new Vuetify(opts)
 

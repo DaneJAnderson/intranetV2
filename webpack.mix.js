@@ -35,3 +35,9 @@ mix.browserSync('127.0.0.1:8000')
         ignored: /node_modules/
     }
 });
+
+
+/* mix.styles([
+    'public/css/vendor/normalize.css',
+    'public/css/vendor/videojs.css'
+], 'public/css/all.css'); */

@@ -1,56 +1,114 @@
 
 <template>
   <div>
-    <v-app-bar
-      color="#6200EA"
-      dense
-      dark
-    >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+    <v-app-bar color="#fff"  >    
+    <v-bottom-navigation v-model="value" color="primary" grow>
 
-      <v-toolbar-title>Page title</v-toolbar-title>
+    
+  <!-- <v-app-bar-nav-icon ></v-app-bar-nav-icon> -->
 
-      <v-spacer></v-spacer>
 
+      <v-img class="ml-1"
+        contain
+        max-height="60"
+        max-width="300"
+        src="/images/COKSODALITY_LOGO.png"
+      ></v-img>
+  <!-- lazy-src="/images/COKSODALITY_LOGO.png" -->
+  <!-- <v-toolbar-title>Page title</v-toolbar-title> -->
+  <v-spacer></v-spacer>
+      
+      <div class="mr-15">
       <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
+        <span>Home</span>
+        <v-icon>{{icons.mdiHome}}</v-icon>
       </v-btn>
 
       <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
+        <span>Tools</span>
+        <v-icon>{{icons.mdiTools}}</v-icon>
       </v-btn>
+      <v-btn icon >
+        <span>HR Plus</span>
+        <v-icon>{{icons.mdiHumanQueue}}</v-icon>
+      </v-btn>
+      </div>
 
-      <v-menu
-        left
-        bottom
-      >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            icon
-            v-bind="attrs"
-            v-on="on"
-          >
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </template>
+      <v-spacer></v-spacer> 
 
-        <v-list>
-          <v-list-item
-            v-for="n in 5"
-            :key="n"
-            @click="() => {}"
-          >
-            <v-list-item-title>Option {{ n }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
+      <span class="btn mr-10 mt-2" @click.stop="drawer = !drawer"  v-ripple>
+         <v-icon size="40" color="#000"   >{{icons.mdiMenu}}</v-icon>         
+      </span>
+   
+      </v-bottom-navigation>
     </v-app-bar>
+
+    <v-navigation-drawer
+      v-model="drawer"
+      app      
+      clipped
+      bottom      
+      right
+      :style="`margin-top: ${$vuetify.application.top+65}px`"
+      :value="true"
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          <v-list-item>
+            <v-list-item-title>Foo</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>Bar</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>Fizz</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title>Buzz</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+
   </div>
 </template>
 
 
 <script>
+
+import { mdiHome, mdiTools, mdiHumanQueue,mdiMenu } from '@mdi/js'
 export default {
-    name: 'HeaderComponent'
+    name: 'HeaderComponent',
+     data: () => ({
+       value:0,
+       drawer: false,
+       group: null,
+     icons:
+     {mdiHome,mdiTools,mdiHumanQueue,mdiMenu,
+     }
+    }),
+    
+     watch: {
+      group () {
+        this.drawer = false
+      },
+    },
+   
 }
 </script>
+<style >
+.v-bottom-navigation {
+  border: none !important;
+  box-shadow:none !important;
+}
+.btn { cursor: pointer;}
+</style>

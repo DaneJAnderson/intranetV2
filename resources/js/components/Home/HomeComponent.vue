@@ -1,5 +1,6 @@
 <template>
     <div>
+        <br/><br/><br/>
         <h1>Welcome to Home !</h1>
         <notice-component></notice-component>
         <birthday-component></birthday-component>
