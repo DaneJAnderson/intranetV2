@@ -1,6 +1,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+const urlBase = "/intranetV2/public/"
+const appnameApi = "/intranetV2/public/api/"
+
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import { routes }  from './routes' // importing an exported const
@@ -24,7 +27,7 @@ const store = new Vuex.Store(
 const router = new VueRouter({
 routes,
 mode: 'history',
-base: window.location.pathName,
+base: urlBase,
 })
 router.beforeEach((to, from, next) => {
     document.title = to.meta.title
@@ -32,6 +35,10 @@ router.beforeEach((to, from, next) => {
   })
 
 const app = new Vue({
+    data: {
+      // publicURL: window.location.href
+      publicURL: ""
+    },
     vuetify,    
     components: {
         HeaderComponent, 
@@ -39,7 +46,12 @@ const app = new Vue({
         SidebarComponent
     },
     router,
-    store
+    store,
+    mounted() {
+      this.publicURL = window.publicURL;
+      // this.publicURL = window.location.protocol+"//"+window.location.hostname+appname;
+      
+    }
  }).$mount('#app');
 
 

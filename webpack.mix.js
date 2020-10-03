@@ -37,6 +37,12 @@ mix.browserSync('127.0.0.1:8000')
 });
 
 
+
+
+
+
+
+
 /* mix.styles([
     'public/css/vendor/normalize.css',
     'public/css/vendor/videojs.css'

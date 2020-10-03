@@ -1,1 +1,1 @@
-<header-Component></header-Component>
+<header-Component :publicurl=publicURL></header-Component>

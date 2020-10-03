@@ -1,7 +1,8 @@
 <template>
-    <div>
-        <h1> We at Footer Component</h1>
-  
+    <div>   
+       
+
+     {{ new Date().getFullYear() }} — <strong>COKCU</strong>
     </div>
 </template>
 <script>

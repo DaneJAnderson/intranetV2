@@ -14,7 +14,24 @@
         {{-- <title>{{ config('app.name', @yield('title')) }}</title>     --}}
         <title>COKCU  @yield('title')</title>    
     </head>
-       <body >
+    <script>
+    window.publicURL = "{{ $publicURL ?? '127.0.0.1'}}";      
+    </script>
+    
+    <style>
+
+#sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+#home {
+    margin-top: -85vh !important;
+}
+
+    </style>
+       <body onload="init()"> {{------- Smooth ScrollBar ------}}
             <div id="app"> 
                 <v-app>
                    
@@ -23,24 +40,28 @@
                         @include('include.header')
                 </div>
 
-                {{-- --------------- Content ------------- --}}
-                <div class="content">
-
-                    @yield('Home')
-                   
-                </div>
+                <v-row  no-gutters dense>
 
                 {{-- -------------- SideBar -------------  --}}
-                <div class="sidebar">
+             <v-col id="sticky"  cols=2 >        
                 @section('Sidebar')
                  sidebar.
-                @show
-            </div>       
+                @show               
+            </v-col>
+                {{-- --------------- Content ------------- --}}
+                <v-col id="home" offset=2 cols=10 class="pl-10 pr-5">                
+                    @yield('Home')
+                    
+                </v-col>
+
+                </v-row>
+
                
                 {{-- ---------------- Footer ----------- --}}
-  <div class="footer">
+
+<div class="footer">    
         @include('include.footer')
-    </div>
+</div>
 
 
                 </v-app>
@@ -49,5 +70,6 @@
        <script defer src="{{ asset('js/manifest.js') }}"></script>  
 	   <script defer src="{{ asset('js/vendor.js') }}"></script>
 	   <script defer src="{{ asset('js/app.js') }}"></script>
-	   <script src="{{ mix('/js/app.js') }}"></script>
+	   <script defer src="{{ asset('js/SmoothScrollBar.js') }}"></script>
+	   {{-- <script src="{{ mix('/js/app.js') }}"></script> --}}
 </html>

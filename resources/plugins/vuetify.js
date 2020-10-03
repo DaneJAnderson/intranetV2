@@ -1,6 +1,6 @@
 
 import Vue from 'vue'
-import Vuetify, {  VToolbar,VCard,
+import Vuetify, {  VToolbar,VCard,VRow,VCol,
    VApp,VSheet,VContainer, VAppBar,
   } from 'vuetify/lib'
 import { Ripple } from 'vuetify/lib/directives'
@@ -8,7 +8,7 @@ import { Ripple } from 'vuetify/lib/directives'
 
 Vue.use(Vuetify, {
   components: { 
-    VApp,VCard,VContainer,
+    VApp,VCard,VContainer,VRow,VCol,
     VToolbar,VSheet,VAppBar
   },
   directives: {

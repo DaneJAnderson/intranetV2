@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SpaController;
+use Illuminate\Support\Arr;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +15,15 @@ use App\Http\Controllers\SpaController;
 |
 */
 
-/* Route::get('/', function () {
-    return view('welcome');
-}); */
-
  Route::get('/', function () {
-    return view('home');
+
+     $hostURLs = [
+        'publicURL' => asset(''),        
+        // 'storageURL' => preg_replace('/\\\\/','/',storage_path())
+            ];
+
+    return view('home', $hostURLs ); //->with('hostURLs',$hostURLs);
 }); 
 
 // Route::get('/{any}', 'SpaController@index')->where('any', '.*');
 Route::get('/{any}', [SpaController::class, 'index'])->where('any', '.*');
-// Route::get('/{any}/{anymore}', [SpaController::class, 'index'])->where(['any' => '.*', 'anymore' =>'.*']);
