@@ -21,15 +21,17 @@
   <v-spacer></v-spacer>
       
       <div class="mr-15" >
-      <v-btn icon>
+      <router-link to="/" class="text-decoration-none"><v-btn icon>
         <span>Home</span>
         <v-icon>{{icons.mdiHome}}</v-icon>
-      </v-btn>
+      </v-btn></router-link>
 
-      <v-btn icon >
+      
+      <router-link to="/tools" class="text-decoration-none"><v-btn icon >
         <span>Tools</span>
         <v-icon >{{icons.mdiTools}}</v-icon>
-      </v-btn>
+      </v-btn></router-link>
+      
       <v-btn icon >
         <span>HR Plus</span>
         <v-icon>{{icons.mdiHumanQueue}}</v-icon>
@@ -45,7 +47,7 @@
       </v-bottom-navigation>
     </v-app-bar>    
 
-    <v-navigation-drawer
+    <v-navigation-drawer id="rightNavDrawer"
       v-model="drawer"
       app      
       clipped 
@@ -55,8 +57,8 @@
         this.$vuetify.breakpoint.name=='sm'|
         this.$vuetify.breakpoint.name=='xs'
         ?
-        $vuetify.application.top+81:
-        $vuetify.application.top+81}px`"
+        $vuetify.application.top+80:
+        $vuetify.application.top+80}px`"
       :value="true"
       disable-resize-watcher
       disable-route-watcher
@@ -147,7 +149,15 @@ export default {
   border-top: 2px solid #FF8F00  !important;
 
 }
+
 .banner {
   margin-top: 80px;
 }
+
+/* Right v-navigation-drawer properties */
+#rightNavDrawer .v-navigation-drawer__content{
+  border-top: 1px solid rgba(0, 0, 0, 0.3) !important
+}
+
+
 </style>

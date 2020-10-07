@@ -1,12 +1,12 @@
 <template>
     <div>
         
-  <v-navigation-drawer
+  <v-navigation-drawer id="leftNavDrawer"
       app
       permanent     
       clipped     
       hide-overlay 
-      :style="`margin-top: ${$vuetify.application.top+70}px`"
+      :style="`margin-top: ${$vuetify.application.top+80}px`"
       :value="true"
       disable-resize-watcher
       disable-route-watcher    
@@ -62,4 +62,11 @@ export default {
 .v-navigation-drawer {
     position: relative !important;
 }
+
+/* Left v-navigation-drawer properties */
+#leftNavDrawer {
+  
+  
+  }
+
 </style>

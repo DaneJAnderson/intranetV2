@@ -1,7 +1,14 @@
 {
-    "/css//js/app.vuetify-components.css": "/css//js/app.vuetify-components.css",
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/js/manifest.js": "/js/manifest.js",
-    "/js/vendor.js": "/js/vendor.js"
+    "/css//js/app.vuetify-components.css": "/css//js/app.vuetify-components.css?id=c1609a25a14649f8416e",
+    "/js//js/app.js": "/js//js/app.js?id=825d73b20910b80d3c1f",
+    "/css/app.css": "/css/app.css?id=d41d8cd98f00b204e980",
+    "/js/manifest.js": "/js/manifest.js?id=6e6826288a0bf03766d6",
+    "/js//js/vendor.js": "/js//js/vendor.js?id=d29ea035d1b2b6dccb23",
+    "/js/about.js": "/js/about.js?id=87f09b2a085a33cd25f2",
+    "/js/document.js": "/js/document.js?id=5c64a4e349c148ec3d55",
+    "/js/documents.js": "/js/documents.js?id=70da092d6d56b0668db4",
+    "/js/forms.js": "/js/forms.js?id=4ec980927454a42b2f1f",
+    "/js/inventory.js": "/js/inventory.js?id=357ad80dc6f8d231e6b4",
+    "/js/news.js": "/js/news.js?id=1a525eab9bca70645881",
+    "/js/tools.js": "/js/tools.js?id=6cdfd01f9dba143220d4"
 }

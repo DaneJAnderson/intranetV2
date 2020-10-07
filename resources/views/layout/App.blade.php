@@ -6,6 +6,8 @@
         {{-- <meta name="viewport" content="width=device-width, initial-scale=1"> --}}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        {{-- <base href="/intranetV2/public/" /> --}}
+        {{-- <base href="{{ url('/') }}" /> --}}
         <script>window.Laravel = { csrfToken: '{{ csrf_token() }}' }</script>       
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
@@ -15,7 +17,8 @@
         <title>COKCU  @yield('title')</title>    
     </head>
     <script>
-    window.publicURL = "{{ $publicURL ?? '127.0.0.1'}}";      
+    window.publicURL = "{{ $publicURL ?? url('/') ?? ''  }}";  
+    console.log(window.publicURL);    
     </script>
     
     <style>
@@ -68,8 +71,8 @@
      </div>   
        </body>
        <script defer src="{{ asset('js/manifest.js') }}"></script>  
-	   <script defer src="{{ asset('js/vendor.js') }}"></script>
-	   <script defer src="{{ asset('js/app.js') }}"></script>
+	   <script defer src="{{ asset('js/js/vendor.js') }}"></script>
+	   <script defer src="{{ asset('js/js/app.js') }}"></script>
+	   {{-- <script defer src="{{ mix('js/js/app.js') }}"></script> --}}
 	   <script defer src="{{ asset('js/SmoothScrollBar.js') }}"></script>
-	   {{-- <script src="{{ mix('/js/app.js') }}"></script> --}}
 </html>

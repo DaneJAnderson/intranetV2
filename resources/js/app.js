@@ -1,7 +1,9 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-const urlBase = "/intranetV2/public/"
+
+const urlBase = window.publicURL.includes('/public/')?"/intranetV2/public/":"";
+
 const appnameApi = "/intranetV2/public/api/"
 
 import VueRouter from 'vue-router'
