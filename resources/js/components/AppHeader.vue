@@ -7,20 +7,20 @@
     
   <!-- <v-app-bar-nav-icon ></v-app-bar-nav-icon> -->
 
-
+      <router-link to="/" class="text-decoration-none">
       <v-img class="ml-1"
         contain
         max-height="60"
         max-width="300"
         :src="publicurl+'/images/COKSODALITY_LOGO.svg'"
       ></v-img>       
-     
+      </router-link>
 
   <!-- lazy-src="/images/COKSODALITY_LOGO.png" -->
   <!-- <v-toolbar-title>Page title</v-toolbar-title> -->
   <v-spacer></v-spacer>
       
-      <div class="mr-15" >
+      <div class="mr-15  d-sm-none d-md-flex" >
       <router-link to="/" class="text-decoration-none"><v-btn icon>
         <span>Home</span>
         <v-icon>{{icons.mdiHome}}</v-icon>
@@ -32,17 +32,21 @@
         <v-icon >{{icons.mdiTools}}</v-icon>
       </v-btn></router-link>
       
-      <v-btn icon >
+     
+       <a href="http://192.168.110.132/" class="text-decoration-none" target="_blank" >
+       <v-btn icon >
         <span>HR Plus</span>
-        <v-icon>{{icons.mdiHumanQueue}}</v-icon>
-      </v-btn>
+        <v-icon color="black">{{icons.mdiHuman}}</v-icon>
+      </v-btn></a>
+
       </div>
 
-      <v-spacer></v-spacer> 
+      <v-spacer></v-spacer>
 
-      <span class="btn mr-10 mt-1" @click.stop="drawer = !drawer"  v-ripple>
-         <v-icon size="40" :color="drawer?'#FF8F00':'#000'" >{{icons.mdiMenu}}</v-icon>         
-      </span>
+       <!------  Menu Nav Icon ---- -->      
+      <v-btn iconclass=" mr-10 mt-1" @click.stop="drawer = !drawer" v-ripple>
+         <v-icon size="40" :color="drawer?'#FF8F00':'#000'" >{{icons.mdiMenu}}</v-icon>
+       </v-btn>
    
       </v-bottom-navigation>
     </v-app-bar>    
@@ -72,35 +76,88 @@
       >
         <v-list-item-group
           v-model="group"
-          active-class="deep-purple--text text--accent-4"
+          active-class="amber--text text--accent-4"
         >
-          <v-list-item>
-            <v-list-item-title>Foo {{publicurl}}</v-list-item-title>
-          </v-list-item>
+          <!-- active-class="deep-purple--text text--accent-4" -->
 
-          <v-list-item>
-            <v-list-item-title>Bar</v-list-item-title>
-          </v-list-item>
+<!-- ----------------- Mobile Navigation ----------------- -->
+      <div class=" " >
+        <router-link to="/" class="text-decoration-none ">
+        <v-list-item class=" d-none d-sm-flex d-md-none">
+         <v-list-item-title><v-icon class="ml-5">{{icons.mdiHome}}
+           </v-icon ><span class="ml-5">Home</span></v-list-item-title>        
+        </v-list-item>
+        </router-link>          
 
-          <v-list-item>
-            <v-list-item-title>Fizz</v-list-item-title>
-          </v-list-item>
+        <router-link to="/tools" class="text-decoration-none">
+        <v-list-item class="  d-none d-sm-flex d-md-none">
+         <v-list-item-title>
+           <v-icon class="ml-5">{{icons.mdiTools}}</v-icon>
+           <span class="ml-5">Tools</span></v-list-item-title>        
+        </v-list-item>
+        </router-link>          
 
-          <v-list-item>
-            <v-list-item-title>Buzz</v-list-item-title>
-          </v-list-item>
+        <a href="http://192.168.110.132/" class="text-decoration-none" target="_blank" >
+        <v-list-item class=" d-none d-sm-flex d-md-none">
+         <v-list-item-title>
+              <v-icon color="black" class="ml-5">{{icons.mdiHuman }}</v-icon>
+          <span class="ml-5">HR Plus</span></v-list-item-title>        
+        </v-list-item>  
+          </a>
+      </div>   
+
+      <div class=" " >
+        <router-link to="/tools/documents" class="text-decoration-none ">
+        <v-list-item >
+         <v-list-item-title><v-icon class="ml-5">{{icons.mdiFileDocument}}
+           </v-icon ><span class="ml-5">Documents</span></v-list-item-title>        
+        </v-list-item>
+        </router-link>          
+
+        <a href="http://intranew/Meeting/signin.php" class="text-decoration-none" target="_blank">
+        <v-list-item >
+         <v-list-item-title>
+           <v-icon color="black" class="ml-5">{{icons.mdiCalendar}}</v-icon>
+           <span class="ml-5">Meeting Schedular</span></v-list-item-title>        
+        </v-list-item>
+        </a>   
+
+        <router-link to="/news" class="text-decoration-none">
+        <v-list-item >
+         <v-list-item-title>
+           <v-icon class="ml-5">{{icons.mdiNewspaper}}</v-icon>
+           <span class="ml-5">News</span></v-list-item-title>        
+        </v-list-item>
+        </router-link>        
+
+        <a href="http://intranew/queuing_system/" class="text-decoration-none" target="_blank" >
+        <v-list-item >
+         <v-list-item-title>
+              <v-icon color="black" class="ml-5">{{icons.mdiHumanQueue}}</v-icon>
+          <span class="ml-5">Queueing System</span></v-list-item-title>        
+        </v-list-item>  
+          </a>
+
+  
+
+      </div>   
+
         </v-list-item-group>
       </v-list>
-    </v-navigation-drawer>
+    </v-navigation-drawer> 
 
     <banner-component class="banner"></banner-component>
+
+    {{currentRouteName}}
   </div>
 </template>
 
 
 <script>
-import { mdiHome, mdiTools, mdiHumanQueue,mdiMenu } from '@mdi/js'
+import { mdiHome, mdiTools, mdiHumanQueue,mdiMenu,
+mdiFileDocument,mdiCalendar, mdiNewspaper, mdiHuman } from '@mdi/js'
 import BannerComponent from './HeaderBanner'
+
 
 export default {
     name: 'HeaderComponent',
@@ -113,7 +170,8 @@ export default {
        drawer: false,
        group: null,
      icons:
-     {mdiHome,mdiTools,mdiHumanQueue,mdiMenu,
+     {mdiHome,mdiTools,mdiHumanQueue,mdiMenu,mdiFileDocument,
+     mdiCalendar,mdiNewspaper,mdiHuman,
      }
     }),
     
@@ -122,6 +180,26 @@ export default {
         this.drawer = false
       },
     },
+    methods: {
+
+      
+    },
+    computed: {
+    currentRouteName() {
+
+      // Route Navigation Highlighting  
+        switch(this.$route.name)
+        {
+          case 'Home': this.value = 0;break;
+          case 'tools': this.value = 1;break;
+          default: this.value = 3;
+
+        }
+        console.log(this.$route.name+ "this is route")
+        return this.$route.name;
+    },
+  
+},
    
 }
 </script>
@@ -156,8 +234,12 @@ export default {
 
 /* Right v-navigation-drawer properties */
 #rightNavDrawer .v-navigation-drawer__content{
-  border-top: 1px solid rgba(0, 0, 0, 0.3) !important
+  border-top: 1px solid rgba(0, 0, 0, 0.3) !important;
+ 
 }
 
+#rightNavDrawer {
+   background: rgba(255, 248, 233);
+}
 
 </style>

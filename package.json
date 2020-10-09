@@ -34,6 +34,7 @@
         "bootstrap-vue": "^2.17.3",
         "sass-loader": "^9.0.2",
         "vue-router": "^3.4.4",
+        "vue-scrollactive": "^0.9.3",
         "vuetify": "^2.3.10",
         "vuex": "^3.5.1"
     }

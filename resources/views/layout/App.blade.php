@@ -18,7 +18,7 @@
     </head>
     <script>
     window.publicURL = "{{ $publicURL ?? url('/') ?? ''  }}";  
-    console.log(window.publicURL);    
+    // console.log(window.publicURL);    
     </script>
     
     <style>
@@ -33,8 +33,10 @@
     margin-top: -85vh !important;
 }
 
+
+
     </style>
-       <body onload="init()"> {{------- Smooth ScrollBar ------}}
+       <body  onload="init()"> {{------- Smooth ScrollBar ------}}
             <div id="app"> 
                 <v-app>
                    
@@ -73,6 +75,6 @@
        <script defer src="{{ asset('js/manifest.js') }}"></script>  
 	   <script defer src="{{ asset('js/js/vendor.js') }}"></script>
 	   <script defer src="{{ asset('js/js/app.js') }}"></script>
-	   {{-- <script defer src="{{ mix('js/js/app.js') }}"></script> --}}
+	   {{-- <script defer src="{{ asset(mix('/js/app.js')) }}"></script> --}}
 	   <script defer src="{{ asset('js/SmoothScrollBar.js') }}"></script>
 </html>

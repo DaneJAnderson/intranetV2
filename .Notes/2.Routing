@@ -3,5 +3,6 @@ Lazy Loading and Child route
 1. COK logo to an SVG component -*
 2. Public absolute file path **
 3. Storage absolute  file path -*
-4. Router Link to Nav Menus
+4. Router Link to Nav Menus *
 5. pass Public route to Child component **
+6.  ScollSpy Left Navigation-Drawer

@@ -15,12 +15,16 @@ import HeaderComponent from './components/AppHeader'
 import FooterComponent from './components/AppFooter'
 import SidebarComponent from './components/AppSidebar'
 import homeStore from "./store/homeStore"
+import VueScrollactive from 'vue-scrollactive';
 
-// import '../sass/app.scss'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 
 Vue.use(BootstrapVue)
 Vue.use(VueRouter)
-Vue.use(Vuex)
+Vue.use(Vuex) 
+Vue.use(VueScrollactive);
 
 const store = new Vuex.Store(
    homeStore

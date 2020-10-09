@@ -13,31 +13,50 @@
       height="85vh" 
     >
 
-  <v-list
+  <!-- <v-list
         nav
         dense
+        flat
+        
       >
         <v-list-item-group
           v-model="group"
-          active-class="deep-purple--text text--accent-4"
-        >
-          <v-list-item>
-            <v-list-item-title>Foo</v-list-item-title>
-          </v-list-item>
+          
+        > -->
+          <!-- active-class="font-weight-bold orange--text"         -->
+          <!-- active-class="deep-purple--text text--accent-4" -->
 
-          <v-list-item>
-            <v-list-item-title>Bar</v-list-item-title>
-          </v-list-item>
+<scrollactive class="nav mt-10"  :active-class="'orange--text'" :offset="90" v-on:itemchanged="onItemChanged"
+:duration="800" bezier-easing-value=".5,0,.35,1"  :highlightFirstItem=true>
 
-          <v-list-item>
-            <v-list-item-title>Fizz</v-list-item-title>
-          </v-list-item>
+    <ul style="list-style-type: none;">
+        <li >
+          <a href="#sec1" class="scrollactive-item ">
+          <!-- <v-list-item href="#sec1" class="scrollactive-item nav-item"> -->
+            Section 1
+          <!-- </v-list-item> -->
+          </a></li>
 
-          <v-list-item>
-            <v-list-item-title>Buzz</v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
+          <li>
+          <a href="#sec2" class="scrollactive-item ">           
+              Section 2             
+          </a></li>
+
+          <li>
+          <a href="#sec3" class="scrollactive-item">
+            Section 3
+          </a></li>
+
+        <li>
+          <a href="#sec4" class="scrollactive-item">           
+              Section 4             
+          </a></li>
+
+        </ul>
+
+</scrollactive>
+        <!-- </v-list-item-group>
+      </v-list> -->
     </v-navigation-drawer>
         
     </div>
@@ -55,6 +74,16 @@ export default {
         this.drawer = false
       },
     },
+    methods: {
+
+      onItemChanged(event, currentItem, lastActiveItem) {
+        // here you have access to everything you need regarding that event
+        console.log(event);
+        
+        
+        
+      }
+  },
    
 }
 </script>
@@ -66,6 +95,7 @@ export default {
 /* Left v-navigation-drawer properties */
 #leftNavDrawer {
   
+  color:black;
   
   }
 

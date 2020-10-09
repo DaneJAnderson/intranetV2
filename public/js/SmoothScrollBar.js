@@ -1,4 +1,5 @@
 function init(){
+	
 	new SmoothScroll(document,60,10)
 }
 
