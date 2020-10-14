@@ -26,8 +26,10 @@
           <!-- active-class="font-weight-bold orange--text"         -->
           <!-- active-class="deep-purple--text text--accent-4" -->
 
-<scrollactive class="nav mt-10"  :active-class="'orange--text'" :offset="90" v-on:itemchanged="onItemChanged"
-:duration="800" bezier-easing-value=".5,0,.35,1"  :highlightFirstItem=true>
+<scrollactive class="my-nav mt-10"  :active-class="'orange--text'" :offset="90" v-on:itemchanged="onItemChanged"
+:duration="800" bezier-easing-value=".5,0,.35,1" :alwaysTrack="true"  :highlightFirstItem="true"
+ :scrollOffset='89'>
+<!-- scrollOffset must be < offset -->
 
     <ul style="list-style-type: none;">
         <li >
@@ -38,7 +40,7 @@
           </a></li>
 
           <li>
-          <a href="#sec2" class="scrollactive-item ">           
+          <a href="#sec2" class="scrollactive-item">           
               Section 2             
           </a></li>
 
@@ -74,16 +76,17 @@ export default {
         this.drawer = false
       },
     },
-    methods: {
+    methods: {    
 
       onItemChanged(event, currentItem, lastActiveItem) {
-        // here you have access to everything you need regarding that event
-        console.log(event);
-        
-        
-        
+        // console.log("SideBar "+event.srcElement.scrollingElement.scrollTop);       
+        //  console.dir(document.scrollingElement.scrollTop + ' SideBar')
+        window.posGlobal = event.srcElement.scrollingElement.scrollTop;
+
       }
   },
+    
+
    
 }
 </script>

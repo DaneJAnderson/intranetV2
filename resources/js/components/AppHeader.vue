@@ -7,8 +7,8 @@
     
   <!-- <v-app-bar-nav-icon ></v-app-bar-nav-icon> -->
 
-      <router-link to="/" class="text-decoration-none">
-      <v-img class="ml-1"
+      <router-link to="/" class="text-decoration-none" @click="currentRouteName">
+      <v-img class="ml-1" 
         contain
         max-height="60"
         max-width="300"
@@ -148,7 +148,6 @@
 
     <banner-component class="banner"></banner-component>
 
-    {{currentRouteName}}
   </div>
 </template>
 
@@ -168,7 +167,7 @@ export default {
      data: () => ({
        value:0,
        drawer: false,
-       group: null,
+       group: null,       
      icons:
      {mdiHome,mdiTools,mdiHumanQueue,mdiMenu,mdiFileDocument,
      mdiCalendar,mdiNewspaper,mdiHuman,
@@ -184,20 +183,19 @@ export default {
 
       
     },
-    computed: {
-    currentRouteName() {
-
+    computed: {  
+      
+      currentRouteName() {
       // Route Navigation Highlighting  
         switch(this.$route.name)
         {
           case 'Home': this.value = 0;break;
           case 'tools': this.value = 1;break;
-          default: this.value = 3;
-
+          default: this.value = 0;
         }
         console.log(this.$route.name+ "this is route")
         return this.$route.name;
-    },
+    },  
   
 },
    

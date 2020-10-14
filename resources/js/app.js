@@ -20,8 +20,6 @@ import VueScrollactive from 'vue-scrollactive';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-
-Vue.use(BootstrapVue)
 Vue.use(VueRouter)
 Vue.use(Vuex) 
 Vue.use(VueScrollactive);
