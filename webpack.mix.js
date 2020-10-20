@@ -2,7 +2,7 @@ const mix = require('laravel-mix');
 
 require('vuetifyjs-mix-extension');
 
-const urlBase = "/"
+const urlBase = "/intranetV2/public/"
 
 
 mix.js('resources/js/app.js', 'public/js').vuetify('vuetify-loader', {
@@ -30,7 +30,8 @@ if (mix.inProduction()) {
     })
 }
 
-mix.browserSync('127.0.0.1:8000')
+// mix.browserSync('127.0.0.1:8000')
+mix.browserSync('localhost/intranetV2/public')
 .options({
     watchOptions: {
         ignored: /node_modules/

@@ -18,7 +18,8 @@
     </head>
     <script>
     window.publicURL = "{{ $publicURL ?? url('/') ?? ''  }}";  
-    // console.log(window.publicURL);    
+    // window.StorageURL = "{{ $StorageURL ?? ''  }}";  
+    // console.log(window.StorageURL);    
     </script>
     
     <style>
@@ -31,6 +32,10 @@
 
 #home {
     margin-top: -85vh !important;
+}
+
+#tools{
+    margin-top: 15vh !important;
 }
 
 
@@ -48,15 +53,19 @@
                 <v-row  no-gutters dense>
 
                 {{-- -------------- SideBar -------------  --}}
-             <v-col id="sticky"  cols=2 >        
+             <v-col v-if="this.$route.name == 'Home'" id="sticky"  cols=2 >        
                 @section('Sidebar')
                  sidebar.
                 @show               
             </v-col>
                 {{-- --------------- Content ------------- --}}
-                <v-col id="home" offset=2 cols=10 class="pl-10 pr-5">                
+                <v-col v-if="this.$route.name == 'Home'" 
+                id="home" offset=2 cols=10 class="pl-10 pr-5">
                     @yield('Home')
-                    
+                </v-col>
+                {{-- Remove Banner and SideBar if not at Home route --}}
+                <v-col v-else id="tools">
+                    @yield('Home')
                 </v-col>
 
                 </v-row>

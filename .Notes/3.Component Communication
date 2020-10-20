@@ -1,4 +1,10 @@
 Parent <==> Child Communication 
 
-
 Child <==> Child Communication
+
+
+1. Notice Board - image randering for Object on vuex
+2. News Room - image Object vuex
+3. Tools - images Object vuex
+4. Document (Document-Type) - image Object vuex
+

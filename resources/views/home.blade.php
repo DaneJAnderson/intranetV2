@@ -2,7 +2,7 @@
 
 
 @section('Sidebar')
-<sidebar-component></sidebar-component> 
+<sidebar-component ></sidebar-component> 
 @endsection
 
 @section('Home')

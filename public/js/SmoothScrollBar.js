@@ -60,6 +60,7 @@ function SmoothScroll(target, speed, smooth) {
 		}
 		else
 		moving = false;
+		target.scrollTop = document.scrollingElement.scrollTop;
 	}
 
 	var requestFrame = function() { // requestAnimationFrame cross browser

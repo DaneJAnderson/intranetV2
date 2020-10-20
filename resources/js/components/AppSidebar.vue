@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div >
         
   <v-navigation-drawer id="leftNavDrawer"
       app
@@ -26,31 +26,31 @@
           <!-- active-class="font-weight-bold orange--text"         -->
           <!-- active-class="deep-purple--text text--accent-4" -->
 
-<scrollactive class="my-nav mt-10"  :active-class="'orange--text'" :offset="90" v-on:itemchanged="onItemChanged"
+<scrollactive class="my-nav mt-10 " :active-class="'active-class'" :offset="90" v-on:itemchanged="onItemChanged"
 :duration="800" bezier-easing-value=".5,0,.35,1" :alwaysTrack="true"  :highlightFirstItem="true"
  :scrollOffset='89'>
 <!-- scrollOffset must be < offset -->
 
-    <ul style="list-style-type: none;">
-        <li >
-          <a href="#sec1" class="scrollactive-item ">
+    <ul style="list-style-type: none;" >
+        <li class="mb-3">
+          <a href="#noticeBoard" class="scrollactive-item black--text">
           <!-- <v-list-item href="#sec1" class="scrollactive-item nav-item"> -->
-            Section 1
+            Notice Board
           <!-- </v-list-item> -->
           </a></li>
 
-          <li>
-          <a href="#sec2" class="scrollactive-item">           
+          <li class="mb-3">
+          <a href="#sec2" class="scrollactive-item black--text">           
               Section 2             
           </a></li>
 
-          <li>
-          <a href="#sec3" class="scrollactive-item">
+          <li class="mb-3">
+          <a href="#sec3" class="scrollactive-item black--text">
             Section 3
           </a></li>
 
-        <li>
-          <a href="#sec4" class="scrollactive-item">           
+        <li class="mb-3">
+          <a href="#sec4" class="scrollactive-item black--text">           
               Section 4             
           </a></li>
 
@@ -81,7 +81,7 @@ export default {
       onItemChanged(event, currentItem, lastActiveItem) {
         // console.log("SideBar "+event.srcElement.scrollingElement.scrollTop);       
         //  console.dir(document.scrollingElement.scrollTop + ' SideBar')
-        window.posGlobal = event.srcElement.scrollingElement.scrollTop;
+       document.scrollingElement.scrollTop = event.srcElement.scrollingElement.scrollTop;
 
       }
   },
@@ -100,6 +100,11 @@ export default {
   
   color:black;
   
+  }
+
+  .active-class {
+    color: orange !important;
+    font-weight: bold;
   }
 
 </style>

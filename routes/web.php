@@ -19,7 +19,7 @@ use Illuminate\Support\Arr;
 
      $hostURLs = [
         'publicURL' => asset(''),        
-        // 'storageURL' => preg_replace('/\\\\/','/',storage_path())
+        // 'StorageURL' => preg_replace('/\\\\/','/',storage_path())
             ];
 
     return view('home', $hostURLs ); //->with('hostURLs',$hostURLs);
