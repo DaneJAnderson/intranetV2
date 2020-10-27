@@ -4,11 +4,17 @@
     "/css/app.css": "/css/app.css",
     "/js/manifest.js": "/js/manifest.js",
     "/js//js/vendor.js": "/js//js/vendor.js",
+    "/js/Home.js": "/js/Home.js",
     "/js/about.js": "/js/about.js",
+    "/js/admNotice.js": "/js/admNotice.js",
+    "/js/admins.js": "/js/admins.js",
+    "/js/birthday.js": "/js/birthday.js",
     "/js/document.js": "/js/document.js",
     "/js/documents.js": "/js/documents.js",
     "/js/forms.js": "/js/forms.js",
+    "/js/gallery.js": "/js/gallery.js",
     "/js/inventory.js": "/js/inventory.js",
     "/js/news.js": "/js/news.js",
+    "/js/notice.js": "/js/notice.js",
     "/js/tools.js": "/js/tools.js"
 }

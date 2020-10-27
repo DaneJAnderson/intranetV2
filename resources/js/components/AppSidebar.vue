@@ -26,9 +26,9 @@
           <!-- active-class="font-weight-bold orange--text"         -->
           <!-- active-class="deep-purple--text text--accent-4" -->
 
-<scrollactive class="my-nav mt-10 " :active-class="'active-class'" :offset="90" v-on:itemchanged="onItemChanged"
-:duration="800" bezier-easing-value=".5,0,.35,1" :alwaysTrack="true"  :highlightFirstItem="true"
- :scrollOffset='89'>
+<scrollactive class="my-nav mt-10 " :scrollOnStart="false"  :offset="90" v-on:itemchanged="onItemChanged" :active-class="'active-class'"
+:duration="800" bezier-easing-value=".5,0,.35,1" :alwaysTrack="true"  :highlightFirstItem="true" 
+ :scrollOffset='89' >
 <!-- scrollOffset must be < offset -->
 
     <ul style="list-style-type: none;" >
@@ -66,6 +66,7 @@
 <script>
 
 export default {
+
     data: () => ({
       drawer: false,
       group: null,
@@ -79,15 +80,16 @@ export default {
     methods: {    
 
       onItemChanged(event, currentItem, lastActiveItem) {
-        // console.log("SideBar "+event.srcElement.scrollingElement.scrollTop);       
+        //  console.log("SideBar "+event.srcElement.scrollingElement.scrollTop);       
         //  console.dir(document.scrollingElement.scrollTop + ' SideBar')
        document.scrollingElement.scrollTop = event.srcElement.scrollingElement.scrollTop;
+      
 
-      }
-  },
-    
-
+      },
    
+}
+  
+         
 }
 </script>
 <style scoped>

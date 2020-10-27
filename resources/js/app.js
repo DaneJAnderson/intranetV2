@@ -2,9 +2,8 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-const urlBase = window.publicURL.includes('/public/')?"/intranetV2/public/":"";
+const urlBase = "/intranetV2/public/";
 
-const appnameApi = "/intranetV2/public/api/"
 
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
@@ -51,11 +50,10 @@ const app = new Vue({
     },
     router,
     store,
-    mounted() {
-      this.publicURL = window.publicURL;
-      // this.publicURL = window.location.protocol+"//"+window.location.hostname+appname;
-      
-    }
+    created() {
+      this.publicURL = window.publicURL;           
+    },
+  
  }).$mount('#app');
 
 

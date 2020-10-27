@@ -105,7 +105,13 @@ export default {
         NoticeComponent,
         BirthdayComponent,
         GalleryComponent
-    }
+    },
+    beforeDestroy() {
+                          
+                window.topsfunc();
+                
+        }
+
 }
 </script>
 <style scoped>

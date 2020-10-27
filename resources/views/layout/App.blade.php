@@ -43,7 +43,7 @@
     </style>
        <body  onload="init()"> {{------- Smooth ScrollBar ------}}
             <div id="app"> 
-                <v-app>
+                <v-app >
                    
                 {{-- --------------- Header --------------- --}}
                 <div class="header">

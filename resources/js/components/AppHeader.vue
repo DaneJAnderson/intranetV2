@@ -1,6 +1,6 @@
 
 <template>
-  <div >   
+  <div>   
 
     <v-app-bar color="#fff" fixed elevation=2 clipped-right height="80">  
     <v-bottom-navigation v-model="value" color="#FF8F00"
@@ -13,7 +13,7 @@
         contain
         max-height="60"
         max-width="300"
-        :src="publicurl+'/images/COKSODALITY_LOGO.svg'"
+        :src="PublicURL+'/images/COKSODALITY_LOGO.svg'"
       ></v-img>       
       </router-link>
 
@@ -22,10 +22,14 @@
   <v-spacer></v-spacer>
       
       <div class="mr-15  d-sm-none d-md-flex" >
-      <router-link to="/" class="text-decoration-none"><v-btn icon>
+        
+      <!-- <a :href="PublicURL" class="text-decoration-none" ><v-btn icon> -->
+      <router-link to="/" class="text-decoration-none" ><v-btn icon>
         <span>Home</span>
         <v-icon>{{icons.mdiHome}}</v-icon>
-      </v-btn></router-link>
+      </v-btn>
+      </router-link>
+      <!-- </a> -->
 
       
       <router-link to="/tools" class="text-decoration-none"><v-btn icon >
@@ -143,6 +147,15 @@
         </v-list-item>  
           </a>
 
+
+        <router-link to="/admins" class="text-decoration-none ">
+        <v-list-item class="mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
+         <v-list-item-title>
+           <v-icon class="ml-5">{{icons.mdiAccountCog}}</v-icon>
+           <span class="ml-5">Administrator</span></v-list-item-title>        
+        </v-list-item>
+        </router-link>   
+
   
 
       </div>   
@@ -158,7 +171,7 @@
 
 
 <script>
-import { mdiHome, mdiTools, mdiHumanQueue,mdiMenu,
+import { mdiHome, mdiTools, mdiHumanQueue,mdiMenu,mdiAccountCog,
 mdiFileDocument,mdiCalendar, mdiNewspaper, mdiHuman } from '@mdi/js'
 import BannerComponent from './HeaderBanner'
 
@@ -175,7 +188,7 @@ export default {
        group: null,       
      icons:
      {mdiHome,mdiTools,mdiHumanQueue,mdiMenu,mdiFileDocument,
-     mdiCalendar,mdiNewspaper,mdiHuman,
+     mdiCalendar,mdiNewspaper,mdiHuman,mdiAccountCog,
      }
     }),
     
@@ -187,7 +200,6 @@ export default {
     },
     methods: {
 
-      
     },
     computed: {  
       
@@ -203,6 +215,9 @@ export default {
         //  return this.$route.name;
          return this.value;
     },  
+    PublicURL (){
+     return this.$store.state.url.PublicURL;
+    }
   
 },
    

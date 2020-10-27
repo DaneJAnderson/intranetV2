@@ -1,4 +1,3 @@
-// window.posGlobal = document.scrollingElement.scrollTop;
 
 function init(){	
 	new SmoothScroll(document,60,10)
@@ -13,7 +12,13 @@ function SmoothScroll(target, speed, smooth) {
       
 	var moving = false
 	var pos = target.scrollTop	
-	// var pos = window.posGlobal;
+
+			//  Reset Scroll Position to Top 
+			window.topsfunc = function () {
+				pos = 0;
+				document.scrollingElement.scrollTop;				
+			}		
+			
 
   var frame = target === document.body 
               && document.documentElement 
@@ -34,7 +39,8 @@ function SmoothScroll(target, speed, smooth) {
 		
 		pos += -delta * speed
 		pos = Math.max(0, Math.min(pos, target.scrollHeight - frame.clientHeight)) // limit scrolling
-		
+
+
 		if (!moving)update()
 	}
 

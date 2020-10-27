@@ -1,7 +1,7 @@
 <template>
     <div>
       
-		<h1 class="newsFeed mb-10"><span class="spanFeed"> Covid Tips</span></h1>
+		<h1 class="newsFeed mb-8"><span class="spanFeed"> Covid Tips</span></h1>
 	<v-row no-gutters class="">
 
 		<v-col cols="4" class="">
@@ -28,8 +28,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';  
 
-import { mapState } from 'vuex';            
 export default {
     name: 'NoticeComponent',
     data() { return {
@@ -52,7 +52,7 @@ export default {
 			return this.$store.state.url.StorageURL
 		} */
 	},
-	mounted() {	},
+	mounted(){},
 
 	methods: {
 			 lightbox(id){
@@ -79,8 +79,8 @@ export default {
 .newsImg{
 	max-width: 100%;
 	width: 100%;
-	max-height: 80vh;
-	height: 80vh ;
+	max-height: 500px;
+	height: 72vh ;
 }
 
 .newsFeed {
