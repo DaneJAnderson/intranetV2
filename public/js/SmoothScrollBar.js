@@ -1,4 +1,6 @@
 
+window.scrollTrue = false; // Scrollactive Up Scroll Conditon
+
 function init(){	
 	new SmoothScroll(document,60,10)
 }
@@ -13,11 +15,19 @@ function SmoothScroll(target, speed, smooth) {
 	var moving = false
 	var pos = target.scrollTop	
 
-			//  Reset Scroll Position to Top 
+			//  Globally Reset Scroll Position to Top 
 			window.topsfunc = function () {
-				pos = 0;
-				document.scrollingElement.scrollTop;				
+				pos = 0;							
 			}		
+
+			// Scrollactive Up Scroll Fix mousewheel down scroll
+			window.scrollFunc = function() {							
+				if(window.scrollTrue){					
+					console.log('pos = '+pos);
+					pos = document.scrollingElement.scrollTop;
+					window.scrollTrue = false;
+				}
+			}
 			
 
   var frame = target === document.body 
@@ -30,16 +40,16 @@ function SmoothScroll(target, speed, smooth) {
 
 	function scrolled(e) {
 
-		if(!moving){			
-			pos = document.scrollingElement.scrollTop;	
+		if(!moving){	
+			pos = document.scrollingElement.scrollTop;						
 		}
-		e.preventDefault(); // disable default scrolling
-		
-		var delta = normalizeWheelDelta(e)	
-		
-		pos += -delta * speed
-		pos = Math.max(0, Math.min(pos, target.scrollHeight - frame.clientHeight)) // limit scrolling
 
+		e.preventDefault();  // disable default scrolling
+		
+		var delta = normalizeWheelDelta(e)			
+		pos += -delta * speed
+
+		pos = Math.max(0, Math.min(pos, target.scrollHeight - frame.clientHeight)) // limit scrolling
 
 		if (!moving)update()
 	}
@@ -56,19 +66,20 @@ function SmoothScroll(target, speed, smooth) {
 
 	function update() {	
 
-		moving = true		
+		moving = true	
 		var delta = (pos - target.scrollTop) / smooth
 		
 		target.scrollTop += delta
 		
 		if (Math.abs(delta) > 0.5){
-			requestFrame(update)
+			requestFrame(update)			
 		}
-		else
-		moving = false;
-		target.scrollTop = document.scrollingElement.scrollTop;
-	}
+		else{
+			moving = false;
+		}
 
+	}
+	
 	var requestFrame = function() { // requestAnimationFrame cross browser
 		return (
 			window.requestAnimationFrame ||
@@ -76,7 +87,7 @@ function SmoothScroll(target, speed, smooth) {
 			window.mozRequestAnimationFrame ||
 			window.oRequestAnimationFrame ||
 			window.msRequestAnimationFrame ||
-			function(func) {
+			function(func) {				
 				window.setTimeout(func, 1000 / 50);
 			}
 		);

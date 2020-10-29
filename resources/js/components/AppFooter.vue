@@ -1,5 +1,5 @@
 <template>
-    <div>   
+    <div >   
        
 
      {{ new Date().getFullYear() }} — <strong>COKCU</strong>

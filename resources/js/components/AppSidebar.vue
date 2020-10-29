@@ -33,26 +33,27 @@
 
     <ul style="list-style-type: none;" >
         <li class="mb-3">
-          <a href="#noticeBoard" class="scrollactive-item black--text">
+          <a href="#noticeBoard" class="scrollactive-item black--text" @click="scrollTrue">
           <!-- <v-list-item href="#sec1" class="scrollactive-item nav-item"> -->
             Notice Board
           <!-- </v-list-item> -->
           </a></li>
 
           <li class="mb-3">
-          <a href="#sec2" class="scrollactive-item black--text">           
+          <a href="#sec2" class="scrollactive-item black--text" @click="scrollTrue">           
               Section 2             
           </a></li>
 
           <li class="mb-3">
-          <a href="#sec3" class="scrollactive-item black--text">
+          <a href="#sec3" class="scrollactive-item black--text" @click="scrollTrue">
             Section 3
           </a></li>
 
         <li class="mb-3">
-          <a href="#sec4" class="scrollactive-item black--text">           
+          <a href="#sec4" class="scrollactive-item black--text" @click="scrollTrue">           
               Section 4             
           </a></li>
+          
 
         </ul>
 
@@ -80,11 +81,16 @@ export default {
     methods: {    
 
       onItemChanged(event, currentItem, lastActiveItem) {
-        //  console.log("SideBar "+event.srcElement.scrollingElement.scrollTop);       
-        //  console.dir(document.scrollingElement.scrollTop + ' SideBar')
-       document.scrollingElement.scrollTop = event.srcElement.scrollingElement.scrollTop;
-      
+      //  document.scrollingElement.scrollTop = event.srcElement.scrollingElement.scrollTop;  
+      try{
+        window.scrollFunc();      
+      }catch(e){
+        console.log('Scroll Function Got Catch!!');
+      }
 
+      },
+      scrollTrue(){        
+        window.scrollTrue = true;
       },
    
 }
