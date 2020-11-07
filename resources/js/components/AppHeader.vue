@@ -216,7 +216,8 @@ export default {
          return this.value;
     },  
     PublicURL (){
-     return this.$store.state.url.PublicURL;
+    //  return this.$store.state.url.PublicURL;
+     return this.$store.state.homeStore.url.PublicURL;
     }
   
 },

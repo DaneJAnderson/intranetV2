@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SpaController;
+
 use Illuminate\Support\Arr;
 
 /*
@@ -27,3 +28,4 @@ use Illuminate\Support\Arr;
 
 // Route::get('/{any}', 'SpaController@index')->where('any', '.*');
 Route::get('/{any}', [SpaController::class, 'index'])->where('any', '.*');
+

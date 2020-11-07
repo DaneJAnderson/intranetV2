@@ -7,25 +7,34 @@ const urlBase = "/intranetV2/public/";
 
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
+import axios from 'axios'
 import { routes }  from './routes' // importing an exported const
 import BootstrapVue from 'bootstrap-vue'; //Importing 
 import vuetify from '../plugins/vuetify';
 import HeaderComponent from './components/AppHeader'
 import FooterComponent from './components/AppFooter'
 import SidebarComponent from './components/AppSidebar'
-import homeStore from "./store/homeStore"
 import VueScrollactive from 'vue-scrollactive';
+
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+import  homeStore  from "./store/homeStore"
+import { adminStore } from './store/adminStore';
+
 Vue.use(VueRouter)
 Vue.use(Vuex) 
 Vue.use(VueScrollactive);
+// Vue.use(axios);
 
-const store = new Vuex.Store(
-   homeStore
-)
+  const store = new Vuex.Store({
+   modules: { 
+     adminStore, homeStore, 
+  
+  }
+})
+
 
 const router = new VueRouter({
 routes,
@@ -38,10 +47,10 @@ router.beforeEach((to, from, next) => {
   })
 
 const app = new Vue({
-    data: {
+   /*  data: {
       // publicURL: window.location.href
       publicURL: ""
-    },
+    }, */
     vuetify,    
     components: {
         HeaderComponent, 
@@ -50,9 +59,9 @@ const app = new Vue({
     },
     router,
     store,
-    created() {
+   /*  created() {
       this.publicURL = window.publicURL;           
-    },
+    }, */
   
  }).$mount('#app');
 

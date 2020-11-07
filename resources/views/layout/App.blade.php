@@ -22,7 +22,7 @@
     // console.log(window.StorageURL);    
     </script>
     
-    <style>
+<style>
 
 #sticky {
   position: -webkit-sticky;
@@ -36,11 +36,14 @@
 
 #tools{
     margin-top: 15vh !important;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 
 
-    </style>
+</style>
+
        <body  onload="init()"> {{------- Smooth ScrollBar ------}}
             <div id="app"> 
                 <v-app >

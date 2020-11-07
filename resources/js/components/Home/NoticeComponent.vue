@@ -2,18 +2,18 @@
     <div>
       
 		<h1 class="newsFeed mb-8"><span class="spanFeed"> Covid Tips</span></h1>
-	<v-row no-gutters class="">
+	<v-row v-if="this.notices[0]" no-gutters class="">
 
 		<v-col cols="4" class="">
-			<img class="myImg newsImg" id="l1" @click="lightbox('l1')" :src="this.url.StorageURL+this.notices[0].image1" />			
+			<img class="myImg newsImg" id="l1" @click="lightbox('l1')" :src="this.url.StorageURL+this.notices[0].image" />			
 		</v-col>
 
 		<v-col cols="4" class="">
-			<img class="myImg newsImg" id="l2" @click="lightbox('l2')" :src="this.url.StorageURL+this.notices[1].image2" />
+			<img class="myImg newsImg" id="l2" @click="lightbox('l2')" :src="this.url.StorageURL+this.notices[1].image" />
 		</v-col>
 
 		<v-col cols="4" class="">
-			<img class="myImg newsImg" id="l3" @click="lightbox('l3')" :src="this.url.StorageURL+this.notices[2].image3" />
+			<img class="myImg newsImg" id="l3" @click="lightbox('l3')" :src="this.url.StorageURL+this.notices[2].image" />
 		</v-col>
 
 		<div id="myModal" class="modal">
@@ -28,33 +28,40 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';  
+import { mapState,  mapActions, mapGetters} from 'vuex';  
 
 export default {
     name: 'NoticeComponent',
-    data() { return {
-        images: {
-            images: ''
-		},
+    // data() { return {
+    //     images: {
+    //         images: ''
+		// },
 				
-    }
-	},
+    // }
+//	},
 	computed: {
-		...mapState([
-			'notices','url'
-		]),
-				// Another way of Calling State
-		/* 
-		notices (){
-			return this.$store.state.notices;
+
+		// ...mapState('homeStore',['notices','url'] ),
+   ...mapGetters('homeStore', ['notices','url']),
+    
+				// Another way of Calling State		
+		/* notices (){
+			return this.$store.state.homeStore.notices;
 		},
 		url(){
-			return this.$store.state.url.StorageURL
-		} */
+			return this.$store.state.homeStore.url
+    }, */
+    
 	},
-	mounted(){},
+	mounted(){    
+    // this.$store.dispatch("homeStore/GET_Notices");// Another way yo call actions
+    this.GET_Notices();
+    console.dir(this.notices);
+  },
 
-	methods: {
+	methods: {    
+    ...mapActions('homeStore', ['GET_Notices']),   
+        
 			 lightbox(id){
 
 			var modal = document.getElementById("myModal");

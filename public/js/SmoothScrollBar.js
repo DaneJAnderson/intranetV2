@@ -23,7 +23,7 @@ function SmoothScroll(target, speed, smooth) {
 			// Scrollactive Up Scroll Fix mousewheel down scroll
 			window.scrollFunc = function() {							
 				if(window.scrollTrue){					
-					console.log('pos = '+pos);
+					// console.log('pos = '+pos);
 					pos = document.scrollingElement.scrollTop;
 					window.scrollTrue = false;
 				}
