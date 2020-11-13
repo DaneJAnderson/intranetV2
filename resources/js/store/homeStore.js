@@ -4,22 +4,12 @@ export default {
     namespaced: true,
     state:  () => ({
 
-        notices: []
-/*             {
-            image1: 'images/News_Feed/covid_water_pipe.png'
-        },
-        {
-            image2: 'images/News_Feed/COVID_AH_KIP.jpg'
-        },
-        {
-            image3: 'images/News_Feed/know_the_covid.png'
-        }, */
-    ,
-    url: {
-            StorageURL: window.location.protocol+'//'+window.location.hostname+'/intranetV2/storage/app/public/',
+        notices: [],
+        url: {
+            StorageURL: window.storageURL,
             PublicURL: window.publicURL,
-            API_URL: window.publicURL+'/api',
-         }
+            API_URL: window.urlAPI,
+        },    
 
     }),
 
@@ -34,8 +24,7 @@ export default {
 
     },
     
-    actions: {
-        
+    actions: {        
         
         GET_Notices({ state,commit  }) {
             axios.get(state.url.API_URL+'/noticeboard')                               
@@ -43,15 +32,14 @@ export default {
                 commit('SET_NOTICES', response.data)
                 
             }).catch(error => {console.log(error)})
-        }
-        
+        }        
     },
+
     mutations: {
 
         SET_NOTICES(state, data) {
             state.notices = [...data]
             // state.notices.push(...data);
             }
-
     },
 }

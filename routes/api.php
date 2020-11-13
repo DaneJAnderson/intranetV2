@@ -20,4 +20,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('noticeboard',[noticeboardController::class,  'getData']);
+// Get 3 notices for Home page 
+Route::get('noticeboard',[noticeboardController::class,  'getDataHome']);
+
+// Get all Notices for Admin page
+Route::get('noticeboard-admin',[noticeboardController::class,  'getDataAdmin']);
+
+// Update Notice Title
+Route::put('noticeboard-setname-admin',[noticeboardController::class,  'setNameAdmin']);
+
+// Remove Notice
+Route::put('noticeboard-remove-admin',[noticeboardController::class,  'removeNoticeAdmin']);

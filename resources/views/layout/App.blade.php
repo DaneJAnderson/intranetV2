@@ -17,8 +17,12 @@
         <title>COKCU  @yield('title')</title>    
     </head>
     <script>
+        
+        // ---- CONSTANT URL VARIABLES  ---- //
+
     window.publicURL = "{{ $publicURL ?? url('/') ?? ''  }}";  
-    // window.StorageURL = "{{ $StorageURL ?? ''  }}";  
+    window.storageURL = window.location.protocol+'//'+window.location.hostname+'/intranetV2/storage/app/public/';  
+    window.urlAPI = window.publicURL+'/api';
     // console.log(window.StorageURL);    
     </script>
     
@@ -35,7 +39,7 @@
 }
 
 #tools{
-    margin-top: 15vh !important;
+    margin-top: 10% !important;
     margin-left: 50px;
     margin-right: 50px;
 }

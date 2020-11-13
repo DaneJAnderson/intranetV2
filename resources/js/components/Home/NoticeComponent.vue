@@ -32,25 +32,11 @@ import { mapState,  mapActions, mapGetters} from 'vuex';
 
 export default {
     name: 'NoticeComponent',
-    // data() { return {
-    //     images: {
-    //         images: ''
-		// },
-				
-    // }
-//	},
+
 	computed: {
 
-		// ...mapState('homeStore',['notices','url'] ),
-   ...mapGetters('homeStore', ['notices','url']),
-    
-				// Another way of Calling State		
-		/* notices (){
-			return this.$store.state.homeStore.notices;
-		},
-		url(){
-			return this.$store.state.homeStore.url
-    }, */
+    ...mapGetters('homeStore', ['notices','url']),   
+   
     
 	},
 	mounted(){    
@@ -83,6 +69,7 @@ export default {
 }
 </script>
 <style scoped>
+
 .newsImg{
 	max-width: 100%;
 	width: 100%;
@@ -204,3 +191,47 @@ export default {
 	z-index: 2;
 }
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+ /*
+				// Another way of Calling State		
+    
+		// ...mapState('homeStore',['notices','url'] ),
+    notices (){
+			return this.$store.state.homeStore.notices;
+		},
+		url(){
+			return this.$store.state.homeStore.url
+    }, */
+-->

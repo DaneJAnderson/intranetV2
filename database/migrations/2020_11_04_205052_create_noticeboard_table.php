@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNoticeboardsTable extends Migration
+class CreateNoticeboardTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,12 @@ class CreateNoticeboardsTable extends Migration
     public function up()
     {
         Schema::create('noticeboard', function (Blueprint $table) {
-            $table->integer('id')->unique();
+            $table->id();
             $table->text('image');
             $table->string('name', 100);
             $table->integer('status');
-            $table->timestamps('created');            
-            // $table->timestamps();
+            // $table->timestamps('created');            
+            $table->timestamps();
         });
     }
 
