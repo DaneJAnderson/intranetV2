@@ -72,8 +72,8 @@ export const adminStore = {
 
         PUT_Notice_Name({ state,commit  }, data) {
             axios.put(state.url.API_URL+'/noticeboard-setname-admin', data)                               
-            .then(response => {                 
-                // commit('SET_NOTICES', response.data)                        
+            .then(response => {                        
+                // 
             }).catch(error => {console.log(error)})
         },
 

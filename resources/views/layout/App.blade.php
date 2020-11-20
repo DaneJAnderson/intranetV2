@@ -22,7 +22,7 @@
 
     window.publicURL = "{{ $publicURL ?? url('/') ?? ''  }}";  
     window.storageURL = window.location.protocol+'//'+window.location.hostname+'/intranetV2/storage/app/public/';  
-    window.urlAPI = window.publicURL+'/api';
+    window.urlAPI = window.publicURL+'api';
     // console.log(window.StorageURL);    
     </script>
     
@@ -39,7 +39,7 @@
 }
 
 #tools{
-    margin-top: 10% !important;
+    margin-top: 120px !important;
     margin-left: 50px;
     margin-right: 50px;
 }

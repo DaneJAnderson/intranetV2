@@ -1,6 +1,7 @@
 <template>
   <div>
-      <h1>Admin Notice </h1>
+      <h3 class="text-center mb-10">
+        <span class="grey lighten-1 white--text rounded-lg p-2"> Noticeboard Administrator Panel </span></h3>
 
         
 
@@ -8,8 +9,8 @@
 
 		  <v-col v-for="(notice, index) in this.notices" :key="index" cols="4" lg="3" md="4" class="">
       <v-card>
-			<img class="noticeImg" width="100%" height="280px" :src="url.StorageURL+notice.image" />
-      <v-text-field :id="'notice_'+index"
+			<img class="noticeImg" width="100%" height="260px" :src="url.StorageURL+notice.image" />
+      <v-text-field :id="'notice_'+index" dense
       label="Title of Notice"
       :disabled="index==setEdit?!editable:true"
       :full-width="true"       
@@ -51,16 +52,17 @@
 <!------------------------ Confirmation Dialog Popup ---------------- -->
       <v-dialog
       v-model="dialog"
-      max-width="290"
+      width="300"
       :retain-focus="false"
     >
       <v-card>
         <v-card-title class="headline">
-          
+          <span class="grey lighten-5 ">
+            Are You Sure You Want to Delete this Notice?</span>
         </v-card-title>
 
         <v-card-text>
-          Are You Sure You Want to Delete this Notice?
+          
         </v-card-text>
 
         <v-card-actions>
@@ -147,8 +149,7 @@ export default {
 
       saveEditedName(index,id){
 
-        let name = document.getElementById('notice_'+index).value;
-        console.log(name);      
+        let name = document.getElementById('notice_'+index).value;           
         // this.$store.dispatch("adminStore/PUT_Notice_Name",{index, name});
         this.PUT_Notice_Name({id,name})
         this.makeEditable(index);
@@ -171,10 +172,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .noticeImg {
-  max-height: 280px !important;
+  height: 270px !important;
 }
 
 </style>

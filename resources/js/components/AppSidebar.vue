@@ -13,19 +13,6 @@
       height="85vh" 
     >
 
-  <!-- <v-list
-        nav
-        dense
-        flat
-        
-      >
-        <v-list-item-group
-          v-model="group"
-          
-        > -->
-          <!-- active-class="font-weight-bold orange--text"         -->
-          <!-- active-class="deep-purple--text text--accent-4" -->
-
 <scrollactive class="my-nav mt-10 " :scrollOnStart="false"  :offset="90" v-on:itemchanged="onItemChanged" :active-class="'active-class'"
 :duration="800" bezier-easing-value=".5,0,.35,1" :alwaysTrack="true"  :highlightFirstItem="true" 
  :scrollOffset='89' >
@@ -39,9 +26,16 @@
           <!-- </v-list-item> -->
           </a></li>
 
+            <!----------- Check Birthday Today --------->
+          <li class="mb-3"
+          v-if="birthdays.bdayToday && birthdays.bdayToday.length">
+          <a href="#happy-birthday" class="scrollactive-item black--text" @click="scrollTrue">           
+              Happy Birthday            
+          </a></li>
+
           <li class="mb-3">
-          <a href="#sec2" class="scrollactive-item black--text" @click="scrollTrue">           
-              Section 2             
+          <a href="#upcoming-birthday" class="scrollactive-item black--text" @click="scrollTrue">           
+               Birthdays this Month            
           </a></li>
 
           <li class="mb-3">
@@ -58,13 +52,14 @@
         </ul>
 
 </scrollactive>
-        <!-- </v-list-item-group>
-      </v-list> -->
+
     </v-navigation-drawer>
         
     </div>
 </template>
 <script>
+
+import { mapState,  mapActions, mapGetters} from 'vuex';  
 
 export default {
 
@@ -81,7 +76,7 @@ export default {
     methods: {    
 
       onItemChanged(event, currentItem, lastActiveItem) {
-      //  document.scrollingElement.scrollTop = event.srcElement.scrollingElement.scrollTop;  
+     
       try{
         window.scrollFunc();      
       }catch(e){
@@ -92,8 +87,17 @@ export default {
       scrollTrue(){        
         window.scrollTrue = true;
       },
+
    
-}
+      },
+      computed: {
+        
+         ...mapGetters('homeStore', ['birthdays','url']),
+      },
+        mounted(){
+    // this.$store.dispatch("homeStore/GET_Birthdays");  
+        
+  },
   
          
 }

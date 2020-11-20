@@ -42,7 +42,7 @@ export default {
 	mounted(){    
     // this.$store.dispatch("homeStore/GET_Notices");// Another way yo call actions
     this.GET_Notices();
-    console.dir(this.notices);
+    // console.dir(this.notices);
   },
 
 	methods: {    
@@ -74,7 +74,7 @@ export default {
 	max-width: 100%;
 	width: 100%;
 	max-height: 500px;
-	height: 72vh ;
+	height: 65vh ;
 }
 
 .newsFeed {

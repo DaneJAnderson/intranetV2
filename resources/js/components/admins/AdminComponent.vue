@@ -1,6 +1,7 @@
 <template>
   <div>
-      <h1>Hello From Administrator</h1>
+        <h3 class="text-center mb-10">
+          <span class="grey lighten-1 white--text rounded-lg p-2"> Administrator Panel </span></h3>
 
 <v-row>
 
@@ -10,8 +11,8 @@
         <v-img class="rounded-lg grey lighten-2 pl-3 pr-3"
         :lazy-src="url.PublicURL+img.img" contain
         :src="url.PublicURL+img.img"  
-        max-width="300px" v-ripple="{ class: `` }"
-        max-height="300px"        
+        max-width="200px" v-ripple="{ class: `amber--text` }"
+        max-height="200px"        
         ></v-img>
         </router-link>
 

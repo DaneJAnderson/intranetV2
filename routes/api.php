@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\noticeboardController;
+use App\Http\Controllers\BirthdayController;
 use App\Models\noticeboard;
 
 /*
@@ -21,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Get 3 notices for Home page 
-Route::get('noticeboard',[noticeboardController::class,  'getDataHome']);
+Route::get('noticeboard3',[noticeboardController::class,  'getDataHome']);
 
 // Get all Notices for Admin page
 Route::get('noticeboard-admin',[noticeboardController::class,  'getDataAdmin']);
@@ -31,3 +32,6 @@ Route::put('noticeboard-setname-admin',[noticeboardController::class,  'setNameA
 
 // Remove Notice
 Route::put('noticeboard-remove-admin',[noticeboardController::class,  'removeNoticeAdmin']);
+
+// Get Birthdays this Month
+Route::get('birthdays-this-month',[BirthdayController::class,  'getBirthdaysThisMonth']);
