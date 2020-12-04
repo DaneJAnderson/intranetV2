@@ -11,7 +11,8 @@
         <script>window.Laravel = { csrfToken: '{{ csrf_token() }}' }</script>       
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/js/app.vuetify-components.css') }}" />        
+        <link rel="stylesheet" href="{{ asset('css/js/app.vuetify-components.css') }}" />   
+        <link rel="icon" href="{{ url('/') }}/images/COKSODALITY_LOGO.png" type="image/gif" sizes="16x16">     
 
         {{-- <title>{{ config('app.name', @yield('title')) }}</title>     --}}
         <title>COKCU  @yield('title')</title>    
@@ -20,10 +21,10 @@
         
         // ---- CONSTANT URL VARIABLES  ---- //
 
-    window.publicURL = "{{ $publicURL ?? url('/') ?? ''  }}";  
+    window.publicURL = "{{  url('/') ?? $publicURL ?? ''  }}";  
     window.storageURL = window.location.protocol+'//'+window.location.hostname+'/intranetV2/storage/app/public/';  
-    window.urlAPI = window.publicURL+'api';
-    // console.log(window.StorageURL);    
+    window.urlAPI = window.publicURL+'/api';
+    // console.log(window.publicURL);    
     </script>
     
 <style>
@@ -31,11 +32,11 @@
 #sticky {
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: 30px;  
 }
 
 #home {
-    margin-top: -85vh !important;
+    margin-top: -90vh !important;
 }
 
 #tools{

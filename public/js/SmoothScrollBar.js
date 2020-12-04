@@ -17,7 +17,9 @@ function SmoothScroll(target, speed, smooth) {
 
 			//  Globally Reset Scroll Position to Top 
 			window.topsfunc = function () {
-				pos = 0;							
+				pos = 0;	
+				document.scrollingElement.scrollTop = 0;
+				// console.log('Am here destroy Tools')        						
 			}		
 
 			// Scrollactive Up Scroll Fix mousewheel down scroll

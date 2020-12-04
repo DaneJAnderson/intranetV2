@@ -49,7 +49,8 @@
       <v-spacer></v-spacer>
 
        <!------  Menu Nav Icon ---- -->      
-      <v-btn iconclass=" mr-10 mt-1" @click.stop="drawer = !drawer" v-ripple>
+      <!-- <v-btn iconclass=" mr-10 mt-1" @click.stop="drawer = !drawer" v-ripple> -->
+      <v-btn iconclass=" mr-10 mt-1" @click="drawerRoute" v-ripple>
          <v-icon size="40" :color="drawer?'#FF8F00':'#000'" >{{icons.mdiMenu}}</v-icon>
       </v-btn>
    
@@ -90,8 +91,10 @@
 
 <!-- ----------------- Mobile Navigation ----------------- -->
       <div class=" " >
+      
         <router-link to="/" class="text-decoration-none">
         <v-list-item class=" d-none d-sm-flex d-md-none mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
+    <v-divider></v-divider>
          <v-list-item-title><v-icon class="ml-5">{{icons.mdiHome}}
            </v-icon ><span class="ml-5">Home</span></v-list-item-title>        
         </v-list-item>
@@ -99,6 +102,7 @@
 
         <router-link to="/tools" class="text-decoration-none ">
         <v-list-item class="  d-none d-sm-flex d-md-none mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
+    <v-divider></v-divider>
          <v-list-item-title>
            <v-icon class="ml-5">{{icons.mdiTools}}</v-icon>
            <span class="ml-5">Tools</span></v-list-item-title>        
@@ -107,6 +111,7 @@
 
         <a href="http://192.168.110.132/" class="text-decoration-none" target="_blank" >
         <v-list-item class=" d-none d-sm-flex d-md-none mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
+    <v-divider></v-divider>
          <v-list-item-title>
               <v-icon color="black" class="ml-5">{{icons.mdiHuman }}</v-icon>
           <span class="ml-5">HR Plus</span></v-list-item-title>        
@@ -116,13 +121,16 @@
         <!-- ----------------- End Mobile Nav ----------------  -->
 
       <div class=" " >
+
+    <v-divider class="  d-none d-sm-flex d-md-none mt-5"></v-divider>
         <router-link to="/tools/documents" class="text-decoration-none" @click="currentRouteName">
         <v-list-item class="mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
          <v-list-item-title><v-icon class="ml-5">{{icons.mdiFileDocument}}
-           </v-icon ><span class="ml-5">Documents</span></v-list-item-title>        
+           </v-icon ><span class="ml-5 ">Documents</span></v-list-item-title>        
         </v-list-item>
-        </router-link>          
+        </router-link>  
 
+    <v-divider></v-divider>
         <a href="http://intranew/Meeting/signin.php" class="text-decoration-none " target="_blank">
         <v-list-item class="mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
          <v-list-item-title>
@@ -131,14 +139,16 @@
         </v-list-item>
         </a>   
 
+    <v-divider></v-divider>
         <router-link to="/news" class="text-decoration-none ">
         <v-list-item class="mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
          <v-list-item-title>
            <v-icon class="ml-5">{{icons.mdiNewspaper}}</v-icon>
            <span class="ml-5">News</span></v-list-item-title>        
         </v-list-item>
-        </router-link>        
+        </router-link>     
 
+    <v-divider></v-divider>
         <a href="http://intranew/queuing_system/" class="text-decoration-none " target="_blank" >
         <v-list-item class="mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
          <v-list-item-title>
@@ -147,7 +157,7 @@
         </v-list-item>  
           </a>
 
-
+    <v-divider></v-divider>
         <router-link to="/admins" class="text-decoration-none ">
         <v-list-item class="mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
          <v-list-item-title>
@@ -190,37 +200,48 @@ export default {
      {mdiHome,mdiTools,mdiHumanQueue,mdiMenu,mdiFileDocument,
      mdiCalendar,mdiNewspaper,mdiHuman,mdiAccountCog,
      }
-    }),
-    
-     watch: {
-      group () {
-        this.drawer = false
-        
-      },
-    },
+    }),    
+  
     methods: {
 
-    },
+      drawerRoute() {        
+          this.drawer = !this.drawer
+          this.currentRouteName          
+        }, 
+
+        },
+    
     computed: {  
-      
-      currentRouteName() {
+      currentRouteName: {
+        get(){
       // Route Navigation Highlighting  
         switch(this.$route.name)
         {
           case 'Home': this.value = 0;break;
           case 'tools': this.value = 1;break;
-          default: this.value = 3;
+          default: this.value;
         }
-        // console.log(this.$route.name+ "this is route")
-        //  return this.$route.name;
+       
          return this.value;
-    },  
+      },
+
+    }, 
+
     PublicURL (){
     //  return this.$store.state.url.PublicURL;
      return this.$store.state.homeStore.url.PublicURL;
     }
   
 },
+  watch:{
+
+      group () {
+        this.drawer = false;
+        
+      },
+
+
+    },
    
 }
 </script>
@@ -264,12 +285,15 @@ export default {
 }
 
 #rightNavDrawer {
-   background: rgb(253, 251, 245);
+   /* background: rgb(253, 251, 245); */
+   background: rgba(247, 247, 247, 0.97);
+   
 }
 
 .v-list-item:hover {
 
   background: rgb(255, 235, 198) !important;
 }
+
 
 </style>

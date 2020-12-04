@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\noticeboardController;
 use App\Http\Controllers\BirthdayController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\DocumentsController;
 use App\Models\noticeboard;
 
 /*
@@ -35,3 +37,12 @@ Route::put('noticeboard-remove-admin',[noticeboardController::class,  'removeNot
 
 // Get Birthdays this Month
 Route::get('birthdays-this-month',[BirthdayController::class,  'getBirthdaysThisMonth']);
+
+//  Get Paginated Gallery
+Route::get('gallery',[GalleryController::class,  'getGallery']);
+
+// Get All Gallery Data
+Route::get('gallery-all',[GalleryController::class,  'getGalleryAll']);
+
+// Get Document Type
+Route::get('doc-type',[DocumentsController::class,  'getDocType']);

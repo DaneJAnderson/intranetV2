@@ -8,7 +8,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
 
 <div class="BGColor rounded"><!---  Upcoming Birthday  ---->
 
-    <div  v-if="birthdays"  :style="BGStyle">    <!--- Background Confetti --->   
+    <div  v-if="birthdays.firstHalf && birthdays.firstHalf.length"  :style="BGStyle">    <!--- Background Confetti --->   
 
 
     <v-container fluid>
@@ -18,11 +18,10 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
 
     <v-carousel
     :cycle=true
-    height="300"
+    height="300"    
     hide-delimiter-background
     hide-delimiters
-    show-arrows-on-hover
-    continuous
+    show-arrows-on-hover   
     interval="7000"
     >
   <!-- --------- Birthday Slide One ----------  -->
@@ -38,7 +37,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
       md="3" sm="6"
 
       >
-      <v-card  :dark="false" color="transparent">
+      <v-card  :dark="false" color="transparent" max-height="300">
       <!-- -------------- Upcoming Birthday Image ------------ -->
       <img class="bdayThumb" v-if="bday.image || bday.image == ''" width="100%"
         :src="url.StorageURL+'images/profile_images/'+bday.image"
@@ -47,19 +46,20 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
 
       <!-- -------------- Upcoming Birthday No Image Male ------------ -->
       <img class="bdayThumb" v-else-if="bday.sex==0" width="100%" 
-        :src="url.PublicURL+'images/Male_worker.png'"        
+        :src="url.PublicURL+'/images/Male_worker.png'"        
       />
 
        <!-- -------------- Upcoming Birthday No Image Female ------------ -->
       <img class="bdayThumb" v-else width="100%"
-        :src="url.PublicURL+'images/Female_worker.png'"       
+        :src="url.PublicURL+'/images/Female_worker.png'"       
       />
       <!-- ---------------- Staff Details ------------------------- -->
       <v-card-title  class="title staffDetailBG">
         <span class="text-body-2">
         {{ bday.first_name+' '+bday.last_name }}<br/>
         Birthday: {{ getDateFormal(bday.dob) }}</span><br/>
-        <span class="text-caption">Department: {{ bday.department}}</span>
+        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,22)}}.</span>
+        <span v-else class="text-caption">Department: {{ bday.department}}.</span>
         </v-card-title>
 
 
@@ -82,7 +82,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
       md="3" sm="6"
 
       >
-      <v-card :dark="false" color="transparent">
+      <v-card :dark="false" color="transparent" max-height="300">
       <!-- -------------- Upcoming Birthday Image ------------ -->
       <img class="bdayThumb" v-if="bday.image || bday.image == ''" width="100%"
         :src="url.StorageURL+'images/profile_images/'+bday.image"
@@ -91,19 +91,20 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
 
       <!-- -------------- Upcoming Birthday No Image Male ------------ -->
       <img class="bdayThumb" v-else-if="bday.sex==0" width="100%" 
-        :src="url.PublicURL+'images/Male_worker.png'"        
+        :src="url.PublicURL+'/images/Male_worker.png'"        
       />
 
        <!-- -------------- Upcoming Birthday No Image Female ------------ -->
       <img class="bdayThumb" v-else width="100%"
-        :src="url.PublicURL+'images/Female_worker.png'"       
+        :src="url.PublicURL+'/images/Female_worker.png'"       
       />
       <!-- ---------------- Staff Details ------------------------- -->
       <v-card-title class="title staffDetailBG">
         <span class="text-body-2">
         {{ bday.first_name+' '+bday.last_name }}<br/>
         Birthday: {{ getDateFormal(bday.dob)}}</span><br/>
-        <span class="text-caption">Department: {{ bday.department}}</span>
+        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,22)}}.</span>
+        <span v-else class="text-caption">Department: {{ bday.department}}.</span>
         </v-card-title>
 
 
@@ -126,7 +127,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
       md="3" sm="6"
 
       >
-      <v-card :dark="false" color="transparent">
+      <v-card :dark="false" color="transparent" max-height="300">
       <!-- -------------- Upcoming Birthday Image ------------ -->
       <img class="bdayThumb" v-if="bday.image || bday.image == ''" width="100%"
         :src="url.StorageURL+'images/profile_images/'+bday.image"
@@ -135,19 +136,20 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
 
       <!-- -------------- Upcoming Birthday No Image Male ------------ -->
       <img class="bdayThumb" v-else-if="bday.sex==0" width="100%" 
-        :src="url.PublicURL+'images/Male_worker.png'"        
+        :src="url.PublicURL+'/images/Male_worker.png'"        
       />
 
        <!-- -------------- Upcoming Birthday No Image Female ------------ -->
       <img class="bdayThumb" v-else width="100%"
-        :src="url.PublicURL+'images/Female_worker.png'"       
+        :src="url.PublicURL+'/images/Female_worker.png'"       
       />
       <!-- ---------------- Staff Details ------------------------- -->
       <v-card-title class="title staffDetailBG">
         <span class="text-body-2">
         {{ bday.first_name+' '+bday.last_name }}<br/>
         Birthday: {{ getDateFormal(bday.dob)}}</span><br/>
-        <span class="text-caption">Department: {{ bday.department}}</span>
+        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,22)}}.</span>
+        <span v-else class="text-caption">Department: {{ bday.department}}.</span>
         </v-card-title>
 
 
@@ -158,19 +160,19 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
     </v-carousel-item>
 
     <!-- --------- Birthday Slide Four ----------  -->
-    <v-carousel-item v-if="birthdays.forthHalf && birthdays.forthHalf.length">
+    <v-carousel-item v-if="birthdays.forthHalf && birthdays.forthHalf.length" >
      <v-row  
      align-content="center"
      justify="center"
       >
-        {{birthdays.forthHalf}}
+        <!-- {{birthdays.forthHalf}} -->
      <v-col 
       v-for="(bday, i) in birthdays.forthHalf"  :key="i" 
-      cols="6"
-      md="3" sm="6"
+      cols="6" 
+      md="3" sm="6" 
 
       >
-      <v-card :dark="false" color="transparent">
+      <v-card :dark="false" color="transparent"  max-height="300">
       <!-- -------------- Upcoming Birthday Image ------------ -->
       <img class="bdayThumb" v-if="bday.image || bday.image == ''" width="100%"
         :src="url.StorageURL+'images/profile_images/'+bday.image"
@@ -179,19 +181,22 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
 
       <!-- -------------- Upcoming Birthday No Image Male ------------ -->
       <img class="bdayThumb" v-else-if="bday.sex==0" width="100%" 
-        :src="url.PublicURL+'images/Male_worker.png'"        
+        :src="url.PublicURL+'/images/Male_worker.png'"        
       />
 
        <!-- -------------- Upcoming Birthday No Image Female ------------ -->
       <img class="bdayThumb" v-else width="100%"
-        :src="url.PublicURL+'images/Female_worker.png'"       
+        :src="url.PublicURL+'/images/Female_worker.png'"       
       />
       <!-- ---------------- Staff Details ------------------------- -->
-      <v-card-title  class="title staffDetailBG">
-        <span class="text-body-2">
+      <v-card-title  class="staffDetailBG ">
+        <span class="text-body-2 ">
         {{ bday.first_name+' '+bday.last_name }}<br/>
         Birthday: {{ getDateFormal(bday.dob)}}</span><br/>
-        <span class="text-caption">Department: {{ bday.department}}</span>
+        <span v-if="bday.department" class="text-caption mb-10">
+          Department: {{ bday.department.substr(0,22)}}.</span>
+        <span v-else class="text-caption mb-10">
+          Department: {{ bday.department}}.</span>
         </v-card-title>
 
 
@@ -281,6 +286,7 @@ max-height: 200px;
 .staffDetailBG {
 	background-color: rgb(0, 0, 204,0.6);
 	color: white !important;
+  
 	/* font-size: 12px !important; */
 }
 

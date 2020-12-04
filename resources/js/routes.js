@@ -9,6 +9,8 @@ const forms = () => import(/*webpackChunkName: "forms"*/'./components/Forms/Form
 const news = () => import(/*webpackChunkName: "news"*/'./components/News/NewsComponent')
 const tools = () => import(/*webpackChunkName: "tools"*/'./components/Tools/ToolsComponent')
 const documents = () => import(/*webpackChunkName: "documents"*/'./components/Tools/DocumentsComponent')
+const suggestion = () => import(/*webpackChunkName: "suggestionBox"*/'./components/Tools/SuggestboxComponent')
+const groupHealth = () => import(/*webpackChunkName: "groupHeath"*/'./components/Tools/GroupHealthComponent')
 const document = () => import(/*webpackChunkName: "document"*/'./components/Tools/DocumentComponent')
 const admins = () => import (/*webpackChunkName: "admins"*/'./components/admins/AdminComponent')
 const admNotice = () => import (/*webpackChunkName: "admNotice"*/'./components/admins/AdmnoticeComponent')
@@ -30,6 +32,8 @@ export  const routes = [
       { path: '/news', name:'news', component: news,meta: {title: intranet+'News'} },
       { path: '/tools', name:'tools', component: tools,meta: {title: intranet+'Tools'}}, 
       { path: '/tools/documents', name:'documents', component: documents, meta: {title: intranet+'Documents'}}, 
+      { path: '/tools/suggestion-box', name:'suggestionBox',component: suggestion, meta: {title: intranet+'Suggestion-Box'}}, 
+      { path: '/tools/group-health', name:'groupHealth', component: groupHealth, meta: {title: intranet+'Group-Health'}}, 
       { path: '/tools/documents/document', name:'document', component: document,meta: {title: intranet+'Document'}}, 
 
            

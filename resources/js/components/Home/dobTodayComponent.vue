@@ -17,8 +17,6 @@
     hide-delimiter-background
     hide-delimiters
     :show-arrows="false"
-    continuous
-    interval="7000"
     >
   <!-- --------- Birthday Slide One show-arrows-on-hover----------  -->
     <v-carousel-item v-if="birthdays.bdayToday && birthdays.bdayToday.length">
@@ -34,7 +32,7 @@
       
 
       >
-      <v-card :dark="false" color="transparent">
+      <v-card :dark="false" color="transparent" max-height="320">
       <!-- -------------- Upcoming Birthday Image ------------ -->
       <img class="bdayThumb" v-if="bday.image || bday.image == ''" width="100%"
         :src="url.StorageURL+'images/profile_images/'+bday.image"
@@ -55,7 +53,7 @@
         <span class="text-body-2">
         {{ bday.first_name+' '+bday.last_name }}<br/>
         Birthday: {{ getDateFormal(bday.dob) }}</span><br/>
-        <span class="text-caption">Department: {{ bday.department}}</span>
+        <span class="text-caption">Department: {{ bday.department}}.</span>
         </v-card-title>
 
 

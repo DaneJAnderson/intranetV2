@@ -13,34 +13,37 @@
       height="85vh" 
     >
 
-<scrollactive class="my-nav mt-10 " :scrollOnStart="false"  :offset="90" v-on:itemchanged="onItemChanged" :active-class="'active-class'"
+<scrollactive class="my-nav mt-1" :scrollOnStart="false"  :offset="90" v-on:itemchanged="onItemChanged" :active-class="'active-class'"
 :duration="800" bezier-easing-value=".5,0,.35,1" :alwaysTrack="true"  :highlightFirstItem="true" 
  :scrollOffset='89' >
 <!-- scrollOffset must be < offset -->
 
     <ul style="list-style-type: none;" >
+
+          
         <li class="mb-3">
           <a href="#noticeBoard" class="scrollactive-item black--text" @click="scrollTrue">
           <!-- <v-list-item href="#sec1" class="scrollactive-item nav-item"> -->
             Notice Board
           <!-- </v-list-item> -->
           </a></li>
-
+                    
             <!----------- Check Birthday Today --------->
           <li class="mb-3"
           v-if="birthdays.bdayToday && birthdays.bdayToday.length">
           <a href="#happy-birthday" class="scrollactive-item black--text" @click="scrollTrue">           
               Happy Birthday            
           </a></li>
-
-          <li class="mb-3">
+            
+          <li class="mb-3"
+          v-if="birthdays.firstHalf && birthdays.firstHalf.length" >  
           <a href="#upcoming-birthday" class="scrollactive-item black--text" @click="scrollTrue">           
                Birthdays this Month            
           </a></li>
 
           <li class="mb-3">
-          <a href="#sec3" class="scrollactive-item black--text" @click="scrollTrue">
-            Section 3
+          <a href="#gallery" id="galleryTop" class="scrollactive-item black--text" @click="scrollTrue">
+            Gallery
           </a></li>
 
         <li class="mb-3">
@@ -118,5 +121,6 @@ export default {
     color: orange !important;
     font-weight: bold;
   }
+
 
 </style>

@@ -6,6 +6,8 @@ export default {
 
         notices: [],
         birthdays: [],
+        gallery: {},
+        galleryAll: {},
         url: {
             StorageURL: window.storageURL,
             PublicURL: window.publicURL,
@@ -19,6 +21,16 @@ export default {
         notices: state => {
 
             return state.notices;
+        },
+
+        gallery: state => {
+
+            return state.gallery;
+        },
+
+        galleryAll: state => {
+
+            return state.galleryAll;
         },
 
         birthdays: state => {
@@ -70,6 +82,24 @@ export default {
                 commit('SET_BIRTHDAYS', response.data);
                 
             }).catch(error => {console.log(error)})
+        },  
+
+        GET_Gallery({ state,commit  }, payload) {
+            axios.get(state.url.API_URL+'/gallery?page='+payload)                                           
+            .then(response => {                 
+                // console.log(response.data);
+                commit('SET_GALLERY', response.data);
+                
+            }).catch(error => {console.log(error)})
+        },   
+
+        GET_GalleryAll({ state,commit  }) {
+            axios.get(state.url.API_URL+'/gallery-all')                                           
+            .then(response => {                 
+                // console.log(response.data);
+                commit('SET_GALLERYALL', response.data);
+                
+            }).catch(error => {console.log(error)})
         },        
     },
 
@@ -83,5 +113,21 @@ export default {
         SET_BIRTHDAYS(state, data) {
             state.birthdays = [...data];          
             },
+
+        SET_GALLERY(state, data) {
+            // state.gallery = [...data];          
+            state.gallery = data;   
+                // console.log(state.gallery);
+            },
+
+        SET_GALLERYALL(state, data) {
+            // state.galleryAll = [...data];          
+            state.galleryAll = data;   
+                // console.log(state.galleryAll);
+            },
+
+        SET_CURRENTPAGE(state, data){
+            state.gallery.current_page = data;
+        }
     },
 }

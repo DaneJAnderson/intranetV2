@@ -1,7 +1,7 @@
 <template>
   <v-carousel 
   hide-delimiter-background  
-  cycle
+  :cycle=false
   show-arrows-on-hover
   height="500"
   interval="7000"
@@ -34,25 +34,8 @@
           </h4>
         </v-col>
       </v-row>
-    </v-parallax>
-   
+    </v-parallax>   
 
-    <!-- <v-sheet
-       color="transparent"
-        height="100%"
-        tile
-      >
-        <v-row
-          class="fill-height"
-          align="center"
-          justify="center"
-        >
-          <div class="display-3">
-            This is a {{ colors[i] +' '+ (i + 1) }}
-          </div>
-        </v-row>
-      </v-sheet> -->
-    
     
     </v-carousel-item>
   </v-carousel>
@@ -67,16 +50,20 @@ export default {
         images:
         [
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+            // src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+            src:  window.publicURL+'/images/cok-building1.jpg',
           },
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+            // src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+            src:  window.publicURL+'/images/banner2.jpg',
           },
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+            // src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+            src:  window.publicURL+'/images/banner3.jpg',
           },
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+            // src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+            src:  window.publicURL+'/images/cok-building2.jpg',
           },
         ],
 
