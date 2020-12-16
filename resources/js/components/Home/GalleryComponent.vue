@@ -63,14 +63,15 @@ export default {
     name: 'GalleryComponent',
     mounted(){
         this.$store.dispatch("homeStore/GET_Gallery",1); 
-        this.$store.dispatch("homeStore/GET_GalleryAll"); 
+		this.$store.dispatch("homeStore/GET_GalleryAll"); 
+		
     },
     data() {
       return {
         count: 1,
         slideIndex: 0,
       }
-    },
+	},
 
     computed: {
 
@@ -82,6 +83,7 @@ export default {
                 return this.gallery.current_page
             },
             set(value){
+				this.count=2;
                 this.SET_CURRENTPAGE(value);
                 // this.$store.commit("homeStore/SET_CURRENTPAGE",value)
             }
@@ -103,7 +105,7 @@ export default {
 
               var gt = document.getElementById("galleryTop");
               gt.click(); 
-              // console.log(this.count);
+            //   console.log(this.count);
             }
               this.count=2;
            try{ window.scrollFunc(); }catch(e){}

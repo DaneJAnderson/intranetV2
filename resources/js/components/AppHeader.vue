@@ -6,16 +6,16 @@
     <v-bottom-navigation v-model="value" color="#FF8F00"
     :mandatory='true'  >
     
-  <!-- <v-app-bar-nav-icon ></v-app-bar-nav-icon> -->
+  <!-- <v-app-bar-nav-icon ></v-app-bar-nav-icon>  @click="currentRouteName"-->
 
-      <router-link to="/" class="text-decoration-none" @click="currentRouteName">
+      <a :href="PublicURL+'/'" class="text-decoration-none">
       <v-img class="ml-1" 
         contain
         max-height="60"
         max-width="300"
         :src="PublicURL+'/images/COKSODALITY_LOGO.svg'"
       ></v-img>       
-      </router-link>
+      </a>
 
   <!-- lazy-src="/images/COKSODALITY_LOGO.png" -->
   <!-- <v-toolbar-title>Page title</v-toolbar-title> -->
@@ -24,7 +24,7 @@
       <div class="mr-15  d-sm-none d-md-flex" >
         
       <!-- <a :href="PublicURL" class="text-decoration-none" ><v-btn icon> -->
-      <router-link to="/" class="text-decoration-none" ><v-btn icon>
+      <router-link to="/" class="text-decoration-none" ><v-btn @click="toTop" icon>
         <span>Home</span>
         <v-icon>{{icons.mdiHome}}</v-icon>
       </v-btn>
@@ -122,6 +122,16 @@
 
       <div class=" " >
 
+                     
+        <router-link to="/about" class="text-decoration-none ">
+        <v-list-item class="mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
+         <v-list-item-title>
+           <v-icon class="ml-5">{{icons.mdiAccountGroup}}</v-icon>
+           <span class="ml-5">About COK</span></v-list-item-title>        
+        </v-list-item>
+        </router-link>   
+ <v-divider></v-divider>
+
     <v-divider class="  d-none d-sm-flex d-md-none mt-5"></v-divider>
         <router-link to="/tools/documents" class="text-decoration-none" @click="currentRouteName">
         <v-list-item class="mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
@@ -144,7 +154,7 @@
         <v-list-item class="mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
          <v-list-item-title>
            <v-icon class="ml-5">{{icons.mdiNewspaper}}</v-icon>
-           <span class="ml-5">News</span></v-list-item-title>        
+           <span class="ml-5">Notice Board</span></v-list-item-title>        
         </v-list-item>
         </router-link>     
 
@@ -157,6 +167,7 @@
         </v-list-item>  
           </a>
 
+
     <v-divider></v-divider>
         <router-link to="/admins" class="text-decoration-none ">
         <v-list-item class="mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
@@ -164,7 +175,9 @@
            <v-icon class="ml-5">{{icons.mdiAccountCog}}</v-icon>
            <span class="ml-5">Administrator</span></v-list-item-title>        
         </v-list-item>
-        </router-link>   
+        </router-link>  
+
+
 
   
 
@@ -182,7 +195,8 @@
 
 <script>
 import { mdiHome, mdiTools, mdiHumanQueue,mdiMenu,mdiAccountCog,
-mdiFileDocument,mdiCalendar, mdiNewspaper, mdiHuman } from '@mdi/js'
+mdiFileDocument,mdiCalendar, mdiNewspaper, mdiHuman,
+ mdiAccountGroup } from '@mdi/js'
 import BannerComponent from './HeaderBanner'
 
 
@@ -199,6 +213,7 @@ export default {
      icons:
      {mdiHome,mdiTools,mdiHumanQueue,mdiMenu,mdiFileDocument,
      mdiCalendar,mdiNewspaper,mdiHuman,mdiAccountCog,
+     mdiAccountGroup
      }
     }),    
   
@@ -208,6 +223,10 @@ export default {
           this.drawer = !this.drawer
           this.currentRouteName          
         }, 
+
+        toTop(){
+          window.topsfunc(); 
+        }
 
         },
     
@@ -219,7 +238,7 @@ export default {
         {
           case 'Home': this.value = 0;break;
           case 'tools': this.value = 1;break;
-          default: this.value;
+          default: this.value = 3;
         }
        
          return this.value;
@@ -293,6 +312,7 @@ export default {
 .v-list-item:hover {
 
   background: rgb(255, 235, 198) !important;
+  transition: .9s;
 }
 
 

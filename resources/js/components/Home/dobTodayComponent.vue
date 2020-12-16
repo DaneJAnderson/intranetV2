@@ -35,18 +35,18 @@
       <v-card :dark="false" color="transparent" max-height="320">
       <!-- -------------- Upcoming Birthday Image ------------ -->
       <img class="bdayThumb" v-if="bday.image || bday.image == ''" width="100%"
-        :src="url.StorageURL+'images/profile_images/'+bday.image"
+        :src="url.StorageURL+'/images/profile_images/'+bday.image"
         
       />
 
       <!-- -------------- Upcoming Birthday No Image Male ------------ -->
       <img class="bdayThumb" v-else-if="bday.sex==0" width="100%" 
-        :src="url.PublicURL+'images/Male_worker.png'"        
+        :src="url.PublicURL+'/images/Male_worker.png'"        
       />
 
        <!-- -------------- Upcoming Birthday No Image Female ------------ -->
       <img class="bdayThumb" v-else width="100%"
-        :src="url.PublicURL+'images/Female_worker.png'"       
+        :src="url.PublicURL+'/images/Female_worker.png'"       
       />
       <!-- ---------------- Staff Details ------------------------- -->
       <v-card-title  class="title staffDetailBG">

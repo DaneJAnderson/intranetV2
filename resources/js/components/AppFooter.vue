@@ -4,12 +4,12 @@
        
   <v-footer
     dark
-    class="grey darken-3"
+    class="grey darken-4"
   >
     <v-card
       flat
       tile
-      class="grey darken-3 white--text text-center "
+      class="grey darken-4 white--text text-center "
     >
       <v-card-text>
         
@@ -106,7 +106,7 @@ export default {
     }),
 
     mounted(){
-      console.dir(this.icons)
+      // console.dir(this.icons)
     }
 }
 </script>

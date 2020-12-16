@@ -1,7 +1,7 @@
 <template>
 <div >
   
-      <h3 class="text-center mb-10"><b> Websites and Apps</b></h3>
+      <h3 class="text-center mb-10 grey--text"><b> Websites and Apps</b></h3>
        <router-view :key="$route.path" />
 
     <v-row  
@@ -17,9 +17,9 @@
       >
 
       <router-link v-if="tool.link.includes('tools')" :to="tool.link">
-        <v-card class="rounded-xl icon" :dark="false" color="" min-height="320"  hover>  
+        <v-card class="rounded-xl icon zoom" :dark="false" color="" min-height="320" max-height="320" max-width="350"  hover>  
        
-      <img class="bdayThumb" width="100%" 
+      <img class="bdayThumb " width="100%" 
         :src="url.PublicURL+tool.icon"       
       />
       
@@ -33,7 +33,7 @@
       </router-link>
 
       <a v-else :href="tool.link"  target="_blank">
-      <v-card class="rounded-xl icon" :dark="false" color="" min-height="320"  hover>  
+      <v-card class="rounded-xl icon zoom" :dark="false" color="" min-height="320" max-height="320" max-width="350"  hover>  
        
       <img class="bdayThumb" width="100%" 
         :src="url.PublicURL+tool.icon"       
@@ -63,7 +63,7 @@ export default {
     },
     mounted(){
 
-      this.$store.dispatch("toolsNdocTypeStore/GET_DocType");  
+      // this.$store.dispatch("toolsNdocTypeStore/GET_DocType");  
     },
     computed: {
       ...mapGetters('toolsNdocTypeStore', ['docType','url','tools']),
@@ -77,7 +77,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .title {
   padding: 0px 10px 5px 10px;
@@ -87,5 +87,35 @@ export default {
   border: 2px solid rgb(188, 219, 255);
   
 }
+.icon {
+  border: 2px solid transparent;
+  
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ------------------ Zoom on Hover ------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+.zoom {
+  /* padding: 50px; */
+  max-width: 100%; 
+  transition: transform .2s;
+ 
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.05); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.05); 
+}
+
+/* ------------------- End Zoom ---------------- */
 
 </style>

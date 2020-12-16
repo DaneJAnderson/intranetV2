@@ -17,12 +17,12 @@
 
 <!-- ------------------ COK Cross Roads Building Front and Back ------ -->
 <div>
-        <div v-for="(image,i) in this.images" :key="i">
+      <div v-for="(image,i) in this.images" :key="i">
         <v-parallax
       dark
       :src="url+image"
       height="500"
-    >
+        >
       <v-row
         align="center"
         justify="center"
@@ -32,11 +32,11 @@
           cols="12"
         >
           <h1 class="display-1 font-weight-thin mb-4">
-            Vuetify
+            <!-- Vuetify -->
           </h1>
           <h4 class="subheading">
             <!-- This is a {{ colors[i] +' '+ (i + 1) }}<br/> -->
-            Build your application today!
+            <!-- Build your application today! -->
           </h4>
         </v-col>
       </v-row>
@@ -51,14 +51,15 @@
 
 </div>
 
-<div id="sec4" class=" ">
-        <h3 class="text-center pb-15 pt-10"><b>Promotions </b></h3>
+<div id="promotions" class=" ">
+        <h3 class="text-center pb-15 pt-10 "><b>Promotions </b></h3>
 
-        <div v-for="(image,i) in this.promos" :key="i" class="">
+        <div v-for="(image,i) in this.promos" :key="i"  ><!--style="margin-top: 100px"-->
         <v-parallax
       dark
       :src="url+image"
       height="500"
+      
     >
       <v-row
         align="center"
@@ -69,19 +70,16 @@
           cols="12"
         >
           <h1 class="display-1 font-weight-thin mb-4">
-            Vuetify
+            <!-- Vuetify -->
           </h1>
           <h4 class="subheading">
             <!-- This is a {{ colors[i] +' '+ (i + 1) }}<br/> -->
-            Build your application today!
+            <!-- Build your application today! -->
           </h4>
         </v-col>
       </v-row>
     </v-parallax> 
     </div>
-
-
-
        
 </div>
 
@@ -108,8 +106,8 @@ export default {
 
     data:()=> ({
                 url: window.publicURL,
-                images: ['/images/cok-building2.jpg', '/images/cok-building1.jpg'],
-                promos: ['/images/Debitcard-promo.png', '/images/cok-building1.jpg']
+                images: ['/images/cok-building2.jpg', '/images/cok-building1.png'],
+                promos: ['/images/Debitcard-promo.png', '/images/goGreen-promo.png']
         })
 
 }

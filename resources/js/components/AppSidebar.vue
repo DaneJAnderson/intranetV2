@@ -22,7 +22,7 @@
 
           
         <li class="mb-3">
-          <a href="#noticeBoard" class="scrollactive-item black--text" @click="scrollTrue">
+          <a href="#noticeBoard" class="scrollactive-item sideText" @click="scrollTrue">
           <!-- <v-list-item href="#sec1" class="scrollactive-item nav-item"> -->
             Notice Board
           <!-- </v-list-item> -->
@@ -31,24 +31,24 @@
             <!----------- Check Birthday Today --------->
           <li class="mb-3"
           v-if="birthdays.bdayToday && birthdays.bdayToday.length">
-          <a href="#happy-birthday" class="scrollactive-item black--text" @click="scrollTrue">           
+          <a href="#happy-birthday" class="scrollactive-item sideText" @click="scrollTrue">           
               Happy Birthday            
           </a></li>
             
           <li class="mb-3"
           v-if="birthdays.firstHalf && birthdays.firstHalf.length" >  
-          <a href="#upcoming-birthday" class="scrollactive-item black--text" @click="scrollTrue">           
+          <a href="#upcoming-birthday" class="scrollactive-item sideText" @click="scrollTrue">           
                Birthdays this Month            
           </a></li>
 
           <li class="mb-3">
-          <a href="#gallery" id="galleryTop" class="scrollactive-item black--text" @click="scrollTrue">
+          <a href="#gallery" id="galleryTop" class="scrollactive-item sideText" @click="scrollTrue">
             Gallery
           </a></li>
 
         <li class="mb-3">
-          <a href="#sec4" class="scrollactive-item black--text" @click="scrollTrue">           
-              Section 4             
+          <a href="#promotions" class="scrollactive-item sideText" @click="scrollTrue">           
+              Promotions            
           </a></li>
           
 
@@ -122,5 +122,11 @@ export default {
     font-weight: bold;
   }
 
+.sideText {
+
+  font-weight: bold;
+  color: rgb(70, 40, 1);
+  font-family: Garamond, serif;
+}
 
 </style>

@@ -1,7 +1,7 @@
 <template>
   <v-carousel 
   hide-delimiter-background  
-  :cycle=false
+  :cycle=true
   show-arrows-on-hover
   height="500"
   interval="7000"
@@ -9,6 +9,7 @@
     <v-carousel-item
       v-for="(item,i) in images"
       :key="i"
+      
     >
 
 
@@ -16,6 +17,7 @@
       dark
       :src="item.src"
       height="500"
+    
     >
       <v-row
         align="center"
@@ -49,22 +51,21 @@ export default {
         // Image Height Must be over 700px for Parallax to show
         images:
         [
-          {
-            // src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
-            src:  window.publicURL+'/images/cok-building1.jpg',
+          {        
+            src:  window.publicURL+'/images/banner1.png',
           },
           {
-            // src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+           
             src:  window.publicURL+'/images/banner2.jpg',
           },
           {
-            // src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
+            
             src:  window.publicURL+'/images/banner3.jpg',
           },
-          {
-            // src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
+       /*    {
+            
             src:  window.publicURL+'/images/cok-building2.jpg',
-          },
+          }, */
         ],
 
         colors: [
@@ -82,5 +83,7 @@ export default {
 </script>
 
 <style scope>
+
+
 
 </style>

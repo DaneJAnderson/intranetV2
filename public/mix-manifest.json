@@ -15,8 +15,10 @@
     "/js/gallery.js": "/js/gallery.js",
     "/js/groupHeath.js": "/js/groupHeath.js",
     "/js/inventory.js": "/js/inventory.js",
+    "/js/msteams.js": "/js/msteams.js",
     "/js/news.js": "/js/news.js",
     "/js/notice.js": "/js/notice.js",
+    "/js/subfolder.js": "/js/subfolder.js",
     "/js/suggestionBox.js": "/js/suggestionBox.js",
     "/js/tools.js": "/js/tools.js"
 }

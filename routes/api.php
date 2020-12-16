@@ -46,3 +46,10 @@ Route::get('gallery-all',[GalleryController::class,  'getGalleryAll']);
 
 // Get Document Type
 Route::get('doc-type',[DocumentsController::class,  'getDocType']);
+
+// Get Documents
+Route::get('documents/{id}',[DocumentsController::class,  'getDocumentByID']);
+
+// Get SubFolders
+Route::post('subfolder',[DocumentsController::class,  'getDocumentBySubType']);
+

@@ -10,14 +10,27 @@ export default {
             // console.log(state.docType)           
             },
 
+        SET_Documents(state, data) {
+            state.docType = [...data];            
+            },
+
     },
 
     actions: {
 
         GET_DocType({ state,commit  }) {
             axios.get(state.url.API_URL+'/doc-type')                               
-            .then(response => {                 
+            .then(response => {      
+                // console.log(response.data);           
                 commit('SET_DocType', response.data)   // Call a Mutation             
+            }).catch(error => {console.log(error)})
+        },
+
+        GET_Documents({ state,commit  }) {
+            axios.get(state.url.API_URL+'/documents')                               
+            .then(response => {      
+                // console.log(response.data);           
+                commit('SET_Documents', response.data)   // Call a Mutation             
             }).catch(error => {console.log(error)})
         },
 
@@ -32,6 +45,9 @@ export default {
         docType: state => {
             return state.docType;
         },
+        documents: state => {
+            return state.documents;
+        },
 
         url: state => {
             return state.url
@@ -42,6 +58,7 @@ export default {
     state: {
 
         docType: [],
+        documents:[],
         tools: [
             {
             title: 'Cuna forms ',

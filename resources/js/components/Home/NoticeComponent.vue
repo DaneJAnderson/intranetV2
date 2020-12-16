@@ -1,19 +1,15 @@
 <template>
     <div>
       
-		<h1 class="newsFeed mb-8"><span class="spanFeed"> Covid Tips</span></h1>
+		<h1 class="newsFeed mb-8"><span class="spanFeed"> Notice Board</span></h1>
 	<v-row v-if="this.notices[0]" no-gutters class="">
 
-		<v-col cols="4" class="">
-			<img class="myImg newsImg" id="l1" @click="lightbox('l1')" :src="this.url.StorageURL+this.notices[0].image" />			
-		</v-col>
+		<v-col cols="4" v-for="(_,i) in 3" :key="i">
+			<img class="myImg newsImg" v-if="notices[i].type==1" :id="i" @click="lightbox(i)" :src="url.StorageURL+notices[i].image" />
 
-		<v-col cols="4" class="">
-			<img class="myImg newsImg" id="l2" @click="lightbox('l2')" :src="this.url.StorageURL+this.notices[1].image" />
-		</v-col>
-
-		<v-col cols="4" class="">
-			<img class="myImg newsImg" id="l3" @click="lightbox('l3')" :src="this.url.StorageURL+this.notices[2].image" />
+      <router-link v-if="notices[i].type==2" :to="notices[i].link">
+			<img class="myImg newsImg" :id="i"  :src="url.StorageURL+notices[i].image" />        
+      </router-link>			
 		</v-col>
 
 		<div id="myModal" class="modal">
@@ -86,7 +82,9 @@ export default {
 	border: 1px solid rgba(255, 166, 0, 0.507);
 	padding: 5px 20px 10px 20px;
 	border-radius: 15px;
-	background-color: rgb(0, 195, 255);
+	/* background-color: rgb(0, 195, 255); */
+	background-color: rgb(136, 147, 156);
+  /* font-family: DK_Cool_Crayon;  */
 	color:white;
 }
 

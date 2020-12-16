@@ -23,6 +23,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import  homeStore  from "./store/homeStore"
 import { adminStore } from './store/adminStore';
 import toolsNdocTypeStore from './store/toolsNdocTypeStore'
+import documentStore from './store/documentStore'
 
 Vue.use(VueRouter)
 Vue.use(Vuex) 
@@ -32,6 +33,7 @@ Vue.use(VueScrollactive);
   const store = new Vuex.Store({
    modules: { 
      adminStore, homeStore, toolsNdocTypeStore,
+     documentStore,
   
   }
 })

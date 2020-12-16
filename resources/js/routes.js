@@ -7,11 +7,13 @@ const notice = () => import(/*webpackChunkName: "notice"*/'./components/Home/Not
 const inventory = () => import(/*webpackChunkName: "inventory"*/'./components/Inventories/InventoryComponent')
 const forms = () => import(/*webpackChunkName: "forms"*/'./components/Forms/FormsComponent')
 const news = () => import(/*webpackChunkName: "news"*/'./components/News/NewsComponent')
+const msteams = () => import(/*webpackChunkName: "msteams"*/'./components/News/MSTeamsComponent')
 const tools = () => import(/*webpackChunkName: "tools"*/'./components/Tools/ToolsComponent')
-const documents = () => import(/*webpackChunkName: "documents"*/'./components/Tools/DocumentsComponent')
 const suggestion = () => import(/*webpackChunkName: "suggestionBox"*/'./components/Tools/SuggestboxComponent')
 const groupHealth = () => import(/*webpackChunkName: "groupHeath"*/'./components/Tools/GroupHealthComponent')
+const documents = () => import(/*webpackChunkName: "documents"*/'./components/Tools/DocumentsComponent')
 const document = () => import(/*webpackChunkName: "document"*/'./components/Tools/DocumentComponent')
+const subfolder = () => import(/*webpackChunkName: "subfolder"*/'./components/Tools/SubfolderComponent')
 const admins = () => import (/*webpackChunkName: "admins"*/'./components/admins/AdminComponent')
 const admNotice = () => import (/*webpackChunkName: "admNotice"*/'./components/admins/AdmnoticeComponent')
 const intranet = 'COKCU - '
@@ -30,12 +32,13 @@ export  const routes = [
       { path: '/inventory', name:'inventory', component: inventory,meta: {title: intranet+'Inventory'} }, 
       { path: '/forms', name:'forms', component: forms,meta: {title: intranet+'Forms'} }, 
       { path: '/news', name:'news', component: news,meta: {title: intranet+'News'} },
+      { path: '/news/microsoft-teams', name:'msteams', component: msteams,meta: {title: intranet+'MS Teams'} },
       { path: '/tools', name:'tools', component: tools,meta: {title: intranet+'Tools'}}, 
-      { path: '/tools/documents', name:'documents', component: documents, meta: {title: intranet+'Documents'}}, 
       { path: '/tools/suggestion-box', name:'suggestionBox',component: suggestion, meta: {title: intranet+'Suggestion-Box'}}, 
       { path: '/tools/group-health', name:'groupHealth', component: groupHealth, meta: {title: intranet+'Group-Health'}}, 
-      { path: '/tools/documents/document', name:'document', component: document,meta: {title: intranet+'Document'}}, 
-
+      { path: '/tools/documents', name:'documents', component: documents, meta: {title: intranet+'Documents'}}, 
+      { path: '/tools/documents/document/:id', name:'document', component: document,meta: {title: intranet+'Document'}}, 
+      { path: '/tools/documents/subfolder/:id/', name:'subfolder', component: subfolder,meta: {title: intranet+'Subfolder'}}, 
            
     ]       
 
@@ -58,21 +61,7 @@ export  const routes = [
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
 
 

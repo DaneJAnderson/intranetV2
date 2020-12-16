@@ -11,7 +11,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
     <div  v-if="birthdays.firstHalf && birthdays.firstHalf.length"  :style="BGStyle">    <!--- Background Confetti --->   
 
 
-    <v-container fluid>
+    <v-container fluid  >
       <h3 class="textShadowbb text-center mb-5">
         Staff celebrating their birthday this month.
 			</h3>
@@ -29,6 +29,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
      <v-row  
      align-content="center"
      justify="center"
+    
       >
 
      <v-col 
@@ -39,7 +40,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
       >
       <v-card  :dark="false" color="transparent" max-height="300">
       <!-- -------------- Upcoming Birthday Image ------------ -->
-      <img class="bdayThumb" v-if="bday.image || bday.image == ''" width="100%"
+      <img class="bdayThumb" v-if="bday.image && bday.image != ''" width="100%"
         :src="url.StorageURL+'images/profile_images/'+bday.image"
         
       />
@@ -58,7 +59,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
         <span class="text-body-2">
         {{ bday.first_name+' '+bday.last_name }}<br/>
         Birthday: {{ getDateFormal(bday.dob) }}</span><br/>
-        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,22)}}.</span>
+        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</span>
         <span v-else class="text-caption">Department: {{ bday.department}}.</span>
         </v-card-title>
 
@@ -84,7 +85,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
       >
       <v-card :dark="false" color="transparent" max-height="300">
       <!-- -------------- Upcoming Birthday Image ------------ -->
-      <img class="bdayThumb" v-if="bday.image || bday.image == ''" width="100%"
+      <img class="bdayThumb" v-if="bday.image && bday.image != ''" width="100%"
         :src="url.StorageURL+'images/profile_images/'+bday.image"
         
       />
@@ -103,7 +104,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
         <span class="text-body-2">
         {{ bday.first_name+' '+bday.last_name }}<br/>
         Birthday: {{ getDateFormal(bday.dob)}}</span><br/>
-        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,22)}}.</span>
+        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</span>
         <span v-else class="text-caption">Department: {{ bday.department}}.</span>
         </v-card-title>
 
@@ -129,7 +130,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
       >
       <v-card :dark="false" color="transparent" max-height="300">
       <!-- -------------- Upcoming Birthday Image ------------ -->
-      <img class="bdayThumb" v-if="bday.image || bday.image == ''" width="100%"
+      <img class="bdayThumb" v-if="bday.image && bday.image != ''" width="100%"
         :src="url.StorageURL+'images/profile_images/'+bday.image"
         
       />
@@ -148,7 +149,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
         <span class="text-body-2">
         {{ bday.first_name+' '+bday.last_name }}<br/>
         Birthday: {{ getDateFormal(bday.dob)}}</span><br/>
-        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,22)}}.</span>
+        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</span>
         <span v-else class="text-caption">Department: {{ bday.department}}.</span>
         </v-card-title>
 
@@ -174,7 +175,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
       >
       <v-card :dark="false" color="transparent"  max-height="300">
       <!-- -------------- Upcoming Birthday Image ------------ -->
-      <img class="bdayThumb" v-if="bday.image || bday.image == ''" width="100%"
+      <img class="bdayThumb" v-if="bday.image && bday.image != ''" width="100%"
         :src="url.StorageURL+'images/profile_images/'+bday.image"
         
       />
@@ -194,7 +195,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
         {{ bday.first_name+' '+bday.last_name }}<br/>
         Birthday: {{ getDateFormal(bday.dob)}}</span><br/>
         <span v-if="bday.department" class="text-caption mb-10">
-          Department: {{ bday.department.substr(0,22)}}.</span>
+          Department: {{ bday.department.substr(0,21)}}.</span>
         <span v-else class="text-caption mb-10">
           Department: {{ bday.department}}.</span>
         </v-card-title>
