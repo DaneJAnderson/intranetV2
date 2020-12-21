@@ -5,8 +5,6 @@
     <v-app-bar color="#fff" fixed elevation=2 clipped-right height="80">  
     <v-bottom-navigation v-model="value" color="#FF8F00"
     :mandatory='true'  >
-    
-  <!-- <v-app-bar-nav-icon ></v-app-bar-nav-icon>  @click="currentRouteName"-->
 
       <a :href="PublicURL+'/'" class="text-decoration-none">
       <v-img class="ml-1" 
@@ -16,40 +14,31 @@
         :src="PublicURL+'/images/COKSODALITY_LOGO.svg'"
       ></v-img>       
       </a>
-
-  <!-- lazy-src="/images/COKSODALITY_LOGO.png" -->
-  <!-- <v-toolbar-title>Page title</v-toolbar-title> -->
+ 
   <v-spacer></v-spacer>
       
-      <div class="mr-15  d-sm-none d-md-flex" >
-        
-      <!-- <a :href="PublicURL" class="text-decoration-none" ><v-btn icon> -->
+      <div class="mr-15  d-none d-md-flex" >
       <router-link to="/" class="text-decoration-none" ><v-btn @click="toTop" icon>
         <span>Home</span>
         <v-icon>{{icons.mdiHome}}</v-icon>
       </v-btn>
       </router-link>
-      <!-- </a> -->
-
       
       <router-link to="/tools" class="text-decoration-none"><v-btn icon >
         <span>Tools</span>
         <v-icon >{{icons.mdiTools}}</v-icon>
-      </v-btn></router-link>
-      
+      </v-btn></router-link>      
      
        <a href="http://192.168.110.132/" class="text-decoration-none" target="_blank" >
        <v-btn icon >
         <span>HR Plus</span>
         <v-icon color="black">{{icons.mdiHuman}}</v-icon>
       </v-btn></a>
-
       </div>
-
       <v-spacer></v-spacer>
 
        <!------  Menu Nav Icon ---- -->      
-      <!-- <v-btn iconclass=" mr-10 mt-1" @click.stop="drawer = !drawer" v-ripple> -->
+      
       <v-btn iconclass=" mr-10 mt-1" @click="drawerRoute" v-ripple>
          <v-icon size="40" :color="drawer?'#FF8F00':'#000'" >{{icons.mdiMenu}}</v-icon>
       </v-btn>
@@ -86,14 +75,13 @@
           color="#000"
           active-class="black--text"
           
-        >
-          <!-- active-class="amber--text deep-purple--text text--accent-4" -->
+        >          
 
 <!-- ----------------- Mobile Navigation ----------------- -->
       <div class=" " >
       
         <router-link to="/" class="text-decoration-none">
-        <v-list-item class=" d-none d-sm-flex d-md-none mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
+        <v-list-item class=" d-none d-sm-flex d-md-none mt-1" v-ripple="{ class: 'amber--text text--accent-4'}">
     <v-divider></v-divider>
          <v-list-item-title><v-icon class="ml-5">{{icons.mdiHome}}
            </v-icon ><span class="ml-5">Home</span></v-list-item-title>        
@@ -132,7 +120,7 @@
         </router-link>   
  <v-divider></v-divider>
 
-    <v-divider class="  d-none d-sm-flex d-md-none mt-5"></v-divider>
+    <!-- <v-divider class="  d-none d-sm-flex d-md-none mt-5"></v-divider> -->
         <router-link to="/tools/documents" class="text-decoration-none" @click="currentRouteName">
         <v-list-item class="mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
          <v-list-item-title><v-icon class="ml-5">{{icons.mdiFileDocument}}

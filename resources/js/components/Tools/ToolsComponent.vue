@@ -4,10 +4,21 @@
       <h3 class="text-center mb-10 grey--text"><b> Websites and Apps</b></h3>
        <router-view :key="$route.path" />
 
+    
+
     <v-row  
      align-content="start"
      justify="start"
       >
+
+<v-row justify="center" class="mt-15 pt-15" v-if="!this.tools[0]">
+      <v-progress-circular 
+      :size="250"
+      :width="7"
+      color="amber"
+      indeterminate
+    ></v-progress-circular>        
+</v-row>
    
      <v-col 
       v-for="(tool, i) in tools"  :key="i" 
@@ -63,10 +74,10 @@ export default {
     },
     mounted(){
 
-      // this.$store.dispatch("toolsNdocTypeStore/GET_DocType");  
+      // this.$store.dispatch("toolsStore/GET_DocType");  
     },
     computed: {
-      ...mapGetters('toolsNdocTypeStore', ['docType','url','tools']),
+      ...mapGetters('toolsStore', ['docType','url','tools']),
     },
      beforeDestroy() {
                           

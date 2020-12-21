@@ -55,7 +55,7 @@
         <h3 class="text-center pb-15 pt-10 "><b>Promotions </b></h3>
 
         <div v-for="(image,i) in this.promos" :key="i"  ><!--style="margin-top: 100px"-->
-        <v-parallax
+        <v-parallax class="rounded-lg"
       dark
       :src="url+image"
       height="500"

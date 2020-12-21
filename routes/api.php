@@ -6,6 +6,7 @@ use App\Http\Controllers\noticeboardController;
 use App\Http\Controllers\BirthdayController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\DocumentsController;
+use App\Http\Controllers\suggestionBoxController;
 use App\Models\noticeboard;
 
 /*
@@ -53,3 +54,6 @@ Route::get('documents/{id}',[DocumentsController::class,  'getDocumentByID']);
 // Get SubFolders
 Route::post('subfolder',[DocumentsController::class,  'getDocumentBySubType']);
 
+
+//  Get Paginated Gallery
+Route::get('suggestion-box',[suggestionBoxController::class,  'retrieves']);

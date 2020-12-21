@@ -1,4 +1,14 @@
 <template>
+<div>
+  <v-row justify="center" class="mt-15 pt-15" v-if="!this.images[0]">
+      <v-progress-circular 
+      :size="250"
+      :width="7"
+      color="amber"
+      indeterminate
+    ></v-progress-circular>        
+</v-row>
+
   <v-carousel 
   hide-delimiter-background  
   :cycle=true
@@ -6,6 +16,9 @@
   height="500"
   interval="7000"
   >
+
+  
+
     <v-carousel-item
       v-for="(item,i) in images"
       :key="i"
@@ -28,11 +41,10 @@
           cols="12"
         >
           <h1 class="display-1 font-weight-thin mb-4">
-            Vuetify
+            COK Sodality Co-operative Credit Union <span style="font-size: 80%">LTD.</span>
           </h1>
           <h4 class="subheading">
-            This is a {{ colors[i] +' '+ (i + 1) }}<br/>
-            Build your application today!
+           Intranet
           </h4>
         </v-col>
       </v-row>
@@ -41,6 +53,7 @@
     
     </v-carousel-item>
   </v-carousel>
+  </div>
 </template>
 
 <script>

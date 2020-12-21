@@ -53,7 +53,8 @@
         <span class="text-body-2">
         {{ bday.first_name+' '+bday.last_name }}<br/>
         Birthday: {{ getDateFormal(bday.dob) }}</span><br/>
-        <span class="text-caption">Department: {{ bday.department}}.</span>
+        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</span>
+        <span v-else class="text-caption">Department: {{ bday.department}}.</span>
         </v-card-title>
 
 

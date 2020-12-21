@@ -1,4 +1,4 @@
-// For Admin Only: put, patch, post request, mutations and updated states
+// For NewsStore Only: put, patch, post request, mutations and updated states
 
 export const newsStore = {
     namespaced: true,
@@ -33,7 +33,7 @@ export const newsStore = {
             }).catch(error => {console.log(error)})
         },
 
-        PUT_Notice_Name({ state,commit  }, data) {
+/*         PUT_Notice_Name({ state,commit  }, data) {
             axios.put(state.url.API_URL+'/noticeboard-setname-admin', data)                               
             .then(response => {                        
                 // 
@@ -49,7 +49,7 @@ export const newsStore = {
           
             }).catch(error => {console.log(error)})
         },
-
+ */
     },
     state: {
 

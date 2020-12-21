@@ -53,11 +53,11 @@ export default {
 
 	computed: {
 
-    ...mapGetters('adminStore', ['notices','url']),  
+    ...mapGetters('newsStore', ['notices','url']),  
     
 	},
 	mounted(){    
-    this.$store.dispatch("adminStore/GET_Notices");
+    this.$store.dispatch("newsStore/GET_Notices");
       
   },
   methods:{
