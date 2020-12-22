@@ -55,5 +55,8 @@ Route::get('documents/{id}',[DocumentsController::class,  'getDocumentByID']);
 Route::post('subfolder',[DocumentsController::class,  'getDocumentBySubType']);
 
 
-//  Get Paginated Gallery
+//  Get Paginated Suggestion
 Route::get('suggestion-box',[suggestionBoxController::class,  'retrieves']);
+
+// Post a Suggestion
+Route::post('post-suggestion',[suggestionBoxController::class,  'creates']);

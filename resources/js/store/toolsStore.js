@@ -17,6 +17,15 @@ export default {
         GET_Suggestions({ state,commit  }, payload) {
             axios.get(state.url.API_URL+'/suggestion-box?page='+payload)                                           
             .then(response => {                 
+                // console.log(response.data);
+                commit('SET_SUGGESTION', response.data);
+                
+            }).catch(error => {console.log(error)})
+        },  
+
+        POST_Suggestion({ state,commit  }, payload) {
+            axios.post(state.url.API_URL+'/post-suggestion',payload)                                           
+            .then(response => {                 
                 console.log(response.data);
                 commit('SET_SUGGESTION', response.data);
                 

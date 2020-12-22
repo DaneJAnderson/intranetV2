@@ -10,12 +10,12 @@ class suggestion extends Model
 {
     use HasFactory;
 
-    function suggestion ($suggest){
+    function setSuggestion ($suggest){
 
         $subject = $suggest['subject'];
         $suggestion = $suggest['suggestion'];
 
-        $SuggestBox = DB::insert("insert into suggestions (suggestion,subject) values (?,?)", [$subject, $suggestion]);
+        $SuggestBox = DB::insert("insert into suggestions (suggestion,subject,status) values (?,?,?)", [$subject, $suggestion,2]);
 
         return $SuggestBox;
 
@@ -39,7 +39,7 @@ class suggestion extends Model
         $response = $input['response'];
         $user = $input['user'];
         // $query = 'update suggestions set response = '.$response.' where id = ?';
-         $Suggest = DB::update("update suggestions set response = '$response', hradmin ='$user' where id = ?", [$id]); 
+         $Suggest = DB::update("update suggestions set response = '$response', hradmin ='$user', status = 1 where id = ?", [$id]); 
         
         // $Suggest = DB::table('suggestions')->where('response', $response);
         return $Suggest;

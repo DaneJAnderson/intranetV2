@@ -25,24 +25,24 @@
 
        <table width="100%">
 
-        <!-- <tr  v-for="(suggest,i) in suggestions" :key="i">            -->
-        <tr >           
+        <tr  v-for="(suggest,i) in this.suggestions.data" :key="i">           
+              
         
        <td> <!------- Date Function to format datetime ------->
-        <!-- <i style="font-size: 75%"> {{ suggestDate(suggest.created_at) }} </i> -->
-        <i style="font-size: 75%"> {{ 'Date of Suggestion' }} </i>
+        <i style="font-size: 75%"> {{ getDateFormal(suggest.created_at) }} </i>
+        
         <i style="font-size: 75%"> </i>
 
           <p class="suggestSub">
-            <!-- <span><b> {{suggest.subject}}. </b></span> {{suggest.suggestion}} </p>       -->
-            <span><b> {{'The Subject of the Suggestion'}}. </b></span> {{'The Suggestion Body'}} </p>      
+            <span><b> {{suggest.subject}}. </b></span> {{suggest.suggestion}} </p>      
+        
           
             <!-- {{-------------------- Response  ------------------}} -->
-        <!-- <div class="textarea1 col-xs-offset-1" :id="'textarea_'+suggest.id" >
-          <span :id="'response_'+suggest.id" >{{suggest.response}}</span> -->
+        <div class="textarea1 col-xs-offset-1" :id="'textarea_'+suggest.id" >
+          <span :id="'response_'+suggest.id" >{{suggest.response}}</span>
 
-        <div class="textarea1 col-xs-offset-1" :id="'textarea_'+1" >
-          <span :id="'response_'+1" >{{'A Response to the Suggestion'}}</span>
+        <!-- <div class="textarea1 col-xs-offset-1" :id="'textarea_'+1" >
+          <span :id="'response_'+1" >{{'A Response to the Suggestion'}}</span> -->
           
         </div>
         <hr style=" opacity: 0.2; background: black;"/>
@@ -53,8 +53,8 @@
           
         
         <td> <!--{{------- Date Function to format datetime -------}} -->
-        <!-- <i style="font-size: 75%"> {{ suggestDate(suggest.created_at) }} </i> -->
-        <i style="font-size: 75%"> {{ 'date of Suggestion' }} </i>
+        <i style="font-size: 75%"> {{ getDateFormal(new Date()) }} </i>
+        <!-- <i style="font-size: 75%"> {{ 'date of Suggestion' }} </i> -->
 
           <p class="suggestSub">
             <span><b>How to submit my suggestion? </b></span> I would like to voice an opinion. </p>      
@@ -98,19 +98,39 @@
       </div><br/>
 
       <div style="margin-right: 0px;" class="row float-right">
-        <!-- <input class="btn btn-success " @click="suggest(suggestForm)" type="submit" value="Submit"> -->
-        <input class="btn btn-success "  type="submit" value="Submit">
+        <input class="btn btn-success " @click.prevent="getSuggestion()" type="submit" value="Submit">
+        
       </div>
       <br/><br/><br/><br/>
 
       </form>
 
-</div>
-
-     
+</div>     
 
   </div>
      </div>
+
+<!-- ----------------------  SnackBar ----------------- -->
+     <v-snackbar
+    top
+      v-model="snackbar"
+      :timeout="timeout"
+      color="lime--text"
+    >
+      {{ text }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="amber"
+          text
+          v-bind="attrs"
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
+
   </div>
 </template>
 
@@ -124,6 +144,9 @@ export default {
     suggestion: '',
     count: 1,
     slideIndex: 0,
+    snackbar: false,
+      text: 'Your suggestion was successfully posted !!',
+      timeout: 6000,
   }),
  
   mounted()
@@ -181,6 +204,44 @@ export default {
         ...mapMutations('toolsStore', ['SET_CURRENTPAGE']), // set data in store
 
         paginatePage(pageNum) { this.$store.dispatch("toolsStore/GET_Suggestions",pageNum); },
+
+
+  getDateFormal(date){
+
+  var d = new Date(date);
+  var month = new Array();
+  month[0] = "January";
+  month[1] = "February";
+  month[2] = "March";
+  month[3] = "April";
+  month[4] = "May";
+  month[5] = "June";
+  month[6] = "July";
+  month[7] = "August";
+  month[8] = "September";
+  month[9] = "October";
+  month[10] = "November";
+  month[11] = "December";
+
+  var m = month[d.getMonth()];
+  var day = d.getDate();
+  var year = d.getFullYear();
+
+        // console.log(m+' '+day);
+        return m+' '+day+', '+year;
+
+    },
+
+    getSuggestion(){
+      let data = {'subject': this.subject, 'suggestion': this.suggestion};
+      this.$store.dispatch("toolsStore/POST_Suggestion",data); 
+      this.snackbar = true;
+      this.subject = '';
+      this.suggestion = '';
+
+
+    }
+
     },
 beforeDestroy() {
                       

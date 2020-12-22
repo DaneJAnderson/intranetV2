@@ -19,7 +19,9 @@ class suggestionBoxController extends Controller
 
         $input = $request->only(['subject', 'suggestion']);
         $SuggestionBox = new suggestion();
-        $suggest = $SuggestionBox->suggestion($input);
+        $suggest = $SuggestionBox->setSuggestion($input);
+
+        // return $input;
 
         return response()->json($suggest);
 
