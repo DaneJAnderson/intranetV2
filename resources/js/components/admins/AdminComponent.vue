@@ -7,14 +7,21 @@
 
 <v-col  v-for="(img,index) in this.adminIcons" :key="index" md="4" lg="3">
 
+ <v-tooltip top :open-delay="600" color="grey">
+      <template #activator="data">
+
         <router-link :to="img.link" >
-        <v-img class="rounded-lg grey lighten-2 pl-3 pr-3"
+        <v-img v-on="data.on" class="rounded-lg grey lighten-2 pl-3 pr-3"
         :lazy-src="url.PublicURL+img.img" contain
         :src="url.PublicURL+img.img"  
         max-width="200px" v-ripple="{ class: `amber--text` }"
         max-height="200px"        
         ></v-img>
         </router-link>
+
+        </template> 
+             <span>{{img.name}}</span> 
+      </v-tooltip>
 
         <!-- <h5>{{ img.name  +' '+ index}} </h5> -->
 

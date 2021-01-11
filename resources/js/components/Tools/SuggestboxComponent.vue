@@ -98,7 +98,7 @@
       </div><br/>
 
       <div style="margin-right: 0px;" class="row float-right">
-        <input class="btn btn-success " @click.prevent="getSuggestion()" type="submit" value="Submit">
+        <input class="btn btn-success " @click.stop="getSuggestion()" type="submit" value="Submit">
         
       </div>
       <br/><br/><br/><br/>
@@ -233,12 +233,14 @@ export default {
     },
 
     getSuggestion(){
+
+      if (this.subject!=''&&this.suggestion!=''){
       let data = {'subject': this.subject, 'suggestion': this.suggestion};
       this.$store.dispatch("toolsStore/POST_Suggestion",data); 
-      this.snackbar = true;
       this.subject = '';
       this.suggestion = '';
-
+      this.snackbar = true;
+        }
 
     }
 

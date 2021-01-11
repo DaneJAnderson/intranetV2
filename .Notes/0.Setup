@@ -60,4 +60,6 @@ npm cache clear --force
 
 16. npm install vuex --save
 
+17. add phpmyadmin authentication in xampp/phpmyadmin/config.inc.php
+
 

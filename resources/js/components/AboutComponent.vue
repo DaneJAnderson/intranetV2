@@ -38,7 +38,11 @@ export default {
       url(){
         return this.$store.getters['homeStore/url'];   // Square Brackets for getters    
       }
-    }
+    },
+        beforeDestroy() {
+                          
+           window.topsfunc();                
+    },
 
 }
 </script>

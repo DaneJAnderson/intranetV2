@@ -16,6 +16,7 @@ const document = () => import(/*webpackChunkName: "document"*/'./components/Tool
 const subfolder = () => import(/*webpackChunkName: "subfolder"*/'./components/Tools/SubfolderComponent')
 const admins = () => import (/*webpackChunkName: "admins"*/'./components/admins/AdminComponent')
 const admNotice = () => import (/*webpackChunkName: "admNotice"*/'./components/admins/AdmnoticeComponent')
+const admDocuments = () => import (/*webpackChunkName: "admDocuments"*/'./components/admins/AdmindocumentsComponent')
 const intranet = 'COKCU - '
 
 
@@ -25,6 +26,7 @@ export  const routes = [
       { path: '/', name:'Home', component: Home,meta: {title: intranet+'Home'}},
       { path: '/admins', name:'Admins', component: admins,meta: {title: intranet+'Admins'}}, 
       { path: '/admins/notice', name:'AdminsNotice', component: admNotice,meta: {title: intranet+'Admin-Notice'}}, 
+      { path: '/admins/documents', name:'AdminsDocuments', component: admDocuments,meta: {title: intranet+'Admin-Docs'}}, 
       { path: '/about', name:'About', component: () => import (/*webpackChunkName: "about"*/'./components/AboutComponent'),meta: {title: intranet+'About'}}, 
       { path: '/birthday', name:'birthday', component: birthday, meta: {title: intranet+'Birthday Listing'} },     
       { path: '/gallery', name:'gallery', component: gallery, meta: {title: intranet+'Gallery'} },     

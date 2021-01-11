@@ -39,7 +39,7 @@
 
 
     <!-- ----------------- Files -------------- -->
-      <a v-else-if="docs.format != 5" :href="url.StorageURL+'documents/'+docs.file"> 
+      <a v-else-if="docs.format != 5" :href="url.StorageURL+'documents/'+docs.file" target="_blank"> 
      <v-card class="name rounded-xl icon " :dark="false"  min-height="200" max-height="200" height="200"  hover> 
        <v-card-actions class="justify-center">
       <img class="zoom" width="100%" v-if="docs.format == 1" :src="url.PublicURL+'/images/documents_types/pdf.png'"  />      

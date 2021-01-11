@@ -34,6 +34,14 @@
         <span>HR Plus</span>
         <v-icon color="black">{{icons.mdiHuman}}</v-icon>
       </v-btn></a>
+
+       <a href="https://outlook.office365.com/mail" class="text-decoration-none" target="_blank" >
+       <v-btn icon >
+        <span>Web Mail</span>
+        <v-icon color="black">{{icons.mdiEmail}}</v-icon>
+      </v-btn></a>
+
+
       </div>
       <v-spacer></v-spacer>
 
@@ -147,7 +155,8 @@
         </router-link>     
 
     <v-divider></v-divider>
-        <a href="http://intranew/queuing_system/" class="text-decoration-none " target="_blank" >
+        <!-- <a href="http://intranew/queuing_system/" class="text-decoration-none " target="_blank" > -->
+        <a href="http://192.168.110.26/queuing_system/" class="text-decoration-none " target="_blank" >
         <v-list-item class="mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
          <v-list-item-title>
               <v-icon color="black" class="ml-5">{{icons.mdiHumanQueue}}</v-icon>
@@ -157,13 +166,13 @@
 
 
     <v-divider></v-divider>
-        <router-link to="/admins" class="text-decoration-none ">
+        <!-- <router-link to="/admins" class="text-decoration-none "> -->
         <v-list-item class="mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
          <v-list-item-title>
            <v-icon class="ml-5">{{icons.mdiAccountCog}}</v-icon>
            <span class="ml-5">Administrator</span></v-list-item-title>        
         </v-list-item>
-        </router-link>  
+        <!-- </router-link>   -->
 
 
 
@@ -183,7 +192,7 @@
 
 <script>
 import { mdiHome, mdiTools, mdiHumanQueue,mdiMenu,mdiAccountCog,
-mdiFileDocument,mdiCalendar, mdiNewspaper, mdiHuman,
+mdiFileDocument,mdiCalendar, mdiNewspaper, mdiHuman, mdiEmail,
  mdiAccountGroup } from '@mdi/js'
 import BannerComponent from './HeaderBanner'
 
@@ -201,7 +210,7 @@ export default {
      icons:
      {mdiHome,mdiTools,mdiHumanQueue,mdiMenu,mdiFileDocument,
      mdiCalendar,mdiNewspaper,mdiHuman,mdiAccountCog,
-     mdiAccountGroup
+     mdiAccountGroup,mdiEmail,
      }
     }),    
   

@@ -83,7 +83,7 @@ export default {
       try{
         window.scrollFunc();      
       }catch(e){
-        console.log('Scroll Function Got Catch!!');
+        // console.log('Scroll Function Got Catch!!');
       }
 
       },

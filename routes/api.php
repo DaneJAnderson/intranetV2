@@ -7,6 +7,7 @@ use App\Http\Controllers\BirthdayController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\DocumentsController;
 use App\Http\Controllers\suggestionBoxController;
+use App\Http\Controllers\uploadsController;
 use App\Models\noticeboard;
 
 /*
@@ -60,3 +61,6 @@ Route::get('suggestion-box',[suggestionBoxController::class,  'retrieves']);
 
 // Post a Suggestion
 Route::post('post-suggestion',[suggestionBoxController::class,  'creates']);
+
+// Create new Records file Api
+Route::post('uploads/post',[uploadsController::class, 'post']);

@@ -2,6 +2,8 @@
 window.scrollTrue = false; // Scrollactive Up Scroll Conditon
 
 function init(){	
+	// document.getElementById("loader").style.display = "none";
+	// document.getElementById("splash").style.display = "none";
 	new SmoothScroll(document,60,10)
 }
 

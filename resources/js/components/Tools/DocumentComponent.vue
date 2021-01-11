@@ -41,7 +41,7 @@
 
 
     <!-- ----------------- Files -------------- -->
-      <a v-else :href="url.StorageURL+'documents/'+docs.file">
+      <a v-else :href="url.StorageURL+'documents/'+docs.file" target="_blank">
    
      <v-card class="name rounded-xl icon " :dark="false"  min-height="200" max-height="200" height="200"  hover> 
        <v-card-actions class="justify-center">

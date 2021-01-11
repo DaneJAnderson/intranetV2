@@ -79,13 +79,13 @@ export default {
             title: 'Facilities Petty Cash',
             subtitle: 'Allow staff to request petty cash',
             icon: '/images/petty_cash_640x480.jpg',
-            link: 'http://intranew/Petty_Cash_App'
+            link: 'http://192.168.110.26/Petty_Cash_App'
             },
             {
             title: 'License Manager',
             subtitle: 'License Maintenance',
             icon: '/images/License_Manager.png',
-            link: 'http://intranew/License_Manager/public/'
+            link: 'http://192.168.110.26/License_Manager/public/'
             },
             {
             title: 'Meeting Scheduler',
@@ -97,19 +97,19 @@ export default {
             title: 'Personal information Form',
             subtitle: 'Yearly forms',
             icon: '/images/Personal_informaption.png',
-            link: 'http://intranew/COK_HR_MIS/public/'
+            link: 'http://192.168.110.26/COK_HR_MIS/public/'
             },
             {
             title: 'Queueing System',
             subtitle: 'MSO and front desk application',
             icon: '/images/Queueing_System.png',
-            link: 'http://intranew/queuing_system/'
+            link: 'http://192.168.110.26/queuing_system/'
             },
             {
             title: 'Webmail',
             subtitle: 'Internal email system',
             icon: '/images/WebMail.png',
-            link: 'https://login.microsoftonline.com/'
+            link: 'https://outlook.office365.com/mail'
             },
             {
             title: 'Suggestion Box',

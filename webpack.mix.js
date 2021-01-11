@@ -1,22 +1,28 @@
 const mix = require('laravel-mix');
-
 require('vuetifyjs-mix-extension');
+const urlBase = "/intranet/public/";
 
-const urlBase = "/intranetV2/public/"
-
-
-mix.js('resources/js/app.js', 'public/js').vuetify('vuetify-loader', {
-    extract: 'css/vuetify-components.css'
-})  
+mix.js('resources/js/app.js', 'public/js') 
+.vuetify('vuetify-loader')  
 .extract(['vue'])  
-.sass('resources/sass/app.scss', 'public/css')
+.sass('resources/sass/app.scss', 'public/css');
 
-.sourceMaps()
+mix.webpackConfig({
+    output: {
+        publicPath: urlBase,
+        chunkFilename: 'js/[name].js'
+}});
 
 
-if (mix.inProduction()) {
-    mix.version();
-}else{
+ if (mix.inProduction()) {
+
+    
+mix.version();
+        
+}else
+{
+
+mix.sourceMaps();
 
     mix.options({
         processCssUrls: false,
@@ -28,19 +34,15 @@ if (mix.inProduction()) {
             }
         }
     })
-}
 
-// mix.browserSync('127.0.0.1:8000')
-mix.browserSync('localhost/intranetV2/public')
+mix.browserSync('localhost/intranet/public')
 .options({
     watchOptions: {
         ignored: /node_modules/
     }
 });
 
-mix.webpackConfig({
-    output: {
-        publicPath: urlBase,
-        chunkFilename: 'js/[name].js'
-}});
+
+}
+
 

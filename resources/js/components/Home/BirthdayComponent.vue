@@ -55,12 +55,16 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
         :src="url.PublicURL+'/images/Female_worker.png'"       
       />
       <!-- ---------------- Staff Details ------------------------- -->
-      <v-card-title  class="title staffDetailBG">
-        <span class="text-body-2">
-        {{ bday.first_name+' '+bday.last_name }}<br/>
-        Birthday: {{ getDateFormal(bday.dob) }}</span><br/>
+      <v-card-title class="title staffDetailBG">
+        <ul>
+        <li><span class="text-body-2">
+        {{ bday.first_name+' '+bday.last_name }} </span></li>
+        <li><span class="text-body-2">
+        Birthday: {{ getDateFormal(bday.dob)}}</span></li>
+        <li>
         <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</span>
-        <span v-else class="text-caption">Department: {{ bday.department}}.</span>
+        <span v-else class="text-caption">Department: {{ bday.department}}.</span></li>
+        </ul>
         </v-card-title>
 
 
@@ -101,11 +105,15 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
       />
       <!-- ---------------- Staff Details ------------------------- -->
       <v-card-title class="title staffDetailBG">
-        <span class="text-body-2">
-        {{ bday.first_name+' '+bday.last_name }}<br/>
-        Birthday: {{ getDateFormal(bday.dob)}}</span><br/>
+        <ul>
+        <li><span class="text-body-2">
+        {{ bday.first_name+' '+bday.last_name }} </span></li>
+        <li><span class="text-body-2">
+        Birthday: {{ getDateFormal(bday.dob)}}</span></li>
+        <li>
         <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</span>
-        <span v-else class="text-caption">Department: {{ bday.department}}.</span>
+        <span v-else class="text-caption">Department: {{ bday.department}}.</span></li>
+        </ul>
         </v-card-title>
 
 
@@ -146,11 +154,15 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
       />
       <!-- ---------------- Staff Details ------------------------- -->
       <v-card-title class="title staffDetailBG">
-        <span class="text-body-2">
-        {{ bday.first_name+' '+bday.last_name }}<br/>
-        Birthday: {{ getDateFormal(bday.dob)}}</span><br/>
+        <ul>
+        <li><span class="text-body-2">
+        {{ bday.first_name+' '+bday.last_name }} </span></li>
+        <li><span class="text-body-2">
+        Birthday: {{ getDateFormal(bday.dob)}}</span></li>
+        <li>
         <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</span>
-        <span v-else class="text-caption">Department: {{ bday.department}}.</span>
+        <span v-else class="text-caption">Department: {{ bday.department}}.</span></li>
+        </ul>
         </v-card-title>
 
 
@@ -190,14 +202,16 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
         :src="url.PublicURL+'/images/Female_worker.png'"       
       />
       <!-- ---------------- Staff Details ------------------------- -->
-      <v-card-title  class="staffDetailBG ">
-        <span class="text-body-2 ">
-        {{ bday.first_name+' '+bday.last_name }}<br/>
-        Birthday: {{ getDateFormal(bday.dob)}}</span><br/>
-        <span v-if="bday.department" class="text-caption mb-10">
-          Department: {{ bday.department.substr(0,21)}}.</span>
-        <span v-else class="text-caption mb-10">
-          Department: {{ bday.department}}.</span>
+      <v-card-title class="title staffDetailBG">
+        <ul>
+        <li><span class="text-body-2">
+        {{ bday.first_name+' '+bday.last_name }} </span></li>
+        <li><span class="text-body-2">
+        Birthday: {{ getDateFormal(bday.dob)}}</span></li>
+        <li>
+        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</span>
+        <span v-else class="text-caption">Department: {{ bday.department}}.</span></li>
+        </ul>
         </v-card-title>
 
 
@@ -303,6 +317,15 @@ max-height: 200px;
      
 	 color: white;
 
+}
+
+ul li {
+  list-style-type: none;
+  padding: 0;
+  /* margin-top: -10px; */
+  display: flex;
+  margin-left: -20px !important;
+  
 }
 
 </style>

@@ -78,7 +78,7 @@
       <v-divider></v-divider>
 
       <v-card-text class="white--text mb-15">
-        {{ new Date().getFullYear() }} &copy; <strong>COK Sodality Co-Operative Credit Union LTD. Designed and Developed by <a href="#">Dane J. Anderson.</a></strong>
+        {{ new Date().getFullYear() }} &copy; <strong>COK Sodality Co-Operative Credit Union LTD. Designed and Developed by <a href="mailto:danderson@cokcu.com">Dane J. Anderson.</a></strong>
       </v-card-text>
     </v-card>
   </v-footer>

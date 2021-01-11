@@ -1,8 +1,17 @@
 require('./bootstrap');
 
-window.Vue = require('vue');
+// window.Vue = require('vue');
+// import Vue from 'vue/dist/vue.min.js'
+import Vue from 'vue/dist/vue.common.js'
+window.Vue = Vue;
 
-const urlBase = "/intranetV2/public/";
+if (process.env.MIX_APP_ENV === 'production') {
+  Vue.config.devtools = false;
+  Vue.config.debug = false;
+  Vue.config.silent = true; 
+}
+
+const urlBase = "/intranet/public/";
 
 
 import VueRouter from 'vue-router'
@@ -21,7 +30,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import  homeStore  from "./store/homeStore"
-import { adminStore } from './store/adminStore';
+import { adminStore } from './store/admins/adminStore';
 import { newsStore } from './store/newsStore';
 import toolsStore from './store/toolsStore'
 import documentStore from './store/documentStore'
