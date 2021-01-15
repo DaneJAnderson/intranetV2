@@ -18,19 +18,19 @@
     
     
     <v-col sm="4" class=" ">
-        <a  :href="url.StorageURL+'HR_Group_Health/ACTIVE PROVIDER LISTING- CANOPY.pdf'"><img class="img-thumbnail img-rounded img-responsive image"   :src="url.StorageURL+'HR_Group_Health/ACTIVE PROVIDER LISTING-CANOPY_Page_001.jpg'"></a>
+        <a  :href="url.StorageURL+'HR_Group_Health/ACTIVE PROVIDER LISTING- CANOPY.pdf'" target="_blank"><img class="img-thumbnail img-rounded img-responsive image"   :src="url.StorageURL+'HR_Group_Health/ACTIVE PROVIDER LISTING-CANOPY_Page_001.jpg'"></a>
         <p>ACTIVE PROVIDER LISTING-CANOPY</p>
     </v-col>
 
     <v-col sm="4" class=" ">
        
-        <a  :href="url.StorageURL+'HR_Group_Health/Canopy - Banking Information Request Form (Individual)-FILLABLE.pdf'"><img class="img-thumbnail img-rounded img-responsive image"   :src="url.StorageURL+'HR_Group_Health/Canopy - Banking Information Request Form (Individual)-FILLABLE.jpg'"></a>
+        <a  :href="url.StorageURL+'HR_Group_Health/Canopy - Banking Information Request Form (Individual)-FILLABLE.pdf'" target="_blank"><img class="img-thumbnail img-rounded img-responsive image"   :src="url.StorageURL+'HR_Group_Health/Canopy - Banking Information Request Form (Individual)-FILLABLE.jpg'"></a>
         <p>Canopy - Banking Information Request Form (Individual)</p>
     </v-col>
 
     <v-col sm="4" class=" ">
         
-        <a  :href="url.StorageURL+'HR_Group_Health/Canopy - Change Request Form FINAL-FILLABLE.pdf'"><img class="img-thumbnail img-rounded img-responsive image"    :src="url.StorageURL+'HR_Group_Health/Canopy - Change Request Form FINAL-FILLABLE_Page_1.jpg'"></a>
+        <a  :href="url.StorageURL+'HR_Group_Health/Canopy - Change Request Form FINAL-FILLABLE.pdf'" target="_blank"><img class="img-thumbnail img-rounded img-responsive image"    :src="url.StorageURL+'HR_Group_Health/Canopy - Change Request Form FINAL-FILLABLE_Page_1.jpg'"></a>
         <p>Canopy - Change Request Form FINAL</p>
     </v-col>
 
@@ -40,20 +40,20 @@
 
     <div class="col-sm-4 ">
         
-        <a  :href="url.StorageURL+'HR_Group_Health/Canopy - Group Health Member Enrolment Form & HealthQuestionnaire FINAL-FILLABLE.pdf'"><img class="img-thumbnail img-rounded img-responsive image"   :src="url.StorageURL+'HR_Group_Health/Canopy - Group Health Member Enrolment Form & HealthQuestionnaire FINAL-FILLABLE_Page_1.jpg'"></a>
+        <a  :href="url.StorageURL+'HR_Group_Health/Canopy - Group Health Member Enrolment Form & HealthQuestionnaire FINAL-FILLABLE.pdf'" target="_blank"><img class="img-thumbnail img-rounded img-responsive image"   :src="url.StorageURL+'HR_Group_Health/Canopy - Group Health Member Enrolment Form & HealthQuestionnaire FINAL-FILLABLE_Page_1.jpg'"></a>
         <p>Canopy - Group Health Member Enrolment Form & Health Questionnaire FINAL</p>
     </div>
 
     <div class="col-sm-4 ">
         
-        <a  :href="url.StorageURL+'HR_Group_Health/Member-Health-Claim-Form-FILLABLE.pdf'"><img class="img-thumbnail img-rounded img-responsive image"   :src="url.StorageURL+'HR_Group_Health/Member-Health-Claim-Form-FILLABLE_Page_1.jpg'"></a>
+        <a  :href="url.StorageURL+'HR_Group_Health/Member-Health-Claim-Form-FILLABLE.pdf'" target="_blank"><img class="img-thumbnail img-rounded img-responsive image"   :src="url.StorageURL+'HR_Group_Health/Member-Health-Claim-Form-FILLABLE_Page_1.jpg'"></a>
         <p>Member Health Claim Form</p>
         
     </div>
 
     <div class="col-sm-4 ">
         
-        <a  :href="url.StorageURL+'HR_Group_Health/Service Providers List -FFK Discount Cards.pdf'"><img class="img-thumbnail img-rounded img-responsive image"   :src="url.StorageURL+'HR_Group_Health/Service Providers List -FFK Discount Cards_Page_1.jpg'"></a>
+        <a  :href="url.StorageURL+'HR_Group_Health/Service Providers List -FFK Discount Cards.pdf'" target="_blank"><img class="img-thumbnail img-rounded img-responsive image"   :src="url.StorageURL+'HR_Group_Health/Service Providers List -FFK Discount Cards_Page_1.jpg'"></a>
         <p>Service Providers List -FFK Discount Cards</p>
         
     </div>
@@ -66,14 +66,14 @@
 
     <div class="col-sm-4 ">
         
-        <a :href="url.StorageURL+'HR_Group_Health/JADEP_DRUG_LISTING.pdf'">
+        <a :href="url.StorageURL+'HR_Group_Health/JADEP_DRUG_LISTING.pdf'" target="_blank">
         <img class="img-thumbnail img-rounded img-responsive image" :src="url.StorageURL+'HR_Group_Health/JADEP_DRUG_LISTING.png'"></a>
         <p>NATIONAL HEALTH FUND - JADEP DRUG LIST</p>
     </div>
 
     <div class="col-sm-4 ">
         
-        <a :href="url.StorageURL+'HR_Group_Health/NHF_and_Jadep.pdf'">
+        <a :href="url.StorageURL+'HR_Group_Health/NHF_and_Jadep.pdf'" target="_blank">
         <img class="img-thumbnail img-rounded img-responsive image" :src="url.StorageURL+'HR_Group_Health/NHF_and_Jadep.png'"></a>
         <p>NHF and Jadep</p>
         
@@ -81,7 +81,7 @@
 
     <div class="col-sm-4 ">
         
-        <a :href="url.StorageURL+'HR_Group_Health/NHF_Drug_Subsidy_List.pdf'">
+        <a :href="url.StorageURL+'HR_Group_Health/NHF_Drug_Subsidy_List.pdf'" target="_blank">
         <img class="img-thumbnail img-rounded img-responsive image" :src="url.StorageURL+'HR_Group_Health/NHF_Drug_Subsidy_List.png'"></a>
         <p>NHF Drug Subsidy List</p>
         

@@ -10,6 +10,8 @@
       <v-img class="ml-1" 
         contain
         max-height="60"
+        width="300"
+        height="60"
         max-width="300"
         :src="PublicURL+'/images/COKSODALITY_LOGO.svg'"
       ></v-img>       
@@ -149,7 +151,7 @@
         <router-link to="/news" class="text-decoration-none ">
         <v-list-item class="mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
          <v-list-item-title>
-           <v-icon class="ml-5">{{icons.mdiNewspaper}}</v-icon>
+           <v-icon class="ml-5">{{icons.mdiClipboardCheckOutline}}</v-icon>
            <span class="ml-5">Notice Board</span></v-list-item-title>        
         </v-list-item>
         </router-link>     
@@ -192,7 +194,7 @@
 
 <script>
 import { mdiHome, mdiTools, mdiHumanQueue,mdiMenu,mdiAccountCog,
-mdiFileDocument,mdiCalendar, mdiNewspaper, mdiHuman, mdiEmail,
+mdiFileDocument,mdiCalendar, mdiClipboardCheckOutline, mdiHuman, mdiEmail,
  mdiAccountGroup } from '@mdi/js'
 import BannerComponent from './HeaderBanner'
 
@@ -209,7 +211,7 @@ export default {
        group: null,       
      icons:
      {mdiHome,mdiTools,mdiHumanQueue,mdiMenu,mdiFileDocument,
-     mdiCalendar,mdiNewspaper,mdiHuman,mdiAccountCog,
+     mdiCalendar,mdiClipboardCheckOutline,mdiHuman,mdiAccountCog,
      mdiAccountGroup,mdiEmail,
      }
     }),    
@@ -235,7 +237,7 @@ export default {
         {
           case 'Home': this.value = 0;break;
           case 'tools': this.value = 1;break;
-          default: this.value = 3;
+          default: this.value = 4;
         }
        
          return this.value;

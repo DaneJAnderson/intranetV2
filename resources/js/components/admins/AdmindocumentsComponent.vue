@@ -22,21 +22,21 @@
  <!-- {{-- Document Name --}} -->
         <div class="form-group">
           <label for="Document Name"> Document Name </label>
-          <input v-model="name" type="text" class="form-control" id="docUpName" name="name" 
-          placeholder="Document Name" minlength="3" required>        
+          <input v-model="name" type="text" class="form-control shadow-none" id="docUpName" name="name" 
+          placeholder="Document Name" minlength="3" autocomplete="off" required>        
         </div><br/>
 
     <!-- {{-- Document (file) Uri  file uri and extention --}} -->
     <div class="form-group">
             <label for="Documents Url"> Documents Url </label>
-            <input v-model="url" type="text" class="form-control" id="docUpUrl" name="url" 
-            placeholder="Documents Url" minlength="3" required>        
+            <input v-model="url" type="text" class="form-control shadow-none" id="docUpUrl" name="url" 
+            placeholder="Documents Url" minlength="3" autocomplete="off" required>        
         </div><br/>
 
         <!-- {{-- Documents Format word|pdf|png --}} -->
         <div class="form-group">
                 <label for="Document Format">Document Format</label>
-                <select v-model="format" class="form-control" id="selectFormat" minlength=1 @change="addUrLPrefix()" name="format"  required>
+                <select v-model="format" class="form-control shadow-none" id="selectFormat" minlength=1 @change="addUrLPrefix()" name="format"  required>
                     <option value="">Select Format</option>
                     <option value="1" >PDF</option>
                     <option value="2">Word</option>
@@ -45,14 +45,24 @@
                     <option value="5">Folder</option>
                 </select>
                 </div><br/>
+
+        <div class="form-group" id="selectsubfolder">
+                <label for="Subfolder">Subfolder</label>
+                <select v-model="subfolder" class="form-control shadow-none"  name="subfolder" minlength="1"  required>
+                    <option value="">Select Subfolder</option>  
+                    <option value="doctype">Document Type</option>
+                    <option v-for="(sub,i) in this.subfolders" :key="i" :value="sub.id">{{sub.name}}</option>                 
+                </select>
+                </div><br/>
               
 
         <!-- {{-- Document Type Member|Credit|MIS|HR|Policy --}} -->
         <div class="form-group">
                 <label for="Documents Type">Documents Type</label>
-                <select v-model="type" class="form-control" id="" name="type" minlength="1" required>
+                <select v-model="type" class="form-control shadow-none " id="" name="type" minlength="1" required>
                   <option value="">Select Document Type</option>
-                  <option value="1" >Member</option>
+                  <option v-for="(type,i) in this.docType" :key="i" :value="type.id">{{type.name}}</option>
+                  <!-- <option value="1" >Member</option>
                   <option value="2">Credit</option>
                   <option value="3">Operation Procedures</option>
                   <option value="4">MIS</option>
@@ -62,7 +72,7 @@
                   <option value="8">Policy</option>
                   <option value="9">Risk & Compliance</option>
                   <option value="10">Universa Training Manuals</option>
-                  <option value="11">Letters to Network</option>
+                  <option value="11">Letters to Network</option> -->
                 </select>
               </div><br/>
   </v-col>
@@ -73,7 +83,7 @@
 
 
     <div class="large-12 medium-12 small-12 cell">
-      <v-btn  color="light-green white--text float-right" v-on:click="submitFiles()">Submit</v-btn>
+      <v-btn  color="light-green white--text float-left" v-on:click="submitFiles()">Submit</v-btn>
     </div>
 
     <!-- ----------------------  SnackBar ----------------- -->
@@ -101,6 +111,7 @@
 </template>
 
 <script>
+import { mapState,  mapActions, mapGetters} from 'vuex'; 
   export default {
      name: 'admindocumentComponent',
     /*
@@ -112,6 +123,7 @@
         name:'',
         url: '',
         format: '',
+        subfolder: '',
         type: '',
         snackbar: false,
         text: 'File uploaded successfully !!',
@@ -125,9 +137,14 @@
 
     //    this.$store.dispatch('adminStore/POST_Documents');
     //    this.$store.getters['adminStore/url']
+    this.$store.dispatch("documentStore/GET_DocType");  
+    this.$store.dispatch('adminStore/GET_Subfolder');  
    },
    computed:{
 
+     ...mapState('adminStore', ['notices','subfolders']), 
+      ...mapGetters('documentStore', ['docType','url',]), 
+      
    },
 
     methods: {
@@ -136,6 +153,7 @@
       */
       addFiles(){
         this.$refs.files.click();
+        console.log(this.subfolders)
       },
       /*
         Submits files to the server
@@ -150,6 +168,7 @@
           formData.append('url', this.url);
           formData.append('format', this.format);
           formData.append('type', this.type);
+          formData.append('parent_category', this.subfolder);
           /*
           Iteate over any file sent over appending the files
           to the form data.
@@ -161,7 +180,15 @@
         /*
           Make the request to the POST /select-files URL
         */
-       this.$store.dispatch('adminStore/POST_Documents', formData);
+       if(this.subfolder == 'doctype'){
+
+         this.$store.dispatch('adminStore/POST_DocType', this.name);
+
+       }else{
+
+         this.$store.dispatch('adminStore/POST_Documents', formData);
+       }
+
        this.snackbar = true;
 
        this.files = [];
@@ -208,6 +235,11 @@
 
         // Add File format to beginning of file URL
      addUrLPrefix(){
+       if(this.format == 5){
+          let sub = document.getElementById('selectsubfolder');
+          sub.style.display = "block"
+
+       }
         var selectFormat = document.getElementById("selectFormat");
         var selectedValue = selectFormat.options[selectFormat.selectedIndex].value;
         if(selectedValue == 1){
@@ -220,7 +252,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   input[type="file"]{
     position: absolute;
     top: -500px;
@@ -233,4 +265,9 @@
     cursor: pointer;
     float: right;
   }
+
+  #selectsubfolder {
+    display: none;
+  }
+  
 </style>

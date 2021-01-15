@@ -64,3 +64,9 @@ Route::post('post-suggestion',[suggestionBoxController::class,  'creates']);
 
 // Create new Records file Api
 Route::post('uploads/post',[uploadsController::class, 'post']);
+
+// Create a New Document Type
+Route::post('uploads/add-doctype',[uploadsController::class, 'addDocType']);
+
+//  Get Subfolders
+Route::get('subfolder-admin',[uploadsController::class, 'getSubfolders']);

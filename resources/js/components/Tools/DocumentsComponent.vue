@@ -2,7 +2,7 @@
   <div>
     <!-- <meta http-equiv="refresh" content="2;url=http://intranew/intranet/public/document_types" /> -->
     <div class="sticky  ml-n5 mr-n5">
-      <h1 class="text-center pb-10 font-weight-bold grey--text ">Document Type</h1>
+      <h3 class="text-center pb-3 font-weight-bold grey--text ">Document Type</h3>
     </div>
 
   <v-row   align-content="center"  >
@@ -23,20 +23,16 @@
       >
 
       <router-link v-if="true" :to="'/tools/documents/document/'+docs.id">
-     <v-card class="rounded-xl icon " :dark="false" color="" min-height="200"  hover> 
+     <v-card class="rounded-xl icon " :dark="false" color="" min-height="200" max-height="200" height="200"  hover> 
        <v-card-actions class="justify-center">
-      <img class="zoom" width="100%" 
+      <img class="zoom" width="100%" height="50%"
         :src="url.PublicURL+'/images/documents_types/clipboard.png'"       
       />
        </v-card-actions> 
    
-        <h5 class=" text-center pb-5 font-weight-bold blue-grey--text "> {{ docs.name }}</h5>      
-  
-
+        <h5 class=" text-center pb-1  pt-2 font-weight-bold blue-grey--text "> {{ docs.name }}</h5> 
       </v-card>
       </router-link>
-
-
 
 
      </v-col>
@@ -80,9 +76,10 @@ a {
   text-decoration: none;
 }
 .zoom {
-  padding: 50px;
+  padding: 0px;
+  padding-top: 10px;
   /* background-color: green; */
-  max-width: 200px; 
+  max-width: 80px; 
   transition: transform .2s;
   /* width: 150px; */
   /* height: 120px; */

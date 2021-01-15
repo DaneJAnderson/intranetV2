@@ -2,12 +2,9 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>  
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        {{-- <meta name="viewport" content="width=device-width, initial-scale=1"> --}}
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">      
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        {{-- <base href="/intranet/public/" /> --}}
-        {{-- <base href="{{ url('/') }}" /> --}}
+        <meta name="csrf-token" content="{{ csrf_token() }}"> 
         <script>window.Laravel = { csrfToken: '{{ csrf_token() }}' }</script>       
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
@@ -44,7 +41,6 @@
     margin-left: 50px;
     margin-right: 50px;
 }
-
 
 /* Center the loader */
 #loader {
@@ -155,7 +151,6 @@
 <div class="footer">    
         @include('include.footer')
 </div>
-
 
                 </v-app>
      </div>   

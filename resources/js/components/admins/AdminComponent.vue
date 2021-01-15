@@ -15,7 +15,8 @@
         :lazy-src="url.PublicURL+img.img" contain
         :src="url.PublicURL+img.img"  
         max-width="200px" v-ripple="{ class: `amber--text` }"
-        max-height="200px"        
+        max-height="150px"        
+        min-height="150px"        
         ></v-img>
         </router-link>
 

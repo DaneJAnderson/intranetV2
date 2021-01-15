@@ -6,6 +6,7 @@ use DB;
 use App\Models\Uploads;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Models\Document;
 
 use App\Http\Requests;
 
@@ -20,8 +21,6 @@ class uploadsController extends Controller
     public function post(Request $request){        
 
          $Files = $request->all();
-
-        //  return  $Files;
          
         if ($request->hasFile('file')) {
            
@@ -30,11 +29,9 @@ class uploadsController extends Controller
            $pre = explode("/", $Files['url']);
            if(empty($pre[1])){
                 $pre[0]='pdf';
-           }
-           // return dd($pre[0]);
+           }       
           // Storage::disk('local')->put('file.txt', 'Contents');          
-          $file = $request->file('file');
-          // $url = $file->move($path.'\app\public\documents\test',$file->getClientOriginalName());
+          $file = $request->file('file');         
           $url = $file->move($path.'\app\public\documents\\'.strtolower($pre[0]), $file->getClientOriginalName());
           
         }
@@ -47,11 +44,27 @@ class uploadsController extends Controller
 
     }
 
+    function getSubfolders(){
+
+        $subfolder = Document::where('status',1)->where('format',5)->get();
+        return $subfolder;
+
+    }
+
     public function update(){
 
         $Uploads = new Uploads();
         $upload = $Uploads->update();
         return view('uploads.update', ['upload' => $upload]);        
+    }
+
+    public function addDocType(Request $request){
+
+        $name = $request->name;
+        $Uploads = new Uploads();
+        $upload = $Uploads->addDocType($name);
+        return $upload;
+
     }
 
 }

@@ -23,37 +23,37 @@
      <v-col 
       v-for="(tool, i) in tools"  :key="i" 
       cols="6"
-      md="3" sm="6" 
+      md="4" sm="6" lg="3"
 
       >
 
       <router-link v-if="tool.link.includes('tools')" :to="tool.link">
-        <v-card class="rounded-xl icon zoom" :dark="false" color="" min-height="320" max-height="320" max-width="350"  hover>  
+        <v-card class="rounded-xl icon zoom" :dark="false" color="" min-height="280" max-height="280" max-width="300"  hover>  
        
-      <img class="bdayThumb " width="100%" 
+      <img class="bdayThumb " width="100%" height="180px"
         :src="url.PublicURL+tool.icon"       
       />
       
       <div class="title" >
-        <h3 class="text-body-2 ">
+        <h3 class="text-body-2 pt-2">
         {{ tool.title }}</h3>      
-        <span class="overline mb-10">{{ tool.subtitle}}</span>
+        <p class="overline mb-10">{{ tool.subtitle}}</p>
       </div>
 
       </v-card>
       </router-link>
 
       <a v-else :href="tool.link"  target="_blank">
-      <v-card class="rounded-xl icon zoom" :dark="false" color="" min-height="320" max-height="320" max-width="350"  hover>  
+      <v-card class="rounded-xl icon zoom" :dark="false" color="" min-height="280" max-height="280" max-width="300"  hover>  
        
-      <img class="bdayThumb" width="100%" 
+      <img class="bdayThumb" width="100%" height="180px"
         :src="url.PublicURL+tool.icon"       
       />
       
       <div class="title" >
-        <h3 class="text-body-2 ">
+        <h3 class="text-body-2 pt-2">
         {{ tool.title }}</h3>      
-        <span class="overline mb-10">{{ tool.subtitle}}</span>
+        <p class="overline mb-10">{{ tool.subtitle}}</p>
       </div>
 
       </v-card>
@@ -94,10 +94,6 @@ export default {
   padding: 0px 10px 5px 10px;
 }
 
-.icon:hover {
-  border: 2px solid rgb(188, 219, 255);
-  
-}
 .icon {
   border: 2px solid transparent;
   
@@ -115,7 +111,7 @@ a {
 
 .zoom {
   /* padding: 50px; */
-  max-width: 100%; 
+  max-width: 100%;   
   transition: transform .2s;
  
   margin: 0 auto;
@@ -124,9 +120,12 @@ a {
 .zoom:hover {
   -ms-transform: scale(1.05); /* IE 9 */
   -webkit-transform: scale(1.1); /* Safari 3-8 */
-  transform: scale(1.05); 
+  transform: scale(1.07); 
 }
+.overline{
+line-height: 1.6;
 
+}
 /* ------------------- End Zoom ---------------- */
 
 </style>

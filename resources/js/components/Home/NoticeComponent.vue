@@ -1,7 +1,11 @@
 <template>
     <div>
       
-		<h1 class="newsFeed mb-8"><span class="spanFeed"> Notice Board</span></h1>
+		<h1 class="newsFeed mb-8">
+      <router-link  to="news" > 
+        <span class="spanFeed">
+      Notice Board
+        </span></router-link></h1>
 	<v-row v-if="this.notices[0]" no-gutters class="">
 
 		<v-col cols="4" v-for="(_,i) in 3" :key="i">
@@ -65,6 +69,7 @@ export default {
 }
 </script>
 <style scoped>
+a {  text-decoration: none;}
 
 .newsImg{
 	max-width: 100%;
@@ -82,6 +87,7 @@ export default {
 	border: 1px solid rgba(255, 166, 0, 0.507);
 	padding: 5px 20px 10px 20px;
 	border-radius: 15px;
+ 
 	/* background-color: rgb(0, 195, 255); */
 	background-color: rgb(136, 147, 156);
   /* font-family: DK_Cool_Crayon;  */

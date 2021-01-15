@@ -3,7 +3,7 @@
   
       <div class="sticky  ml-n5 mr-n5">
       <input class="search documentSearch" type="text" v-model="searchQuery" placeholder="Search..." />
-        <h1 class="text-center pb-5 font-weight-bold grey--text ">{{ docType }}</h1>
+        <h4 class="text-center pb-3 font-weight-bold grey--text ">{{ docType }}</h4>
         </div>
 
   <v-row justify="center" class="mt-15 pt-15" v-if="!this.resultQuery[0]">
@@ -98,7 +98,8 @@ export default {
         get(){
 
           if(this.documents[0]){
-          let type_id = this.documents[0].type;
+
+/*           let type_id = this.documents[0].type;
           let type = '';
 
           switch(type_id){
@@ -118,8 +119,10 @@ export default {
             default: type = 'Documents';  
           }
 
-          this.doctype = type;
-          return this.doctype ;
+          this.doctype = type; */
+          // return this.doctype ;
+          this.doctype = this.documents[0].typename;
+          return this.doctype;
           }
         }
         
@@ -129,7 +132,7 @@ export default {
 
       setSubfolderData(data){
         
-        let post = data;
+        // let post = data;
         this.$store.commit('documentStore/SET_SubfolderPostData', data); // 
       }
     },  

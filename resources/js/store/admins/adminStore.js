@@ -10,7 +10,10 @@ export const adminStore = {
         },
         url: state => {
             return state.url
-        }
+        },
+        subfolders: state => {          
+            return state.subfolders;
+        },
     },
 
     mutations: {
@@ -21,7 +24,10 @@ export const adminStore = {
 
         UPDATE_NOTICES(state, id) {
                 state.notices = state.notices.filter(item => {return item.id != id;});            
-                }
+                },        
+        SET_Subfolder(state, data) {
+            state.subfolders = [...data]; 
+            },
 
     },
 
@@ -36,6 +42,14 @@ export const adminStore = {
         
         POST_Documents({ state,commit  }, payload) {
             axios.post(state.url.API_URL+'/uploads/post', payload)                               
+            .then(response => {                 
+                // commit('SET_Documents', response.data)   // Call a Mutation             
+                console.log(response.data)   //  
+            }).catch(error => {console.log(error)})
+        },
+
+        POST_DocType({ state,commit  }, payload) {
+            axios.post(state.url.API_URL+'/uploads/add-doctype', {name:payload})                               
             .then(response => {                 
                 // commit('SET_Documents', response.data)   // Call a Mutation             
                 console.log(response.data)   //  
@@ -59,10 +73,19 @@ export const adminStore = {
             }).catch(error => {console.log(error)})
         },
 
+        GET_Subfolder({ state,commit }) {                              
+            axios.get(state.url.API_URL+'/subfolder-admin')                               
+            .then(response => {      
+                // console.log(response.data);           
+                commit('SET_Subfolder', response.data)   // Call a Mutation             
+            }).catch(error => {console.log(error)})
+        },
+
     },
     state: {
 
         notices: [],
+        subfolders: [],
         url: {
             StorageURL: window.storageURL,
             PublicURL: window.publicURL,
