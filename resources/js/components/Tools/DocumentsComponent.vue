@@ -23,7 +23,7 @@
       >
 
       <router-link v-if="true" :to="'/tools/documents/document/'+docs.id">
-     <v-card class="rounded-xl icon " :dark="false" color="" min-height="200" max-height="200" height="200"  hover> 
+     <v-card class="rounded-xl" :dark="false" color="" min-height="200" max-height="200" height="200"  hover> 
        <v-card-actions class="justify-center">
       <img class="zoom" width="100%" height="50%"
         :src="url.PublicURL+'/images/documents_types/clipboard.png'"       
@@ -33,7 +33,6 @@
         <h5 class=" text-center pb-1  pt-2 font-weight-bold blue-grey--text "> {{ docs.name }}</h5> 
       </v-card>
       </router-link>
-
 
      </v-col>
   </v-row>

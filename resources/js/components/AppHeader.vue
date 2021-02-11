@@ -168,17 +168,13 @@
 
 
     <v-divider></v-divider>
-        <!-- <router-link to="/admins" class="text-decoration-none "> -->
+        <a @click="showDialog()" class="text-decoration-none ">
         <v-list-item class="mt-5" v-ripple="{ class: 'amber--text text--accent-4'}">
          <v-list-item-title>
            <v-icon class="ml-5">{{icons.mdiAccountCog}}</v-icon>
            <span class="ml-5">Administrator</span></v-list-item-title>        
         </v-list-item>
-        <!-- </router-link>   -->
-
-
-
-  
+        </a>    
 
       </div>   
 
@@ -188,6 +184,9 @@
 
     <banner-component class="banner" v-if="this.$route.name == 'Home'"></banner-component>
 
+    <!-- -----------Login Dialog -->    
+    <loginDialog  ref="loginDialog" ></loginDialog>
+
   </div>
 </template>
 
@@ -196,14 +195,15 @@
 import { mdiHome, mdiTools, mdiHumanQueue,mdiMenu,mdiAccountCog,
 mdiFileDocument,mdiCalendar, mdiClipboardCheckOutline, mdiHuman, mdiEmail,
  mdiAccountGroup } from '@mdi/js'
-import BannerComponent from './HeaderBanner'
+import BannerComponent from './HeaderBanner';
+import loginDialog from './admins/loginDialog';
 
 
 export default {
     name: 'HeaderComponent',
     props: ['publicurl'],
     components:{
-      BannerComponent, 
+      BannerComponent, loginDialog,
     },
      data: () => ({
        value:0,
@@ -225,8 +225,10 @@ export default {
 
         toTop(){
           window.topsfunc(); 
-        }
-
+        },
+               showDialog(){ 
+            this.$refs.loginDialog.openLogin('admins');            
+            },    
         },
     
     computed: {  

@@ -19,7 +19,8 @@ export default {
             },
 
         SET_SubfolderPostData(state, data) {
-            state.subfolderPostData = data;                 
+            state.subfolderPostData = data; 
+            // console.log(state.subfolderPostData);                
             },
 
     },

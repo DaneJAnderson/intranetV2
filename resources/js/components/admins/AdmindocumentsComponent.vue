@@ -29,8 +29,8 @@
     <!-- {{-- Document (file) Uri  file uri and extention --}} -->
     <div class="form-group">
             <label for="Documents Url"> Documents Url </label>
-            <input v-model="url" type="text" class="form-control shadow-none" id="docUpUrl" name="url" 
-            placeholder="Documents Url" minlength="3" autocomplete="off" required>        
+            <input v-model="urls" type="text" class="form-control shadow-none" id="docUpUrl" name="url" 
+            placeholder="Documents Url" minlength="3" autocomplete="off" >        
         </div><br/>
 
         <!-- {{-- Documents Format word|pdf|png --}} -->
@@ -48,7 +48,7 @@
 
         <div class="form-group" id="selectsubfolder">
                 <label for="Subfolder">Subfolder</label>
-                <select v-model="subfolder" class="form-control shadow-none"  name="subfolder" minlength="1"  required>
+                <select v-model="subfolder" class="form-control shadow-none"  name="subfolder" minlength="1" @change="addSubfolder(subfolder)"  required>
                     <option value="">Select Subfolder</option>  
                     <option value="doctype">Document Type</option>
                     <option v-for="(sub,i) in this.subfolders" :key="i" :value="sub.id">{{sub.name}}</option>                 
@@ -83,7 +83,7 @@
 
 
     <div class="large-12 medium-12 small-12 cell">
-      <v-btn  color="light-green white--text float-left" v-on:click="submitFiles()">Submit</v-btn>
+      <v-btn  color="light-green white--text float-left" v-on:click.stop="submitFiles()">Submit</v-btn>
     </div>
 
     <!-- ----------------------  SnackBar ----------------- -->
@@ -114,14 +114,12 @@
 import { mapState,  mapActions, mapGetters} from 'vuex'; 
   export default {
      name: 'admindocumentComponent',
-    /*
-      Defines the data used by the component
-    */
+   
     data(){
       return {
         files: [],
         name:'',
-        url: '',
+        urls: '',
         format: '',
         subfolder: '',
         type: '',
@@ -130,9 +128,7 @@ import { mapState,  mapActions, mapGetters} from 'vuex';
         timeout: 3000,
       }
     },
-    /*
-      Defines the method used by the component
-    */
+   
    mounted() {
 
     //    this.$store.dispatch('adminStore/POST_Documents');
@@ -148,44 +144,35 @@ import { mapState,  mapActions, mapGetters} from 'vuex';
    },
 
     methods: {
-      /*
-        Adds a file
-      */
+     
+        // Adds a file     
       addFiles(){
-        this.$refs.files.click();
-        console.log(this.subfolders)
+        this.$refs.files.click();        
       },
-      /*
-        Submits files to the server
-      */
+     
+        // Submits files to the server   
       submitFiles(){
-        /*
-          Initialize the form data
-        */
+  
         let formData = new FormData();
         
           formData.append('name', this.name);
-          formData.append('url', this.url);
+          formData.append('url', this.urls);
           formData.append('format', this.format);
           formData.append('type', this.type);
           formData.append('parent_category', this.subfolder);
-          /*
-          Iteate over any file sent over appending the files
-          to the form data.
-        */
+       
         for( var i = 0; i < this.files.length; i++ ){
           let file = this.files[i];
           formData.append('files[' + i + ']', file);
         }
-        /*
-          Make the request to the POST /select-files URL
-        */
+
        if(this.subfolder == 'doctype'){
 
          this.$store.dispatch('adminStore/POST_DocType', this.name);
 
        }else{
 
+                 
          this.$store.dispatch('adminStore/POST_Documents', formData);
        }
 
@@ -193,14 +180,14 @@ import { mapState,  mapActions, mapGetters} from 'vuex';
 
        this.files = [];
        this.name = '';
-       this.url = '';
+       this.urls = '';
        this.format = '';
        this.type = '';
+       this.subfolder = '';
        
       },
-      /*
-        Handles the uploading of files
-      */
+     
+        // Handles the uploading of files      
       handleFilesUpload(){
         let uploadedFiles = this.$refs.files.files;
         /*
@@ -224,29 +211,34 @@ import { mapState,  mapActions, mapGetters} from 'vuex';
      addName(){
 
         var name = this.name;
-        var url = this.url;
-        // var n1 = val[0].name.split('.').slice(0, -1).join('.');
         var n1 = this.files[0].name.split('.').slice(0, -1).join('.');
-        n1 = n1.replace(/_\d*$/g,""); // Remove Numbers at the End of the string
-   
+        n1 = n1.replace(/_\d*$/g,""); // Remove Numbers at the End of the string   
         this.name = n1.replace(/_/g,' '); // Remove UnderScore
-        this.url = this.files[0].name;
+        this.urls = this.files[0].name;
     },
 
         // Add File format to beginning of file URL
      addUrLPrefix(){
-       if(this.format == 5){
+
+      /*  if(this.format == 5){
           let sub = document.getElementById('selectsubfolder');
           sub.style.display = "block"
+       } */
 
-       }
         var selectFormat = document.getElementById("selectFormat");
         var selectedValue = selectFormat.options[selectFormat.selectedIndex].value;
         if(selectedValue == 1){
-        var uri = document.getElementById("docUpUrl");
-        // uri.value = "PDF/"+uri.value ;
-        this.url = "PDF/"+uri.value ;
+        var uri = document.getElementById("docUpUrl");       
+        this.urls = "PDF/"+uri.value ;
         }
+    },
+    
+    addSubfolder(subId){
+
+      if(subId && subId!='doctype'){
+      let sub = this.subfolders.filter(subs => subs.id == subId)
+      this.type = sub[0].type;
+      }
     }
     }
   }
@@ -266,8 +258,8 @@ import { mapState,  mapActions, mapGetters} from 'vuex';
     float: right;
   }
 
-  #selectsubfolder {
+ /*  #selectsubfolder {
     display: none;
-  }
+  } */
   
 </style>

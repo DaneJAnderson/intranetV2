@@ -14,6 +14,9 @@ export const adminStore = {
         subfolders: state => {          
             return state.subfolders;
         },
+        auth: state => {          
+            return state.auth;
+        },
     },
 
     mutations: {
@@ -29,6 +32,10 @@ export const adminStore = {
             state.subfolders = [...data]; 
             },
 
+        SET_Login(state, data) {
+            state.auth = data; 
+            },
+
     },
 
     actions: {
@@ -42,7 +49,8 @@ export const adminStore = {
         
         POST_Documents({ state,commit  }, payload) {
             axios.post(state.url.API_URL+'/uploads/post', payload)                               
-            .then(response => {                 
+            .then(response => {       
+                
                 // commit('SET_Documents', response.data)   // Call a Mutation             
                 console.log(response.data)   //  
             }).catch(error => {console.log(error)})
@@ -80,12 +88,21 @@ export const adminStore = {
                 commit('SET_Subfolder', response.data)   // Call a Mutation             
             }).catch(error => {console.log(error)})
         },
+        POST_Login({ state,commit }, payload) {  // Login Authentication 
+           return;
+            axios.post(state.url.API_URL+'/userlogin', payload)                               
+            .then(response => {      
+                commit('SET_Login', response.data)              
+                console.log(response.data);           
+            }).catch(error => {console.log(error)})
+        },
 
     },
     state: {
 
         notices: [],
         subfolders: [],
+        auth:{status:1},
         url: {
             StorageURL: window.storageURL,
             PublicURL: window.publicURL,

@@ -22,20 +22,29 @@ class uploadsController extends Controller
 
          $Files = $request->all();
          
-        if ($request->hasFile('file')) {
-           
+        if ($request->hasFile('files') || $request->hasFile('file')) {
+        
            $path = storage_path();
            // $path = public_path();
            $pre = explode("/", $Files['url']);
            if(empty($pre[1])){
                 $pre[0]='pdf';
            }       
-          // Storage::disk('local')->put('file.txt', 'Contents');          
-          $file = $request->file('file');         
+          // Storage::disk('local')->put('file.txt', 'Contents');  
+
+        //   $file = $request->file('files')?$request->file('files'):$request->file('file'); 
+        //   $url = $file->move($path.'\app\public\documents\\'.strtolower($pre[0]), $file->getClientOriginalName());
+
+          $files = $request->file('files')?$request->file('files'):$request->file('file'); 
+          foreach ($files as $file) {        
           $url = $file->move($path.'\app\public\documents\\'.strtolower($pre[0]), $file->getClientOriginalName());
+          }
+        //   $url = $request->file('file')->store('public/files');
+        
           
         }
                
+      
         $Uploads = new Uploads();
         $response = $Uploads->post($Files);
         

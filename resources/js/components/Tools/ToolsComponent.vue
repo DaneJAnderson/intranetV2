@@ -1,10 +1,7 @@
 <template>
-<div >
-  
+<div >  
       <h3 class="text-center mb-10 grey--text"><b> Websites and Apps</b></h3>
-       <router-view :key="$route.path" />
-
-    
+       <router-view :key="$route.path" />    
 
     <v-row  
      align-content="start"
@@ -24,10 +21,25 @@
       v-for="(tool, i) in tools"  :key="i" 
       cols="6"
       md="4" sm="6" lg="3"
-
       >
+      
+      <a v-if="tool.link.includes('tools/forms')" @click="showDialog()">      
+        <v-card class="rounded-xl icon zoom" :dark="false" color="" min-height="280" max-height="280" max-width="300"  hover>  
+       
+      <img class="bdayThumb " width="100%" height="180px"
+        :src="url.PublicURL+tool.icon"       
+      />
+      
+      <div class="title" >
+        <h3 class="text-body-2 pt-2">
+        {{ tool.title }}</h3>      
+        <p class="overline mb-10">{{ tool.subtitle}}</p>
+      </div>
 
-      <router-link v-if="tool.link.includes('tools')" :to="tool.link">
+      </v-card>
+      </a>
+
+      <router-link v-else-if="tool.link.includes('tools')" :to="tool.link">      
         <v-card class="rounded-xl icon zoom" :dark="false" color="" min-height="280" max-height="280" max-width="300"  hover>  
        
       <img class="bdayThumb " width="100%" height="180px"
@@ -42,6 +54,7 @@
 
       </v-card>
       </router-link>
+
 
       <a v-else :href="tool.link"  target="_blank">
       <v-card class="rounded-xl icon zoom" :dark="false" color="" min-height="280" max-height="280" max-width="300"  hover>  
@@ -60,17 +73,28 @@
       </a>
     </v-col>
     </v-row>
+
+<!-- -----------Login Dialog -->    
+    <loginDialog  ref="loginDialog" @iLogin="iLogin"></loginDialog>
        
   </div>
 </template>
 
 <script>
 
-import { mapState,  mapActions, mapGetters} from 'vuex';  
+import { mapState,  mapActions, mapGetters} from 'vuex';
+import loginDialog from '../admins/loginDialog';
+
+
 export default {
     name: 'ToolsComponent',
     components: {
-        
+        loginDialog,
+    },
+    data(){
+      return{
+        // showbool: false,
+      }
     },
     mounted(){
 
@@ -83,7 +107,17 @@ export default {
                           
                 window.topsfunc();   
                      
-        }
+        },
+        methods:{
+
+          showDialog(){ 
+            this.$refs.loginDialog.openLogin('yearly');            
+            },
+            iLogin(name){
+              console.log(name);
+            }
+          
+        },
 
 }
 </script>

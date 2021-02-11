@@ -28,7 +28,7 @@
      <v-col 
       v-for="(bday, i) in birthdays.bdayToday"  :key="i" 
       cols="6"
-      md="3" sm="6"
+      md="4" lg="3" sm="6"
       
 
       >
@@ -56,8 +56,8 @@
         <li><span class="text-body-2">
         Birthday: {{ getDateFormal(bday.dob)}}</span></li>
         <li>
-        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</span>
-        <span v-else class="text-caption">Department: {{ bday.department}}.</span></li>
+        <p v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</p>
+        <p v-else class="text-caption">Department: {{ bday.department}}.</p></li>
         </ul>
         </v-card-title>
 

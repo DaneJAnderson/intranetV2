@@ -8,6 +8,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\DocumentsController;
 use App\Http\Controllers\suggestionBoxController;
 use App\Http\Controllers\uploadsController;
+use App\Http\Controllers\FormController;
 use App\Models\noticeboard;
 
 /*
@@ -70,3 +71,9 @@ Route::post('uploads/add-doctype',[uploadsController::class, 'addDocType']);
 
 //  Get Subfolders
 Route::get('subfolder-admin',[uploadsController::class, 'getSubfolders']);
+
+//  Get Form
+Route::get('getforms',[FormController::class,  'getForms']);
+
+// Post Form
+Route::post('postforms',[FormController::class,  'postForms']);

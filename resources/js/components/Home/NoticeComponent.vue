@@ -13,7 +13,11 @@
 
       <router-link v-if="notices[i].type==2" :to="notices[i].link">
 			<img class="myImg newsImg" :id="i"  :src="url.StorageURL+notices[i].image" />        
-      </router-link>			
+      </router-link>		
+
+      <a v-if="notices[i].type==3" :href="url.StorageURL+notices[i].link" target="_blank">
+			<img class="myImg newsImg" :id="i"  :src="url.StorageURL+notices[i].image" />        
+      </a>			
 		</v-col>
 
 		<div id="myModal" class="modal">

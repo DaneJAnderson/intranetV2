@@ -6,7 +6,7 @@
         <h4 class="text-center pb-3 font-weight-bold grey--text ">{{ docType }}</h4>
         </div>
 
-  <v-row justify="center" class="mt-15 pt-15" v-if="!this.resultQuery[0]">
+  <v-row justify="center" class="mt-15 pt-15" v-if="!this.resultQuery[0]&&this.loading">
       <v-progress-circular 
       :size="250"
       :width="7"
@@ -26,10 +26,10 @@
      <!-- ------------- Folders ---------------- -->
    
      <router-link v-if="docs.format == 5"   
-     :to="'/tools/documents/subfolder/'+docs.id+'/?id='+docs.id+'&type_id='+docs.type"
+     :to="'/tools/documents/subfolder/'+docs.id+'/?id='+docs.id+'&type_id='+docs.type+'&foldername='+docs.name.substr(0,25)"
      >
      <v-card class="name rounded-xl icon " :dark="false"  min-height="200" max-height="200" height="200"  hover     
-     @click="setSubfolderData({'id':docs.id,'doctype':doctype,'type_id':docs.type})"> 
+     @click="setSubfolderData({'id':docs.id,'doctype':doctype,'type_id':docs.type, 'folderName':  docs.name})"> 
        <v-card-actions class="justify-center">
  
       <img class="zoom" width="100%"  :src="url.PublicURL+'/images/documents_types/folder.png'"  />     
@@ -71,12 +71,14 @@ export default {
          id: null,
          searchQuery: null,
          doctype:'',
+          loading: true,
     }),
 
     mounted(){
       this.id = this.$route.params.id;
       // console.log('this is route '+this.id)
       this.$store.dispatch("documentStore/GET_Documents", this.id);  
+      setTimeout(()=>{this.loading = false; }, 9000); 
       
     },
 

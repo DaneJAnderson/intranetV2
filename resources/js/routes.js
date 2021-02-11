@@ -32,7 +32,7 @@ export  const routes = [
       { path: '/gallery', name:'gallery', component: gallery, meta: {title: intranet+'Gallery'} },     
       { path: '/notice', name:'notice', component: notice,meta: {title: intranet+'Notice Board'} },     
       { path: '/inventory', name:'inventory', component: inventory,meta: {title: intranet+'Inventory'} }, 
-      { path: '/forms', name:'forms', component: forms,meta: {title: intranet+'Forms'} }, 
+      { path: '/tools/forms', name:'forms', component: forms,meta: {title: intranet+'Forms'} }, 
       { path: '/news', name:'news', component: news,meta: {title: intranet+'News'} },
       { path: '/news/microsoft-teams', name:'msteams', component: msteams,meta: {title: intranet+'MS Teams'} },
       { path: '/tools', name:'tools', component: tools,meta: {title: intranet+'Tools'}}, 

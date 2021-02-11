@@ -1,0 +1,24 @@
+Form Structure:
+
+
+1. ID => ldap (desktop login)
+2. Session Mananger
+3. LocalStorage (Temporary Storage for form fields) 
+4. Section Storage (Store each page in DB)
+5. HR Admin download CSV file of form data.
+
+
+non-functional:
+
+1. Disable admin icons for HR Login Users
+2. Retrieve email address from ldap
+
+
+Aproach:
+
+1. Create demo form templete
+2. demo form tabs
+3. Sample download
+4. Create Session 
+5. LocalStorage
+6. Database storage.

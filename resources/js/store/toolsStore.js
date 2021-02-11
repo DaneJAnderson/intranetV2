@@ -97,7 +97,8 @@ export default {
             title: 'Personal information Form',
             subtitle: 'Yearly forms',
             icon: '/images/Personal_informaption.png',
-            link: 'http://192.168.110.26/COK_HR_MIS/public/'
+            // link: 'http://192.168.110.26/COK_HR_MIS/public/',
+            link: '/tools/forms',
             },
             {
             title: 'Queueing System',

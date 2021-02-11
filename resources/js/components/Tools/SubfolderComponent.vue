@@ -3,10 +3,10 @@
 
           <div class="sticky  ml-n5 mr-n5">
       <input class="search documentSearch" type="text" v-model="searchQuery" placeholder="Search..." />
-        <h4 class="text-center pb-3 font-weight-bold grey--text ">{{ docType }}</h4>
+        <h4 class="text-center pb-3 font-weight-bold grey--text ">{{ dt?doctype:docType }}</h4>
         </div>
 
-  <v-row justify="center" class="mt-15 pt-15" v-if="!this.resultQuery[0]">
+  <v-row justify="center" class="mt-15 pt-15" v-if="!this.resultQuery[0]&&this.loading">
       <v-progress-circular 
       :size="250"
       :width="7"
@@ -25,10 +25,11 @@
 
       <!-- ------------- Folders ---------------- -->
      <router-link v-if="docs.format == 5"   
-     :to="'/tools/documents/subfolder/'+docs.id+'/?id='+docs.id+'&type_id='+docs.type"
+     :to="'/tools/documents/subfolder/'+docs.id+'/?id='+docs.id+'&type_id='+docs.type+'&foldername='+docs.name.substr(0,25)"
      >
      <v-card class="name rounded-xl icon " :dark="false"  min-height="200" max-height="200" height="200"  hover     
-     @click="setSubfolderData({'id':docs.id,'doctype':doctype,'type_id':docs.type})"> 
+     @click="setSubfolderData({'id':docs.id,'doctype':doctype,'type_id':docs.type,
+     'folderName': docs.name})"> 
        <v-card-actions class="justify-center">   
       <img class="zoom" width="100%"  :src="url.PublicURL+'/images/documents_types/folder.png'"  />     
        </v-card-actions> 
@@ -66,17 +67,23 @@ export default {
        data: () => ({
          params: null,
          searchQuery: null,
-      doctype:'',
+         loading: true,
+         SubFolderName: '',
+         dt: false,
+      doctype:'',      
     }),
 
     mounted(){
+       
       this.params = this.$route.query;      
-      this.$store.dispatch("documentStore/GET_Subfolder", this.params);        
+      this.$store.dispatch("documentStore/GET_Subfolder", this.params);  
+      setTimeout(()=>{this.loading = false; }, 9000); 
     },
     watch:{
 
       $route() {
-        this.updatePage(this.$route.params.id);
+        // this.updatePage(this.$route.params.id);
+        this.updatePage();
     },
 
     },
@@ -91,41 +98,25 @@ export default {
         return this.searchQuery.toLowerCase().split(' ').every(v => item.name.toLowerCase().includes(v))
       })
       }else{
+        // console.log(this.subfolderPostData);
         return this.subfolder;
       }
     },
 
+
       docType:{
         get(){
 
-          if(this.subfolder[0]){
-  /*         let type_id = this.subfolder[0].type;
-          let type = '';
+          if(this.subfolder[0]){ 
 
-          switch(type_id){
-
-            case 1: type = 'Member'; break;
-            case 2: type = 'Credit'; break;
-            case 3: type = 'Operation Procedures'; break;
-            case 4: type = 'MIS'; break;
-            case 5: type = 'DMU'; break;
-            case 6: type = 'HR & Learning'; break;
-            case 7: type = 'Other'; break;
-            case 8: type = 'Policy'; break;
-            case 9: type = 'Risk & Compliance'; break;
-            case 10: type = 'Universa Training Manuals'; break;
-            case 11: type = 'Letters to Network'; break;
-            // case : type = ''; break;
-            default: type = 'Documents';  
-          }
-
-          this.doctype = type;
-          return this.doctype ; */
-
-          this.doctype = this.subfolder[0].typename;
-          return this.doctype;
-          }
-        }
+            this.params = this.$route.query;
+             let subFolder = this.params.foldername;            
+            return this.doctype = this.subfolder[0].typename + (subFolder ?' | '+subFolder.substr(0,25):''); 
+            }          
+                 
+         
+        },
+     
         
       }    
     },
@@ -133,19 +124,17 @@ export default {
 
       setSubfolderData(data){
 
-        // console.log(this.subfolder);
-        
         this.$store.commit('documentStore/SET_SubfolderPostData', data); //       
         this.$store.dispatch("documentStore/GET_Subfolder", data);   
       },
 
-      updatePage(param_id) { 
+      updatePage() { 
        
-        this.params = this.$route.query;      
+        this.params = this.$route.query;        
         this.$store.dispatch("documentStore/GET_Subfolder", this.params); 
+        window.topsfunc();         
          
       }
-
 
     },
   beforeDestroy() {

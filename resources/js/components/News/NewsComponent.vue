@@ -3,7 +3,7 @@
 
       <h3 class="text-center mb-10">
         <span class="grey lighten-1 white--text rounded-lg p-2 "><b>Notice Board  </b> </span></h3>
-<v-row justify="center" v-if="!this.notices[0]">
+<v-row justify="center" v-if="!this.notices[0]&&this.loading">
       <v-progress-circular 
       :size="250"
       :width="7"
@@ -24,10 +24,14 @@
 			<img class="myImg newsImg" width="100%" height="260px" :id="i" :src="url.StorageURL+notice.image" />        
       </router-link>
 
-      <p class="name"><b>{{notice.name.substr(0,64)+'...'}}</b></p>
+      <a v-if="notice.type==3" :href="url.StorageURL+notice.link" target="_blank">
+			<img class="myImg newsImg" width="100%" height="260px" :id="i" :src="url.StorageURL+notice.image" />        
+      </a>
+
+      <p class="name"><b>{{notice.name.substr(0,64)+'...'}}</b><br/>
       <span class="caption pl-5">
         <v-icon>{{icons.mdiClockOutline}}</v-icon>
-        {{ ' '+getDateFormal(notice.created_at) }}</span>
+        {{ ' '+getDateFormal(notice.created_at) }}</span></p>
       </v-card>
 		</v-col> 
 
@@ -47,7 +51,8 @@ import { mdiClockOutline,} from '@mdi/js'
 export default {
     name: 'NewsComponent',
     data: ()=>({
-      icons:{mdiClockOutline}
+      icons:{mdiClockOutline},
+      loading: true,
     })
     ,   
 
@@ -58,6 +63,7 @@ export default {
 	},
 	mounted(){    
     this.$store.dispatch("newsStore/GET_Notices");
+    setTimeout(()=>{this.loading = false; }, 9000); 
       
   },
   methods:{

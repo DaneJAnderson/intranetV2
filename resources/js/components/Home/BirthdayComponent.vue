@@ -35,7 +35,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
      <v-col 
       v-for="(bday, i) in birthdays.firstHalf"  :key="i" 
       cols="6"
-      md="3" sm="6"
+      md="4" sm="6" lg="3"
 
       >
       <v-card  :dark="false" color="transparent" max-height="300">
@@ -62,8 +62,8 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
         <li><span class="text-body-2">
         Birthday: {{ getDateFormal(bday.dob)}}</span></li>
         <li>
-        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</span>
-        <span v-else class="text-caption">Department: {{ bday.department}}.</span></li>
+        <p v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</p>
+        <p v-else class="text-caption">Department: {{ bday.department}}.</p></li>
         </ul>
         </v-card-title>
 
@@ -84,7 +84,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
      <v-col 
       v-for="(bday, i) in birthdays.secHalf"  :key="i" 
       cols="6"
-      md="3" sm="6"
+      md="4" sm="6" lg="3"
 
       >
       <v-card :dark="false" color="transparent" max-height="300">
@@ -111,8 +111,8 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
         <li><span class="text-body-2">
         Birthday: {{ getDateFormal(bday.dob)}}</span></li>
         <li>
-        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</span>
-        <span v-else class="text-caption">Department: {{ bday.department}}.</span></li>
+        <p v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</p>
+        <p v-else class="text-caption">Department: {{ bday.department}}.</p></li>
         </ul>
         </v-card-title>
 
@@ -133,7 +133,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
      <v-col 
       v-for="(bday, i) in birthdays.thirdHalf"  :key="i" 
       cols="6"
-      md="3" sm="6"
+      md="4" sm="6" lg="3"
 
       >
       <v-card :dark="false" color="transparent" max-height="300">
@@ -160,8 +160,8 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
         <li><span class="text-body-2">
         Birthday: {{ getDateFormal(bday.dob)}}</span></li>
         <li>
-        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</span>
-        <span v-else class="text-caption">Department: {{ bday.department}}.</span></li>
+        <p v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</p>
+        <p v-else class="text-caption">Department: {{ bday.department}}.</p></li>
         </ul>
         </v-card-title>
 
@@ -182,7 +182,7 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
      <v-col 
       v-for="(bday, i) in birthdays.forthHalf"  :key="i" 
       cols="6" 
-      md="3" sm="6" 
+      md="4" sm="6" lg="3" 
 
       >
       <v-card :dark="false" color="transparent"  max-height="300">
@@ -209,8 +209,8 @@ v-if="birthdays.bdayToday && birthdays.bdayToday.length"
         <li><span class="text-body-2">
         Birthday: {{ getDateFormal(bday.dob)}}</span></li>
         <li>
-        <span v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</span>
-        <span v-else class="text-caption">Department: {{ bday.department}}.</span></li>
+        <p v-if="bday.department" class="text-caption">Department: {{ bday.department.substr(0,21)}}.</p>
+        <p v-else class="text-caption">Department: {{ bday.department}}.</p></li>
         </ul>
         </v-card-title>
 
@@ -327,5 +327,7 @@ ul li {
   margin-left: -20px !important;
   
 }
-
+.text-caption{
+  word-wrap: break-word !important;
+}
 </style>
