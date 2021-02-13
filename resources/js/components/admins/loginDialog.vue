@@ -8,8 +8,8 @@
 
 
       <v-card>
-        <v-card-title>
-          <span class="headline amber--text">{{title}}</span>
+        <v-card-title class="teal lighten-3">
+          <span class="headline white--text"><b>{{title}}</b></span>
         </v-card-title>
         <v-card-text>
           <v-container>
@@ -36,11 +36,11 @@
               
             </v-row>
           </v-container>
-          <h4 v-if="error" class="red--text text-center mb-2">**Incorrect Username or Password !</h4>
-          <b class="blue--text">*Login using your desktop Credentials*</b>
+          <h4 v-if="error" class="red--text text-center mb-2">{{notify}}</h4>
+          <b class="blue--text">*Login using your desktop credentials*</b>
         </v-card-text>
 
-        <v-card-actions >
+        <v-card-actions class="teal lighten-5">
           <v-spacer></v-spacer>
 
           <!-- ------- Close Button ------- -->
@@ -67,6 +67,7 @@
   </v-row>
 </template>
 <script>
+import { mapState,  mapActions, mapGetters} from 'vuex'; 
   export default {
       name: 'loginDialog',      
     data () {
@@ -79,9 +80,14 @@
       route: '',
       title: '',
       ldap: '',
+      notify: '**Unable to Connect to Server**',
 
     }
     },
+
+  computed:{
+      ...mapGetters('adminStore', ['auth']), 
+  },
 
   methods:{
     openLogin(mode){
@@ -95,7 +101,7 @@
     else if(mode == 'admins'){
       this.title = 'COK ADMINISTRATOR';
       this.route = '/admins';
-      this.ldap = "COK_bookings";
+      this.ldap = "hradmins";
     }
         // console.log(val);
     },
@@ -103,20 +109,23 @@
     login(){
 
       // this.$emit('iLogin', { 'username':this.username, password:this.password}); send to toolsComponent
-
-        // this.error = true;
-
       
       this.$store.dispatch("adminStore/POST_Login",{ldap:this.ldap, username:this.username, password:this.password})
-      .then(() =>{
-        let auth = this.$store.getters['adminStore/auth'];
-        console.log(auth.status);
-        if(auth.status){
-          this.$router.push(this.route);    
-        this.dialog = false;
-        }
+      .then((res) =>{        
+             
+        if(res.data.status==1){
 
-      } ).catch(err => console.log(err));
+          this.$router.push(this.route);    
+          this.dialog = false;
+
+        }else{
+          this.notify = res.data.status;
+          this.error=true;}
+
+      } ).catch(err => {
+        this.notify='**UnKnown Server Error**';
+        this.error=true;
+        } );
 
       
     },

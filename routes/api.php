@@ -26,6 +26,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+///************ Includes ***************///
+
+include('formsApi.php');
+
+///****************************************///
+
 // Get 3 notices for Home page 
 Route::get('noticeboard3',[noticeboardController::class,  'getDataHome']);
 
@@ -72,8 +79,3 @@ Route::post('uploads/add-doctype',[uploadsController::class, 'addDocType']);
 //  Get Subfolders
 Route::get('subfolder-admin',[uploadsController::class, 'getSubfolders']);
 
-//  Get Form
-Route::get('getforms',[FormController::class,  'getForms']);
-
-// Post Form
-Route::post('postforms',[FormController::class,  'postForms']);

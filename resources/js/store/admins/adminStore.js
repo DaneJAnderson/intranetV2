@@ -14,7 +14,7 @@ export const adminStore = {
         subfolders: state => {          
             return state.subfolders;
         },
-        auth: state => {          
+        auth: state => {                
             return state.auth;
         },
     },
@@ -32,8 +32,8 @@ export const adminStore = {
             state.subfolders = [...data]; 
             },
 
-        SET_Login(state, data) {
-            state.auth = data; 
+        SET_Auth(state, data) {
+            state.auth = data;             
             },
 
     },
@@ -88,13 +88,25 @@ export const adminStore = {
                 commit('SET_Subfolder', response.data)   // Call a Mutation             
             }).catch(error => {console.log(error)})
         },
-        POST_Login({ state,commit }, payload) {  // Login Authentication 
-           return;
+        POST_Login({ state,commit }, payload) {  // Login Authentication  
+            return new Promise((resolve, reject) => {        
             axios.post(state.url.API_URL+'/userlogin', payload)                               
-            .then(response => {      
-                commit('SET_Login', response.data)              
-                console.log(response.data);           
-            }).catch(error => {console.log(error)})
+            .then(response => {  
+                resolve(response);   
+                commit('SET_Auth', response.data);
+                sessionStorage.setItem('token', response.data.token);             
+                sessionStorage.setItem('username', response.data.username);             
+                // localStorage.setItem('token', response.data.token);             
+                // localStorage.setItem('username', response.data.username);             
+            }).catch(error => {                
+                sessionStorage.removeItem('token');
+                sessionStorage.removeItem('username');
+                // localStorage.removeItem('token');
+                // localStorage.removeItem('username');
+                reject(error);           
+             })
+
+            })
         },
 
     },
@@ -102,7 +114,7 @@ export const adminStore = {
 
         notices: [],
         subfolders: [],
-        auth:{status:1},
+        auth:{},
         url: {
             StorageURL: window.storageURL,
             PublicURL: window.publicURL,

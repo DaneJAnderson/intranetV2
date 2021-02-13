@@ -1,16 +1,16 @@
 <template>
   <div>
 
-      <h5 class="mb-5"><u><b>Staff fields Personal Information Forms </b> </u></h5>
+      <h5 class="mb-5"><u><b>Yearly Staff Information Forms </b> </u></h5>
 <v-card>
     <v-tabs
       v-model="tab"
-      background-color="grey"
+      background-color="blue-grey"
       color="white"
       slider-color="amber lighten-3"
       dark
     >
-      <v-tab active-class='grey darken-1'
+      <v-tab active-class='blue-grey darken-1'
         v-for="tab in this.formTabs"
         :key="tab.header"
       >
@@ -127,6 +127,19 @@ export default {
 	mounted(){    
     // this.$store.dispatch("formsStore/GET_Forms");
     // setTimeout(()=>{this.loading = false; }, 9000); 
+
+    const token = sessionStorage.getItem('token');
+    const username = sessionStorage.getItem('username');
+    // const token = localStorage.getItem('token');
+    // const username = localStorage.getItem('username');
+    const auth = this.$store.getters['adminStore/auth'];
+
+    // console.log(auth);
+
+    if((!token&&!auth.token) || (!username&&!auth.username)){
+      this.$router.replace('/tools');
+    }
+
       
   },
   
