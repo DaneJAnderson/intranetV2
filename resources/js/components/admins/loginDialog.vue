@@ -117,10 +117,12 @@ import { mapState,  mapActions, mapGetters} from 'vuex';
 
           this.$router.push(this.route);    
           this.dialog = false;
+          this.error=false;
 
         }else{
           this.notify = res.data.status;
-          this.error=true;}
+          this.error=true;
+          }
 
       } ).catch(err => {
         this.notify='**UnKnown Server Error**';

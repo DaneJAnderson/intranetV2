@@ -11,7 +11,7 @@
         
         <!-- :counter="10" -->
           <v-text-field
-            v-model="firstname"
+            v-model="staff.fname"
             :rules="nameRules"            
             label="First name"
             required
@@ -23,7 +23,7 @@
           md="4"
         >
           <v-text-field
-            v-model="lastname"
+            v-model="staff.lname"
             :rules="nameRules"
             :counter="10"
             label="Last name"
@@ -36,7 +36,7 @@
           md="4"
         >        
           <v-text-field
-            v-model="email"
+            v-model="staff.email"
             :rules="emailRules"
             label="E-mail"
             required
@@ -49,9 +49,15 @@
       class="mr-4"
       @click="submit"
       :disabled="!valid"
+      small
     >
-      submit
+      Save
     </v-btn>
+
+    <v-btn class="" @click="callForms(1)"
+ absolute color="info lighten-1" :disabled='!valid'
+ small
+>Save & Continue </v-btn>
     </v-container>
 
   </v-form>
@@ -61,12 +67,13 @@
 
 <script>
 import { mapActions, mapGetters} from 'vuex';  
+import { Staff } from './Staff';
 export default {
     name: 'personlinfoForm',
         data: () => ({
       valid: false,
-      firstname: '',
-      lastname: '',
+      staff: Staff,
+           
       nameRules: [
         v => !!v || 'Name is required',
         v => v.length >= 2 || 'Name must be less than 10 characters',
@@ -92,18 +99,22 @@ export default {
         
         if(this.valid){
            
-            let data = {'fname': this.firstname,'lname': this.lastname, 'email': this.email};
+            // let data = {'fname': this.fname,'lname': this.lname, 'email': this.email};
+            let data = this.staff;
             this.POST_Forms(data);
            
         }
-
       },
       clear () {
         this.$v.$reset()
-        this.firstname = ''
-        this.lastname = ''
+        this.fname = ''
+        this.lname = ''
         this.email = ''       
       },
+      callForms(nextTab){
+        
+         this.$emit('nextTab', { 'tabnum': 1}); // send to toolsComponent
+      }
 
     },
 

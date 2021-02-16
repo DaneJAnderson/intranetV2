@@ -31,7 +31,7 @@
         <v-card >
          <!-- {{this.formTabs[0].header}}  -->
 
-         <personalinfo-Form></personalinfo-Form>
+         <personalinfo-Form @nextTab="nextTab"></personalinfo-Form>
 
         </v-card>
       </v-tab-item>
@@ -119,11 +119,8 @@ export default {
         tab: null,
         items: [],
       }
-    },   
+    },  
 
-	computed: {
-    ...mapGetters('formsStore', ['formTabs','url']),      
-	},
 	mounted(){    
     // this.$store.dispatch("formsStore/GET_Forms");
     // setTimeout(()=>{this.loading = false; }, 9000); 
@@ -141,6 +138,16 @@ export default {
     }
 
       
+  },
+  	computed: {
+    ...mapGetters('formsStore', ['formTabs','url']),      
+	},
+  methods:{
+
+    nextTab(nextTab){
+      // console.log(nextTab);
+      this.tab = nextTab.tabnum;
+    }
   },
   
 

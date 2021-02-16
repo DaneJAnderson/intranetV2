@@ -3,12 +3,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\forms\personalInfo;
 
 //  Get Form
-Route::get('getforms',[FormController::class,  'getForms']);
+Route::get('getforms',[personalInfo::class,  'getForms']);
 
 // Post Form
-Route::post('postforms',[FormController::class,  'postForms']);
-
-// Post 
-Route::post('userlogin',[FormController::class,  'auth']);
+Route::post('postforms',[personalInfo::class,  'postForms']);

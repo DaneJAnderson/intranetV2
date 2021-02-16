@@ -10,6 +10,7 @@ use App\Http\Controllers\suggestionBoxController;
 use App\Http\Controllers\uploadsController;
 use App\Http\Controllers\FormController;
 use App\Models\noticeboard;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,4 +79,7 @@ Route::post('uploads/add-doctype',[uploadsController::class, 'addDocType']);
 
 //  Get Subfolders
 Route::get('subfolder-admin',[uploadsController::class, 'getSubfolders']);
+
+// Post User Login
+Route::post('userlogin',[UserController::class,  'auth']);
 
