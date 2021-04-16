@@ -31,6 +31,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import  homeStore  from "./store/homeStore"
 import { adminStore } from './store/admins/adminStore';
+import { noticeStore } from './store/admins/noticeStore';
 import { newsStore } from './store/newsStore';
 import { formsStore } from './store/formsStore';
 import toolsStore from './store/toolsStore'
@@ -45,6 +46,7 @@ Vue.use(VueScrollactive);
    modules: { 
      adminStore, homeStore, toolsStore,
      documentStore, newsStore, formsStore,
+     noticeStore
   
   }
 })

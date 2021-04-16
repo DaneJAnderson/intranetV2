@@ -1,13 +1,49 @@
 <template>
   <div>
+
+<!-- ------------------------------------------------------------------------------- -->
+<v-col cols="auto" class="float-left mt-n3">
+      <v-dialog
+        transition="dialog-bottom-transition"
+        max-width="600"
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            color="info"
+            v-bind="attrs"
+            v-on="on"
+          >Upload A Notice</v-btn>
+        </template>
+        <template v-slot:default="dialog">
+          <v-card>
+
+<!-- ----------------------------- UPLOAD FILE closeDialog;noticeDialog----------------------------- -->
+            <uploadNotciesComp @closeDialog="dialog.value = false" ></uploadNotciesComp>
+            <!-- <v-toolbar
+              color="primary"
+              dark
+            >Opening from the bottom</v-toolbar>
+            <v-card-text>
+              <div class="text-h2 pa-12">Hello world!</div>
+            </v-card-text> -->
+            <v-card-actions class="justify-end">
+              <v-btn
+                text
+                @click="dialog.value = false"
+              >Close</v-btn>
+            </v-card-actions>
+          </v-card>
+        </template>
+      </v-dialog>
+    </v-col>
+    <!-- ---------------------------------------------------------------------------------------- -->
+
       <h3 class="text-center mb-10">
-        <span class="grey lighten-1 white--text rounded-lg p-2"> Noticeboard Administrator Panel </span></h3>
+        <span class="grey lighten-1 white--text rounded-lg p-2"> Noticeboard Administrator Panel </span></h3>        
 
-        
+      <v-row v-if="this.notices.data && this.notices.data.length >0"  class="">
 
-      <v-row v-if="this.notices[0]"  class="">
-
-		  <v-col v-for="(notice, index) in this.notices" :key="index" cols="4" lg="3" md="4" class="">
+		  <v-col v-for="(notice, index) in this.notices.data" :key="index" cols="4" lg="3" md="4" class="">
       <v-card>
 			<img class="noticeImg" width="100%" height="260px" :src="url.StorageURL+notice.image" />
       <v-text-field :id="'notice_'+index" dense
@@ -90,14 +126,23 @@
       </v-card>
 		</v-col> 
 	</v-row>
+
+    <div class="text-center float-right mt-10">
+    <v-pagination
+      v-model="currentPage"
+      :length="lastPage"
+      :total-visible="7"
+    ></v-pagination>
+  </div>
   
   </div>
 </template>
 
 <script>
 
-import { mapState,  mapActions, mapGetters} from 'vuex';  
-import { mdiClipboardEdit, mdiDelete, mdiContentSaveEdit } from '@mdi/js'
+import { mapState,  mapActions, mapGetters, mapMutations } from 'vuex';  
+import { mdiClipboardEdit, mdiDelete, mdiContentSaveEdit } from '@mdi/js';
+import uploadNotciesComp from './uploadNotices';
 
 export default {
     name: 'AdmnoticeComponent',
@@ -106,39 +151,77 @@ export default {
         editable: false,
         setIndex:-1, 
         dialog: false,
+        noticeDialog:false,
         noticeid: -1,
-
-/*      
-
-      allowSpaces: false,
-      match: 'Foobar',
-      max: 0,
-      model: '', */
       
       icons: {mdiClipboardEdit,mdiDelete,mdiContentSaveEdit}
     }
     },
+    components: {uploadNotciesComp},
+	mounted(){    
 
+      const token = sessionStorage.getItem('token');
+    const email = sessionStorage.getItem('email');
+    const username = sessionStorage.getItem('username');
+    // const token = localStorage.getItem('token');
+    // const username = localStorage.getItem('username');
+    const auth = this.$store.getters['adminStore/auth'];
+
+    if((!token&&!auth.token) || (!username&&!auth.username)){
+      this.$router.replace('/');
+    }
+    
+      this.GET_Notices();
+      // this.$store.dispatch("noticeStore/PUT_Notice_Name");   
+  },
     computed: {     
-      ...mapGetters('adminStore', ['notices','url']),
+      ...mapGetters('noticeStore', ['notices','url']),
 
       setEdit(){
         return this.setIndex;
-      }
-  },
+      },
 
-  	mounted(){    
-      this.GET_Notices();
-      // this.$store.dispatch("adminStore/PUT_Notice_Name");
-    // console.dir(this.url);
-  },
+       currentPage: { 
+            get(){
+                
+                return this.notices.current_page
+            },
+            set(value){
+				
+                this.SET_CURRENTPAGE(value);
+                // this.$store.commit("noticeStore/SET_CURRENTPAGE",value)
+            }
+        },
+
+        lastPage: {
+            get(){
+                return this.notices.last_page }
+        }
+        
+
+  },  
 
   watch:{
+
+    
+        currentPage(newValue, oldValue) {          
+
+          
+           try{
+             window.topsfunc(); 
+            }catch(e){}
+            setTimeout(()=>  this.GET_Notices(newValue), 1);
+        },
     
   },
 
 	methods: {    
-      ...mapActions('adminStore', ['GET_Notices','PUT_Notice_Name','DELETE_Notice']),
+
+    
+        ...mapMutations('noticeStore', ['SET_CURRENTPAGE']), // set data in store
+
+      ...mapActions('noticeStore', ['GET_Notices','PUT_Notice_Name','DELETE_Notice']),
+        // paginatePage(pageNum) { this.$store.dispatch("noticeStore/GET_Notices",pageNum); },
 
       makeEditable: function(index){        
 
@@ -150,7 +233,7 @@ export default {
       saveEditedName(index,id){
 
         let name = document.getElementById('notice_'+index).value;           
-        // this.$store.dispatch("adminStore/PUT_Notice_Name",{index, name});
+        // this.$store.dispatch("noticeStore/PUT_Notice_Name",{index, name});
         this.PUT_Notice_Name({id,name})
         this.makeEditable(index);
 
@@ -166,6 +249,11 @@ export default {
          this.dialog = true;
         this.noticeid = id;
       },
+
+    /*   closeDialog(f){
+        console.log('we are here '+f);
+        this.noticeDialog = f;
+      } */
    
   }
 

@@ -20,6 +20,12 @@ class noticeboardController extends Controller
         return response()->json($data);
     }
 
+    function getDataAdminPaginate(){         
+        
+        $data = noticeboard::where('status', 1)->orderBy('created_at', 'desc')->paginate(16);
+        return response()->json($data);
+    }
+
     function setNameAdmin(Request $res) {
         $id = $res->id;
         $name = $res->name;

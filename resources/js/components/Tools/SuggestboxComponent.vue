@@ -11,7 +11,8 @@
       ></v-img> 
 
     <v-spacer></v-spacer>
-    <v-row justify="center"><h4 ><span class="suggestionHeading" >Suggestion Box</span></h4>
+    <!-- <v-row justify="center"><h4 ><span class="suggestionHeading" >Suggestion Box</span></h4> -->
+    <v-row justify="center"><h4 ><span class="suggestionHeading" >GREAT IDEAS</span></h4>
     <v-spacer></v-spacer>
 
           <!-- {{---------- Login Link ------------}} -->

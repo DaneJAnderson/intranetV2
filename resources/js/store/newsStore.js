@@ -15,19 +15,24 @@ export const newsStore = {
     mutations: {
 
         SET_NOTICES(state, data) {
-            state.notices = [...data];            
+            // state.notices = [...data];            
+            state.notices = data;            
             },
 
         UPDATE_NOTICES(state, id) {
                 state.notices = state.notices.filter(item => {return item.id != id;});            
-                }
+                },
+        SET_CURRENTPAGE(state, data){
+            state.notices.current_page = data;
+        }
+        
 
     },
 
     actions: {
 
-        GET_Notices({ state,commit  }) {
-            axios.get(state.url.API_URL+'/noticeboard-admin')                               
+        GET_Notices({ state,commit  }, pageNum) {
+            axios.get(state.url.API_URL+'/noticeboard-admin?page='+pageNum)                               
             .then(response => {                 
                 commit('SET_NOTICES', response.data)   // Call a Mutation             
             }).catch(error => {console.log(error)})

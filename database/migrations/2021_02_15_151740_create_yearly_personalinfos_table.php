@@ -37,7 +37,8 @@ class CreateYearlyPersonalinfosTable extends Migration
             
             $table->string('homephone', 15);
             $table->string('cellphone', 15);
-            $table->string('email', 300)->unique();
+            $table->string('personal_email', 300)->unique();
+            $table->string('cok_email', 300)->unique();
             $table->integer('status')->default(1);
             $table->string('martial_status', 100);
             $table->string('height', 100);
@@ -74,12 +75,13 @@ class CreateYearlyPersonalinfosTable extends Migration
             $table->string('family_child_gender5',10);
 
             $table->string('family_spouse_type',50);
+            $table->string('family_spouse_change',5);
             $table->string('family_spouse_name',200);
             $table->text('family_spouse_address1');
             $table->text('family_spouse_address2');
-            $table->string('family_homephone', 15);
-            $table->string('family_cellphone', 15);
-            $table->string('family_email', 300);
+            $table->string('family_spouse_homephone', 15);
+            $table->string('family_spouse_cellphone', 15);
+            $table->string('family_spouse_email', 300);
 
             $table->text('edu_institution1');
             $table->text('edu_institution_location1');
@@ -190,7 +192,17 @@ class CreateYearlyPersonalinfosTable extends Migration
             $table->text('guarantor_poa_account_type3');
             $table->text('guarantor_poa_joint_holder3');
 
+            $table->string('confirm_info');
 
+            $table->timestamp('effective_date_name_info')->nullable($value = true); 
+            $table->timestamp('effective_date_address_info')->nullable($value = true); 
+            $table->timestamp('effective_date_persona_data')->nullable($value = true); 
+            $table->timestamp('effective_date_emergency')->nullable($value = true); 
+            $table->timestamp('effective_date_family_info')->nullable($value = true); 
+            $table->timestamp('effective_date_edu_history')->nullable($value = true); 
+            $table->timestamp('effective_date_credit_history')->nullable($value = true); 
+            $table->timestamp('effective_date_charity')->nullable($value = true); 
+            $table->timestamp('effective_date_staff_acc')->nullable($value = true); 
             $table->timestamps();
         });
     }

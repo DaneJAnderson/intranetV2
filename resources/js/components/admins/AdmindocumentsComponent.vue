@@ -130,7 +130,18 @@ import { mapState,  mapActions, mapGetters} from 'vuex';
     },
    
    mounted() {
+     
+       const token = sessionStorage.getItem('token');
+    const email = sessionStorage.getItem('email');
+    const username = sessionStorage.getItem('username');
+    // const token = localStorage.getItem('token');
+    // const username = localStorage.getItem('username');
+    const auth = this.$store.getters['adminStore/auth'];
 
+    if((!token&&!auth.token) || (!username&&!auth.username)){
+      this.$router.replace('/');
+    }
+    
     //    this.$store.dispatch('adminStore/POST_Documents');
     //    this.$store.getters['adminStore/url']
     this.$store.dispatch("documentStore/GET_DocType");  

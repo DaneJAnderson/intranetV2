@@ -96,11 +96,13 @@ export const adminStore = {
                 commit('SET_Auth', response.data);
                 sessionStorage.setItem('token', response.data.token);             
                 sessionStorage.setItem('username', response.data.username);             
+                sessionStorage.setItem('email', response.data.email);             
                 // localStorage.setItem('token', response.data.token);             
                 // localStorage.setItem('username', response.data.username);             
             }).catch(error => {                
                 sessionStorage.removeItem('token');
                 sessionStorage.removeItem('username');
+                sessionStorage.removeItem('email');
                 // localStorage.removeItem('token');
                 // localStorage.removeItem('username');
                 reject(error);           

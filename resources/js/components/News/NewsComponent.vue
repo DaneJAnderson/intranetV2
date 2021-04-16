@@ -3,7 +3,7 @@
 
       <h3 class="text-center mb-10">
         <span class="grey lighten-1 white--text rounded-lg p-2 "><b>Notice Board  </b> </span></h3>
-<v-row justify="center" v-if="!this.notices[0]&&this.loading">
+<v-row justify="center" v-if="!this.notices.data  &&this.loading">
       <v-progress-circular 
       :size="250"
       :width="7"
@@ -12,9 +12,9 @@
     ></v-progress-circular>
         
 </v-row>
-      <v-row v-if="this.notices[0]"  class="">
+      <v-row v-if="this.notices.data && this.notices.data.length >0"  class="">
 
-		  <v-col v-for="(notice, i) in this.notices" :key="i" cols="4" lg="3" md="4" class="">
+		  <v-col v-for="(notice, i) in this.notices.data" :key="i" cols="4" lg="3" md="4" class="">
       <v-card height="350" max-height="350">
 			<!-- <img class="noticeImg" width="100%" height="260px" :src="url.StorageURL+notice.image" /> -->
 
@@ -41,32 +41,77 @@
 			<div id="caption"></div>
 		  </div>
 	</v-row>
+
+      <div class="text-center float-right mt-10">
+    <v-pagination
+      v-model="currentPage"
+      :length="lastPage"
+      :total-visible="7"
+    ></v-pagination>
+  </div>
   
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters} from 'vuex';  
-import { mdiClockOutline,} from '@mdi/js'
+import { mdiClockOutline,} from '@mdi/js';
+import { mapState,  mapActions, mapGetters, mapMutations } from 'vuex';  
+
 export default {
     name: 'NewsComponent',
     data: ()=>({
       icons:{mdiClockOutline},
       loading: true,
     })
-    ,   
-
-	computed: {
-
-    ...mapGetters('newsStore', ['notices','url']),  
+    ,  
     
-	},
 	mounted(){    
     this.$store.dispatch("newsStore/GET_Notices");
     setTimeout(()=>{this.loading = false; }, 9000); 
       
+  }, 
+
+	computed: {
+
+    ...mapGetters('newsStore', ['notices','url']), 
+        currentPage: { 
+            get(){
+                
+                return this.notices.current_page
+            },
+            set(value){
+				
+                this.SET_CURRENTPAGE(value);
+                // this.$store.commit("noticeStore/SET_CURRENTPAGE",value)
+            }
+        },
+
+        lastPage: {
+            get(){
+                return this.notices.last_page }
+        } 
+    
+	},
+  
+
+  watch:{
+
+    
+        currentPage(newValue, oldValue) {          
+
+          
+           try{
+             window.topsfunc(); 
+            }catch(e){}
+            setTimeout(()=>  this.GET_Notices(newValue), 1);
+        },
+    
   },
   methods:{
+
+            ...mapMutations('noticeStore', ['SET_CURRENTPAGE']), // set data in store
+
+      ...mapActions('noticeStore', ['GET_Notices','PUT_Notice_Name','DELETE_Notice']),
     			 lightbox(id){
 
 			var modal = document.getElementById("myModal");

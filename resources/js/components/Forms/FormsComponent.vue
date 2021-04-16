@@ -2,7 +2,7 @@
   <div>
 
       <h5 class="mb-5"><u><b>Yearly Staff Information Forms </b> </u></h5>
-<v-card>
+<v-card max-width="1600px" >
     <v-tabs
       v-model="tab"
       background-color="blue-grey"
@@ -31,7 +31,7 @@
         <v-card >
          <!-- {{this.formTabs[0].header}}  -->
 
-         <personalinfo-Form @nextTab="nextTab"></personalinfo-Form>
+         <personalinfo-Form @nextTab="nextTab" :cok_email="cok_email"></personalinfo-Form>
 
         </v-card>
       </v-tab-item>
@@ -102,6 +102,8 @@ import ethicsconflictForm from './fields/ethicsConflict';
 import moneylaunderingForm from './fields/moneyLaundering';
 import confidentialagreementForm from './fields/confidentialAgreement';
 import staffdeclarationForm from './fields/staffDeclaration';
+
+
 export default {
 
   name: 'formsComponent',
@@ -118,6 +120,7 @@ export default {
       return {
         tab: null,
         items: [],
+        cok_email: '',
       }
     },  
 
@@ -126,12 +129,14 @@ export default {
     // setTimeout(()=>{this.loading = false; }, 9000); 
 
     const token = sessionStorage.getItem('token');
+    const email = sessionStorage.getItem('email');
     const username = sessionStorage.getItem('username');
     // const token = localStorage.getItem('token');
     // const username = localStorage.getItem('username');
     const auth = this.$store.getters['adminStore/auth'];
 
-    // console.log(auth);
+    // console.log(email);
+    this.cok_email = auth.email?auth.email:email;
 
     if((!token&&!auth.token) || (!username&&!auth.username)){
       this.$router.replace('/tools');

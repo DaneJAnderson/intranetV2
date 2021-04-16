@@ -8,6 +8,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\DocumentsController;
 use App\Http\Controllers\suggestionBoxController;
 use App\Http\Controllers\uploadsController;
+use App\Http\Controllers\noticeUploadController;
 use App\Http\Controllers\FormController;
 use App\Models\noticeboard;
 use App\Http\Controllers\UserController;
@@ -38,7 +39,8 @@ include('formsApi.php');
 Route::get('noticeboard3',[noticeboardController::class,  'getDataHome']);
 
 // Get all Notices for Admin page
-Route::get('noticeboard-admin',[noticeboardController::class,  'getDataAdmin']);
+// Route::get('noticeboard-admin',[noticeboardController::class,  'getDataAdmin']);
+Route::get('noticeboard-admin',[noticeboardController::class,  'getDataAdminPaginate']);
 
 // Update Notice Title
 Route::put('noticeboard-setname-admin',[noticeboardController::class,  'setNameAdmin']);
@@ -73,6 +75,9 @@ Route::post('post-suggestion',[suggestionBoxController::class,  'creates']);
 
 // Create new Records file Api
 Route::post('uploads/post',[uploadsController::class, 'post']);
+
+// Upload Notice 
+Route::post('uploads/postnotice',[noticeUploadController::class, 'postNotice']);
 
 // Create a New Document Type
 Route::post('uploads/add-doctype',[uploadsController::class, 'addDocType']);

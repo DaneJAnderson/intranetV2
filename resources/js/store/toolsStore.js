@@ -113,9 +113,10 @@ export default {
             link: 'https://outlook.office365.com/mail'
             },
             {
-            title: 'Suggestion Box',
+            title: 'GREAT IDEAS',
             subtitle: 'Staff Feedback',
-            icon: '/images/suggestion-box2.png',
+            icon: '/images/great_ideas_icon.png',
+            // icon: '/images/suggestion-box2.png',
             // link: window.publicURL+'/tools/suggestion-box'
             link: '/tools/suggestion-box'
             },

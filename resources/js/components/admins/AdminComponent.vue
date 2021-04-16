@@ -65,6 +65,18 @@ computed: {
 },
 mounted(){
 
+   const token = sessionStorage.getItem('token');
+    const email = sessionStorage.getItem('email');
+    const username = sessionStorage.getItem('username');
+    // const token = localStorage.getItem('token');
+    // const username = localStorage.getItem('username');
+    const auth = this.$store.getters['adminStore/auth'];
+
+    if((!token&&!auth.token) || (!username&&!auth.username)){
+      this.$router.replace('/');
+    }
+
+
 }
 
 }
