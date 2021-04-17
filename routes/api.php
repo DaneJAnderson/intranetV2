@@ -48,6 +48,9 @@ Route::put('noticeboard-setname-admin',[noticeboardController::class,  'setNameA
 // Remove Notice
 Route::put('noticeboard-remove-admin',[noticeboardController::class,  'removeNoticeAdmin']);
 
+// Remove Gallery Image
+Route::put('gallery-remove-admin',[GalleryController::class,  'removeImage']);
+
 // Get Birthdays this Month
 Route::get('birthdays-this-month',[BirthdayController::class,  'getBirthdaysThisMonth']);
 
@@ -75,6 +78,9 @@ Route::post('post-suggestion',[suggestionBoxController::class,  'creates']);
 
 // Create new Records file Api
 Route::post('uploads/post',[uploadsController::class, 'post']);
+
+// Upload Gallery
+Route::post('uploads/post-gallery',[GalleryController::class, 'postGallery']);
 
 // Upload Notice 
 Route::post('uploads/postnotice',[noticeUploadController::class, 'postNotice']);

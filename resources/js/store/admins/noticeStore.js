@@ -20,7 +20,7 @@ export const noticeStore = {
             },
 
         UPDATE_NOTICES(state, id) {
-                state.notices = state.notices.filter(item => {return item.id != id;});            
+                state.notices = state.notices.data.filter(item => {return item.id != id;});            
                 },        
         SET_CURRENTPAGE(state, data){
             state.notices.current_page = data;
@@ -56,19 +56,13 @@ export const noticeStore = {
           
             }).catch(error => {console.log(error)})
         },
-        GET_Gallery({ state,commit  }, payload) {
-            axios.get(state.url.API_URL+'/gallery?page='+payload)                                           
-            .then(response => {                 
-                // console.log(response.data);
-                commit('SET_GALLERY', response.data);
-                
-            }).catch(error => {console.log(error)})
-        },   
+  
 
-        POST_NOTICE({ state,commit  }, payload) {
+        POST_NOTICE({ state,commit,dispatch  }, payload) {
             axios.post(state.url.API_URL+'/uploads/postnotice', payload)                               
             .then(response => {                 
-                // commit('SET_Documents', response.data)   // Call a Mutation             
+                // commit('SET_Documents', response.data)   // Call a Mutation  
+                dispatch('GET_Notices',1);           
                 console.log(response.data)   //  
             }).catch(error => {console.log(error)})
         },

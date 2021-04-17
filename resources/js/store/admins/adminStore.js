@@ -132,27 +132,27 @@ export const adminStore = {
             img: '/images/documents_types/clipboard.png',
             name: 'Documents',
             link: '/admins/documents'
+        },{
+            img: '/images/adminIcons/galleryIcon.png',
+            name: 'Gallery',
+            link: '/admins/gallery'
+        },{
+            img: '/images/suggestion-box2.png',
+            name: 'SuggestionBox',
+            link: '#'
         },
         {
             img: '/images/News_Feed/COVID_AH_KIP.jpg',
             name: 'Birthday',
             link: '#'
         },
-        {
-            img: '/images/News_Feed/know_the_covid.png',
-            name: 'Gallery',
-            link: '#'
-        },
+        
         {
             img: '/images/News_Feed/know_the_covid.png',
             name: 'Inventories',
             link: '#'
         },
-        {
-            img: '/images/News_Feed/know_the_covid.png',
-            name: 'SuggestionBox',
-            link: '#'
-        },
+        
     ],
 
     },

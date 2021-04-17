@@ -85,13 +85,13 @@ import { mapState,  mapActions, mapGetters} from 'vuex';
 
     //    this.$store.dispatch('adminStore/POST_Documents');
     //    this.$store.getters['adminStore/url']
-    this.$store.dispatch("documentStore/GET_DocType");  
-    this.$store.dispatch('adminStore/GET_Subfolder');  
+    // this.$store.dispatch("documentStore/GET_DocType");  
+    // this.$store.dispatch('adminStore/GET_Subfolder');  
    },
    computed:{
 
-     ...mapState('adminStore', ['notices','subfolders']), 
-      ...mapGetters('documentStore', ['docType','url',]), 
+    //  ...mapState('adminStore', ['notices','subfolders']), 
+      // ...mapGetters('documentStore', ['docType','url',]), 
       
    },
 
