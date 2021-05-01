@@ -15,7 +15,7 @@ class suggestion extends Model
         $subject = $suggest['subject'];
         $suggestion = $suggest['suggestion'];
 
-        $SuggestBox = DB::insert("insert into suggestions (suggestion,subject,status) values (?,?,?)", [$subject, $suggestion,2]);
+        $SuggestBox = DB::insert("insert into suggestions (subject,suggestion,status) values (?,?,?)", [$subject, $suggestion,2]);
 
         return $SuggestBox;
 
@@ -28,6 +28,13 @@ class suggestion extends Model
         return $Suggest;
     }
 
+    public function getAdm()
+    { 
+        $Suggest = DB::select("SELECT *FROM suggestions where status <> 3");  
+        // $Suggest = suggestion::where('status', 1)->orderBy('updated_at', 'desc')->paginate(12);             
+        return $Suggest;
+    }
+
     public function updates($id)
     { 
         $Suggest = DB::update('update suggestions set status = 3 where id = ?', [$id]);              
@@ -37,9 +44,12 @@ class suggestion extends Model
     public function addResponse($input)
     {   $id = $input['id'];
         $response = $input['response'];
-        $user = $input['user'];
+        $subject = $input['subject'];
+        $suggestion = $input['suggestion'];
+        $user = $input['hradmin'];
+        $status = $input['status'];
         // $query = 'update suggestions set response = '.$response.' where id = ?';
-         $Suggest = DB::update("update suggestions set response = '$response', hradmin ='$user', status = 1 where id = ?", [$id]); 
+         $Suggest = DB::update("update suggestions set response = '$response', hradmin ='$user', suggestion ='$suggestion', subject='$subject', status = '$status' where id = ?", [$id]); 
         
         // $Suggest = DB::table('suggestions')->where('response', $response);
         return $Suggest;

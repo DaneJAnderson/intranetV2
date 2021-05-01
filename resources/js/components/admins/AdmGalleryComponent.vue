@@ -133,7 +133,7 @@ export default {
     const auth = this.$store.getters['adminStore/auth'];
 
     if((!token&&!auth.token) || (!username&&!auth.username)){
-      // this.$router.replace('/');
+      this.$router.replace('/');
     }
     
       this.GET_GALLERY();

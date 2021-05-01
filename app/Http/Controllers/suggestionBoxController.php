@@ -48,9 +48,18 @@ class suggestionBoxController extends Controller
 
     }
 
-    function suggest_response(Request $request){      
+    function getAdm(){
+        
+        $SuggestionBox = new suggestion();
+        $suggest = $SuggestionBox->getAdm();
+
+        return response()->json($suggest);
+
+    }
+
+    function suggestResponse(Request $request){      
       
-        $input = $request->only(['id','response','user']);
+        $input = $request->only(['id','response','hradmin','subject','suggestion', 'status']);
         $SuggestionBox = new suggestion();
         $suggest = $SuggestionBox->addResponse($input);
 

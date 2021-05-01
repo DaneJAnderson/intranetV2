@@ -35,7 +35,8 @@ import { noticeStore } from './store/admins/noticeStore';
 import { galleryStore } from './store/admins/galleryStore';
 import { newsStore } from './store/newsStore';
 import { formsStore } from './store/formsStore';
-import toolsStore from './store/toolsStore'
+import toolsStore from './store/toolsStore';
+import suggestionStore from './store/admins/suggestionStore';
 import documentStore from './store/documentStore'
 
 Vue.use(VueRouter)
@@ -47,7 +48,7 @@ Vue.use(VueScrollactive);
    modules: { 
      adminStore, homeStore, toolsStore,
      documentStore, newsStore, formsStore,
-     noticeStore, galleryStore
+     noticeStore, galleryStore, suggestionStore
   
   }
 })

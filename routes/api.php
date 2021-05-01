@@ -73,6 +73,15 @@ Route::post('subfolder',[DocumentsController::class,  'getDocumentBySubType']);
 //  Get Paginated Suggestion
 Route::get('suggestion-box',[suggestionBoxController::class,  'retrieves']);
 
+//  Get Suggestions Admin 
+Route::get('admins/suggestion-box',[suggestionBoxController::class,  'getAdm']);
+
+// Put Suggestion Admin , Update Status
+Route::put('admins/suggestion-box/updates',[suggestionBoxController::class,  'updates']);
+
+// Post Response to aSuggestion  Admin 
+Route::post('admins/suggestion-box/suggest-response',[suggestionBoxController::class,  'suggestResponse']);
+
 // Post a Suggestion
 Route::post('post-suggestion',[suggestionBoxController::class,  'creates']);
 

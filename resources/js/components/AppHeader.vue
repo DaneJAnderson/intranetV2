@@ -194,7 +194,7 @@
 <script>
 import { mdiHome, mdiTools, mdiHumanQueue,mdiMenu,mdiAccountCog,
 mdiFileDocument,mdiCalendar, mdiClipboardCheckOutline, mdiHuman, mdiEmail,
- mdiAccountGroup } from '@mdi/js'
+ mdiAccountGroup } from '@mdi/js';
 import BannerComponent from './HeaderBanner';
 import loginDialog from './admins/loginDialog';
 

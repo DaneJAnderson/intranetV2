@@ -139,7 +139,7 @@ export const adminStore = {
         },{
             img: '/images/suggestion-box2.png',
             name: 'SuggestionBox',
-            link: '#'
+            link: '/admins/suggestion-box'
         },
         {
             img: '/images/News_Feed/COVID_AH_KIP.jpg',

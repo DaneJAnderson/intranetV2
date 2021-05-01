@@ -242,6 +242,14 @@ import { mapState,  mapActions, mapGetters} from 'vuex';
         var uri = document.getElementById("docUpUrl");       
         this.urls = "PDF/"+uri.value ;
         }
+        if(selectedValue == 2){
+        var uri = document.getElementById("docUpUrl");       
+        this.urls = "WORD/"+uri.value ;
+        }
+        if(selectedValue == 3){
+        var uri = document.getElementById("docUpUrl");       
+        this.urls = "EXCEL/"+uri.value ;
+        }
     },
     
     addSubfolder(subId){
