@@ -13,6 +13,10 @@ export default {
             UPDATE_SUGGESTION(state, id) {
                 state.suggestions = state.suggestions.filter(item => {return item.id != id;});            
                 }, 
+            SAVE_Suggestion(state,data){
+
+                Object.assign(state.suggestions[data.index], data.item)
+            }
     },
 
     actions: {

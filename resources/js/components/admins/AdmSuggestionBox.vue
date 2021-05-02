@@ -24,13 +24,22 @@
    
       <v-toolbar
         flat class="mb-10"
-      >        
+      >      
+      
+        <v-btn
+              color="primary--text"
+              small
+              class="mb-2"
+             @click="downloadCSV()"
+            >
+              <b>Download</b>
+            </v-btn>
 
         <v-dialog
           v-model="dialog"
           max-width="800px"
         >
-          <template v-slot:activator="{ on, attrs }">
+          <!-- <template v-slot:activator="{ on, attrs }">
             <v-btn
               color="primary--text"
               small
@@ -40,7 +49,7 @@
             >
               <b>Download</b>
             </v-btn>
-          </template>           
+           </template>  -->           
 
           <v-card>
             <v-card-title>
@@ -198,6 +207,16 @@
     </template>
 
 
+<!-- -------------------- SLot Date ------------------------ -->
+
+    <template  v-slot:[`item.created_at`]="{ item }">
+
+           {{getDateFormal(item.created_at)}} 
+
+            <!-- <v-chip ></v-chip> -->
+          
+    </template>
+
 
 <!-- -------------------- SLot Subject ------------------------ -->
 
@@ -208,6 +227,7 @@
             <!-- <v-chip ></v-chip> -->
           
     </template>
+
 
 
 <!-- -------------------- SLot Status ------------------------ -->
@@ -290,6 +310,7 @@ export default {
 
         expanded: [],
         singleExpand: false,
+        username:'unknown',
 
       dialog: false,
       dialogDelete: false,
@@ -301,7 +322,7 @@ export default {
           sortable: false,
           value: 'name',
         }, */
-        { text: 'Date', value: 'created_at', width: '150px' },
+        { text: 'Date', value: 'created_at', width: '180px' },
         { text: 'Subject', value: 'subject' },
         { text: 'Status', value: 'status', width: '150px' },
         // { text: 'Protein (g)', value: 'protein' },
@@ -337,11 +358,12 @@ export default {
     // const username = localStorage.getItem('username');
     const auth = this.$store.getters['adminStore/auth'];
 
+
     if((!token&&!auth.token) || (!username&&!auth.username)){
       // this.$router.replace('/');
     }
       if(username){
-        this.editedItem.hradmin = username;
+        this.username = username;
       }
 
        this.$store.dispatch("suggestionStore/GET_Suggestions"); 
@@ -355,6 +377,7 @@ export default {
       formTitle () {
         return this.editedIndex === -1 ? 'New Item' : 'Edit Suggestion'
       },
+   
     },
 
     watch: {
@@ -370,6 +393,35 @@ export default {
 
       ...mapActions('suggestionStore', ['POST_Response','DELETE_Suggestion']),
         // paginatePage(pageNum) { this.$store.dispatch("galleryStore/GET_Notices",pageNum); },
+
+        downloadCSV(){
+
+                          // alert('We here!!')
+if(this.suggestions[0]){
+                
+                var rows = this.suggestions;
+              
+              var arr = typeof rows !== 'object' ? JSON.parse(rows) : rows;
+              var str =
+                `${Object.keys(arr[0])
+                  .map((value) => `"${value}"`)
+                  .join(',')}` + '\r\n';
+              var csvContent = arr.reduce((st, next) => {
+                st +=
+                  `${Object.values(next)
+                    .map((value) => `"${value}"`)
+                    .join(',')}` + '\r\n';
+                return st;
+              }, str);
+              var element = document.createElement('a');
+              element.href = 'data:text/csv;charset=utf-8,' + encodeURI(csvContent);
+              element.target = '_blank';
+              element.download = 'Suggestion.csv';
+              element.click();               
+    
+  
+        }
+                },        
 
       
   getDateFormal(date){
@@ -452,15 +504,22 @@ export default {
 
       save () {
         if (this.editedIndex > -1) {
-          Object.assign(this.suggestions[this.editedIndex], this.editedItem)
+          // Object.assign(this.suggestions[this.editedIndex], this.editedItem)
+
+          this.$store.commit("suggestionStore/SAVE_Suggestion",{index:this.editedIndex, item: this.editedItem});
+
         } else {
           this.suggestions.push(this.editedItem)
         }
         this.close()
 
+        
+        this.editedItem.hradmin = this.username;
+     
           this.POST_Response(this.editedItem);
         
       },
+
     },
 
 }
